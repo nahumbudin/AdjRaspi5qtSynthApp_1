@@ -36,9 +36,9 @@ border-color: rgb(0, 0, 0);</string>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>10</y>
-     <width>891</width>
+     <width>900</width>
      <height>551</height>
     </rect>
    </property>
@@ -62,7 +62,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -321,7 +321,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>120</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -577,7 +577,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>230</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -833,7 +833,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>340</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -1089,7 +1089,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>450</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -1345,7 +1345,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>560</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -1601,7 +1601,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>670</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -1860,7 +1860,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>780</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -2121,7 +2121,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -2377,7 +2377,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>120</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -2633,7 +2633,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>230</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -2889,7 +2889,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>340</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -3145,7 +3145,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>450</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -3401,7 +3401,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>560</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -3657,7 +3657,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>670</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
@@ -3913,7 +3913,7 @@ border-color: rgb(0, 0, 0);</string>
       <rect>
        <x>780</x>
        <y>10</y>
-       <width>100</width>
+       <width>108</width>
        <height>501</height>
       </rect>
      </property>
