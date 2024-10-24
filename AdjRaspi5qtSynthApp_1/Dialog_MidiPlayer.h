@@ -36,11 +36,16 @@ public :
 	
 	void control_box_ui_update_callback(int evnt, uint16_t val);
 	
+	QPoint get_last_position();
+	
 	Ui::Dialog_MidiPlayer *ui;
 
 public slots :
 	virtual void timerEvent(); // Called by a Timer
 	void closeEvent(QCloseEvent *event);
+	void moveEvent(QMoveEvent *event);
+	bool event(QEvent *event);
+	
 	
 protected slots :
 	
@@ -67,6 +72,8 @@ private:
 	func_ptr_void_void_t close_event_callback_ptr;
 	
 	void start_update_timer(int interval);
+	
+	QPoint last_position;
 };
 
 class OpenFileThread : public QThread

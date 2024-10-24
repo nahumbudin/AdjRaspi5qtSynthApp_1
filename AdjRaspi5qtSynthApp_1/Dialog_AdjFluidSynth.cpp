@@ -8,7 +8,7 @@
 *
 */
 
-#include <String>
+#include <string>
 
 #include <QMessageBox>
 #include <QFileDialog>

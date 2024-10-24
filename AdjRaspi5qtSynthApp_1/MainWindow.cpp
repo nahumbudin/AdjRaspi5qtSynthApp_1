@@ -33,8 +33,6 @@ LoadPatchFileThread *load_patch_file_thread;
 
 QString patch_file_name;
 
-
-
 /** Callback wrapper */
 
 void wrapper_close_module_pannel_id(en_modules_ids_t mo_id)
@@ -98,7 +96,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 	
 	mwind = this;
-	mwind->move(10, 10);
+	mwind->move(100, 100);
 	
 	ui->centralwidget->setLayout(new QVBoxLayout);
 	layout = qobject_cast<QVBoxLayout*>(ui->centralwidget->layout());
@@ -127,7 +125,7 @@ MainWindow::MainWindow(QWidget *parent) :
 		en_modules_ids_t::adj_hammond_organ;
 	modules_ids_map[_INSTRUMENT_NAME_ANALOG_SYNTH_STR_KEY] = 
 		en_modules_ids_t::adj_analog_synth;
-	modules_ids_map[_INSTRUMENT_NAME_KARPULS_STRONG_STRING_SYNTH_STR_KEY] = 
+	modules_ids_map[_INSTRUMENT_NAME_KARPLUS_STRONG_STRING_SYNTH_STR_KEY] = 
 		en_modules_ids_t::adj_karplusstrong_string_synth;
 	modules_ids_map[_INSTRUMENT_NAME_MORPHED_SINUS_SYNTH_STR_KEY] = 
 		en_modules_ids_t::adj_morphed_sin_synth;
@@ -143,7 +141,7 @@ MainWindow::MainWindow(QWidget *parent) :
 		en_modules_ids_t::adj_reverb_effect;
 	modules_ids_map[_INSTRUMENT_NAME_DISTORTION_STR_KEY] = 
 		en_modules_ids_t::adj_distortion_effect;
-	modules_ids_map[_INSTRUMENT_NAME_GRAPHIC_EQULIZER_STR_KEY] = 
+	modules_ids_map[_INSTRUMENT_NAME_GRAPHIC_EQUALIZER_STR_KEY] = 
 		en_modules_ids_t::adj_graphic_equilizer;
 	modules_ids_map[_INSTRUMENT_NAME_EXT_MIDI_INT_CONTROL_STR_KEY] = 
 		en_modules_ids_t::adj_ext_midi_interface;
@@ -206,10 +204,14 @@ void MainWindow::control_box_ui_update_callback(int evnt, uint16_t val)
 				if (count == index)
 				{
 					position = dialog->pos();
+					//position = mapToGlobal(dialog->rect().center());
+					printf("%i %i\n", position.x(), position.y());
 					dialog->hide();
 					dialog->show();
 					dialog->move(position);
+					//dialog->move(mapFromGlobal(position));
 					dialog->setFocus(Qt::ActiveWindowFocusReason);
+					printf("%i %i\n", position.x(), position.y());
 					break;
 				}
 				
@@ -364,6 +366,8 @@ void MainWindow::create_menus()
 
 ModulePannel* MainWindow::add_module_pannel(QString module_name_string)
 {	
+	QPoint last_posotion = QPoint(this->x(), this->y());
+	
 	if (modules_ids_map.find(module_name_string.toStdString()) != modules_ids_map.end())
 	{
 		/* No such module name */	
@@ -372,29 +376,31 @@ ModulePannel* MainWindow::add_module_pannel(QString module_name_string)
 	en_modules_ids_t module_id = modules_ids_map[module_name_string.toStdString()];
 	
 	
-	if (module_id == en_modules_ids_t::none)
+	if (module_id == en_modules_ids_t::none_module_id)
 	{
 		return NULL;
 	}
 	
-	ModulePannel *newPannel = new ModulePannel(this,
+	ModulePannel *new_pannel = new ModulePannel(this,
 							module_name_string, 
 							&wrapper_close_module_pannel_id, 
 							module_id);
-	layout->addWidget(newPannel);
+	layout->addWidget(new_pannel);
 	
-	activeModule_data_t newModule;
-	newModule.module_id = module_id;
-	newModule.module_name = module_name_string;
-	newModule.module_pannel_object = newPannel;
-	newModule.pending_close_event = false;
-	active_modules_list.push_back(newModule);
+	active_module_data_t new_module;
+	new_module.module_id = module_id;
+	new_module.module_name = module_name_string;
+	new_module.module_pannel_object = new_pannel;
+	new_module.pending_close_event = false;
+	active_modules_list.push_back(new_module);
 	
 	update_layout_geometry();
 	
-	mod_synth_add_module(module_name_string.toStdString());
+//	mod_synth_add_active_module(module_id);
+	
+	move(last_posotion);
 	 
-	return newPannel;
+	return new_pannel;
 }
 
 int MainWindow::remove_module_pannel(ModulePannel *module)
@@ -411,7 +417,7 @@ int MainWindow::remove_module_pannel(ModulePannel *module)
 		
 		update_layout_geometry();
 		
-		mod_synth_remove_module(module->module_name.toStdString());
+//		mod_synth_remove_active_module(module->module_id); 
 		
 		if (module->module_id == en_modules_ids_t::fluid_synth)
 		{
@@ -488,7 +494,7 @@ std::vector<std::string> MainWindow::get_active_modules_names_list()
 {
 	std::vector<std::string> names_list_str;
 	
-	for (activeModule_data_t module : active_modules_list)
+	for (active_module_data_t module : active_modules_list)
 	{
 		names_list_str.push_back(module.module_name.toStdString());
 	}
@@ -603,7 +609,7 @@ void MainWindow::on_add_adj_karplus_strong_strings_synth_module()
 	{
 		// Module is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_KARPULS_STRONG_STRING_SYNTH_STR_KEY);
+		newPannel = add_module_pannel(_INSTRUMENT_NAME_KARPLUS_STRONG_STRING_SYNTH_STR_KEY);
 	}
 }
 
@@ -681,7 +687,7 @@ void MainWindow::on_add_adj_graphic_equilizer_module()
 	{
 		// Module is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_GRAPHIC_EQULIZER_STR_KEY);
+		newPannel = add_module_pannel(_INSTRUMENT_NAME_GRAPHIC_EQUALIZER_STR_KEY);
 	}
 }
 
@@ -793,4 +799,5 @@ void MainWindow::on_load_patch_file()
 	}
 	
 }
+
 	

@@ -18,18 +18,10 @@
 #include <QThread>
 
 #include "libAdjRaspi5SynthAPI.h"
-
+#include "Defs.h"
 #include "ModulePannel.h"
 
 class ModulePannel;
-
-typedef struct activeModules
-{
-	en_modules_ids_t module_id;
-	QString module_name;
-	ModulePannel *module_pannel_object;
-	bool pending_close_event;
-} activeModule_data_t;
 
 void wrapper_closeModulePannel(en_modules_ids_t moId);
 
@@ -64,6 +56,8 @@ public:
 	void on_patch_file_loaded(const QString &s);
 	
 	vector<string> pending_open_modules_list;
+	
+	vector<active_module_data_t> active_modules_list;
 	
 public slots:
 	virtual void timerEvent(); // Called by a Timer
@@ -112,7 +106,6 @@ private:
 	
 	map<string, en_modules_ids_t> modules_ids_map;
 	
-	vector <activeModule_data_t> active_modules_list;
 	list<QDialog*> active_dialogs_list;
 	
 	QMenu *file_menu;
@@ -138,7 +131,6 @@ private:
 	QActionGroup *patch_files_group;
 	QAction *save_patch_file_act;
 	QAction *load_patch_file_act;
-	
 	
 };
 

@@ -61,6 +61,7 @@ int main(int argc, char *argv[])
 	atexit(exit_handler);
 	
 	mod_synth_init();
+	mod_synth_start_audio();
 	
 	mod_synth_init_bt_services();
 

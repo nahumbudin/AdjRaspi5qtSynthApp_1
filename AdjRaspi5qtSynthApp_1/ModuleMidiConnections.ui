@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>625</width>
-    <height>700</height>
+    <height>704</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -718,6 +718,9 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>Ch 01</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_2">
       <property name="geometry">
@@ -735,6 +738,9 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Ch 02</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_3">
@@ -754,6 +760,9 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>Ch 03</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_4">
       <property name="geometry">
@@ -771,6 +780,9 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Ch 04</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_5">
@@ -790,6 +802,9 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>Ch 05</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_6">
       <property name="geometry">
@@ -807,6 +822,9 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Ch 06</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_7">
@@ -826,6 +844,9 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>Ch 07</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_8">
       <property name="geometry">
@@ -843,6 +864,9 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Ch 08</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -881,6 +905,9 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>Ch 09</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_10">
       <property name="geometry">
@@ -900,6 +927,9 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>Ch 10</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_11">
       <property name="geometry">
@@ -917,6 +947,9 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Ch 11</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_14">
@@ -936,6 +969,9 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>Ch 14</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_15">
       <property name="geometry">
@@ -953,6 +989,9 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Ch 15</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_12">
@@ -972,6 +1011,9 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>Ch 12</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_16">
       <property name="geometry">
@@ -990,6 +1032,9 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>Ch 16</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ch_13">
       <property name="geometry">
@@ -1007,6 +1052,9 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Ch 13</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
     </widget>

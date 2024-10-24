@@ -15,6 +15,7 @@
 #include <QObject>
 #include <QFileDialog>
 #include <QTimer>
+#include <QMoveEvent>
 
 #include "MainWindow.h"
 #include "Dialog_MidiPlayer.h"
@@ -85,6 +86,8 @@ Dialog_MidiPlayer::Dialog_MidiPlayer(QWidget *parent)
 {
 	ui->setupUi(this);
 	dialog_adj_midi_player_instance = this;
+	
+	move(100, 100);
 	
 	this->setFocus(Qt::ActiveWindowFocusReason);
 	
@@ -157,6 +160,22 @@ void Dialog_MidiPlayer::closeEvent(QCloseEvent *event)
 	hide();
 }
 
+void Dialog_MidiPlayer::moveEvent(QMoveEvent *event) {
+	QWidget::moveEvent(event); // Call the base class implementation first
+
+	last_position = event->pos();
+	printf("Playr position %i:%i\n", last_position.x(), last_position.y());
+}
+
+bool Dialog_MidiPlayer::event(QEvent *event)
+{
+	printf("Event type: %i pos: %i:%i\n", event->type(), this->x(), this->y());
+
+	return QWidget::event(event);
+	
+
+}
+
 void Dialog_MidiPlayer::control_box_ui_update_callback(int evnt, uint16_t val)
 {
 	if (!this->hasFocus())
@@ -192,6 +211,11 @@ void Dialog_MidiPlayer::control_box_ui_update_callback(int evnt, uint16_t val)
 			on_stop_clicked();
 		}
 	}
+}
+
+QPoint Dialog_MidiPlayer::get_last_position()
+{
+	return last_position;
 }
 
 void Dialog_MidiPlayer::on_dialog_close()

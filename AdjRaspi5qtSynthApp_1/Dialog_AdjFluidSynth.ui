@@ -945,7 +945,7 @@ background-color: rgb(209, 209, 209);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 0);</string>
+     <string notr="true">background-color: rgb(255, 255, 0);border: none;</string>
     </property>
     <property name="text">
      <string>Type</string>
@@ -1113,7 +1113,7 @@ background-color: rgb(209, 209, 209);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);border: none;</string>
     </property>
     <property name="text">
      <string>Channels</string>
@@ -1134,7 +1134,7 @@ background-color: rgb(209, 209, 209);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 0);</string>
+     <string notr="true">background-color: rgb(255, 255, 0);border: none;</string>
     </property>
     <property name="text">
      <string>Close</string>
@@ -1155,7 +1155,7 @@ background-color: rgb(209, 209, 209);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(22, 207, 75);</string>
+     <string notr="true">background-color: rgb(22, 207, 75);border: none;</string>
     </property>
     <property name="text">
      <string>Default Settings</string>
@@ -1395,7 +1395,7 @@ color: rgb(255, 255, 255);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 0, 0);</string>
+     <string notr="true">background-color: rgb(255, 0, 0);border: none;</string>
     </property>
     <property name="text">
      <string>Save</string>
@@ -1416,7 +1416,7 @@ color: rgb(255, 255, 255);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(57, 176, 255);</string>
+     <string notr="true">background-color: rgb(57, 176, 255);border: none;</string>
     </property>
     <property name="text">
      <string>Load</string>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>774</width>
-    <height>212</height>
+    <width>948</width>
+    <height>240</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,10 +20,10 @@ border-color: rgb(0, 0, 0);</string>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>150</y>
+     <x>770</x>
+     <y>180</y>
      <width>161</width>
-     <height>32</height>
+     <height>50</height>
     </rect>
    </property>
    <property name="orientation">
@@ -36,8 +36,8 @@ border-color: rgb(0, 0, 0);</string>
   <widget class="QPushButton" name="pushButton_MidiPlayerOpenFile">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>160</y>
+     <x>530</x>
+     <y>200</y>
      <width>75</width>
      <height>31</height>
     </rect>
@@ -49,9 +49,9 @@ border-color: rgb(0, 0, 0);</string>
   <widget class="QLineEdit" name="lineEdit_MidiPlayeFileName">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>100</x>
      <y>10</y>
-     <width>751</width>
+     <width>831</width>
      <height>31</height>
     </rect>
    </property>
@@ -67,8 +67,8 @@ border-color: rgb(0, 0, 0);</string>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>150</y>
+     <x>100</x>
+     <y>180</y>
      <width>301</width>
      <height>51</height>
     </rect>
@@ -95,7 +95,7 @@ border-color: rgb(0, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(57, 176, 255);</string>
+     <string notr="true">background-color: rgb(57, 176, 255);border: none;</string>
     </property>
     <property name="text">
      <string>Stop</string>
@@ -111,7 +111,7 @@ border-color: rgb(0, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 0, 0);</string>
+     <string notr="true">background-color: rgb(255, 0, 0);border: none;</string>
     </property>
     <property name="text">
      <string>Pause</string>
@@ -127,7 +127,7 @@ border-color: rgb(0, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(22, 207, 75);</string>
+     <string notr="true">background-color: rgb(22, 207, 75); border: none;</string>
     </property>
     <property name="text">
      <string>Play</string>
@@ -137,9 +137,9 @@ border-color: rgb(0, 0, 0);</string>
   <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>50</y>
-     <width>751</width>
+     <x>100</x>
+     <y>70</y>
+     <width>831</width>
      <height>80</height>
     </rect>
    </property>
@@ -154,7 +154,7 @@ border-color: rgb(0, 0, 0);</string>
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>731</width>
+      <width>811</width>
       <height>23</height>
      </rect>
     </property>
@@ -189,7 +189,7 @@ border-color: rgb(0, 0, 0);</string>
    <widget class="QLabel" name="label_MidiPlayerSongRemainingPlayingTime">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>350</x>
       <y>50</y>
       <width>71</width>
       <height>21</height>
@@ -210,7 +210,7 @@ border-color: rgb(0, 0, 0);</string>
    <widget class="QLabel" name="label_MidiPlayerSongTotalPlayingTime">
     <property name="geometry">
      <rect>
-      <x>670</x>
+      <x>750</x>
       <y>50</y>
       <width>71</width>
       <height>21</height>
@@ -229,11 +229,110 @@ border-color: rgb(0, 0, 0);</string>
     </property>
    </widget>
   </widget>
+  <widget class="QFrame" name="frame_3">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>10</y>
+     <width>91</width>
+     <height>220</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 255, 255);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="midLineWidth">
+    <number>1</number>
+   </property>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Volume</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox_MidiPlayer_Volume">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>190</y>
+      <width>60</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="maximum">
+     <number>200</number>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="verticalSlider_MidiPlayer_Volume">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>22</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(56, 56, 56);</string>
+    </property>
+    <property name="maximum">
+     <number>200</number>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBothSides</enum>
+    </property>
+   </widget>
+   <zorder>label_12</zorder>
+   <zorder>verticalSlider_MidiPlayer_Volume</zorder>
+   <zorder>spinBox_MidiPlayer_Volume</zorder>
+  </widget>
   <zorder>frame_2</zorder>
   <zorder>frame</zorder>
   <zorder>buttonBox</zorder>
   <zorder>pushButton_MidiPlayerOpenFile</zorder>
   <zorder>lineEdit_MidiPlayeFileName</zorder>
+  <zorder>frame_3</zorder>
  </widget>
  <resources/>
  <connections>

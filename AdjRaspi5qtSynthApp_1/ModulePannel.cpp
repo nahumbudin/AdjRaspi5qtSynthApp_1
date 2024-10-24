@@ -29,6 +29,8 @@ ModulePannel::ModulePannel(QWidget *parent,
 {
 	ui->setupUi(this);
 	
+	widget_parent = parent;
+	
 	module_name = module_name_str;
 	ui->label->setText(module_name);
 	
@@ -44,6 +46,7 @@ ModulePannel::ModulePannel(QWidget *parent,
 	dialog_adj_fluid_synth = NULL;
 	dialog_adj_midi_player = NULL;
 	dialog_midi_mixer = NULL;
+	dialog_midi_mapper = NULL;
 	
 	connect(
 		ui->pushButton_ModuleExit, 
@@ -121,7 +124,7 @@ void ModulePannel::on_module_open_clicked()
 	{
 		if (dialog_adj_midi_player == NULL)
 		{
-			dialog_adj_midi_player = Dialog_MidiPlayer::get_instance(this);
+			dialog_adj_midi_player = Dialog_MidiPlayer::get_instance(widget_parent);
 			dialog_adj_midi_player->show();
 		}
 		else
@@ -129,7 +132,7 @@ void ModulePannel::on_module_open_clicked()
 			if (!dialog_adj_midi_player->isVisible())
 			{
 				/* Only one instance */
-				dialog_adj_midi_player = Dialog_MidiPlayer::get_instance(this);
+				dialog_adj_midi_player = Dialog_MidiPlayer::get_instance(widget_parent);
 				//dialog_adj_fluid_synth->setAttribute(Qt::WA_DeleteOnClose);
 				dialog_adj_midi_player->show();
 			}
@@ -153,6 +156,24 @@ void ModulePannel::on_module_open_clicked()
 			}
 		}
 	}
+	else if (module_name == _INSTRUMENT_NAME_MIDI_MAPPER_STR_KEY)
+	{
+		if (dialog_midi_mapper == NULL)
+		{
+			dialog_midi_mapper = Dialog_MidiMapper::get_instance(this, true);
+			dialog_midi_mapper->show();
+		}
+		else
+		{
+			if (!dialog_midi_mapper->isVisible())
+			{
+				/* Only one instance */
+				dialog_midi_mapper = Dialog_MidiMapper::get_instance(this, true);
+				//dialog_adj_fluid_synth->setAttribute(Qt::WA_DeleteOnClose);
+				dialog_midi_mapper->show();
+			}
+		}
+	}
 	
 }
 
@@ -166,6 +187,7 @@ void ModulePannel::on_module_connections_clicked()
 			connections_dialog = new Dialog_InstrumentConnections(this, module_name);
 			MainWindow::get_instance()->register_active_dialog(connections_dialog);
 			connections_dialog->show();
+			connections_dialog->
 			Dialog_InstrumentConnections::dialog_is_open = true;
 		}
 		else

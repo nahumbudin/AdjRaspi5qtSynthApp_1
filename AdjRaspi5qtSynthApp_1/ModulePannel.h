@@ -20,6 +20,7 @@
 #include "Dialog_AdjFluidSynth.h"
 #include "Dialog_MidiPlayer.h"
 #include "Dialog_MidiMixer.h"
+#include "Dialog_MidiMapper.h"
 
 class Dialog_InstrumentConnections;
 
@@ -47,7 +48,7 @@ public :
 	explicit ModulePannel(QWidget *parent = 0, 
 						  QString module_name_str = "Module",
 						  func_ptr_void_en_modules_ids_t_t close_module_pannel_callback_ptr = NULL,
-						  en_modules_ids_t mod_id = en_modules_ids_t::none);
+						  en_modules_ids_t mod_id = en_modules_ids_t::none_module_id);
 	~ModulePannel();
 
 	ModulePannel *get_the_module_pannel();
@@ -73,6 +74,9 @@ protected slots :
 	Dialog_AdjFluidSynth *dialog_adj_fluid_synth;
 	Dialog_MidiPlayer *dialog_adj_midi_player;
 	Dialog_MidiMixer *dialog_midi_mixer;
+	Dialog_MidiMapper * dialog_midi_mapper;
+	
+	QWidget *widget_parent;
 };
 
 
