@@ -77,6 +77,9 @@ background-color: qlineargradient(spread:pad, x1:0.403, y1:0.664773, x2:0.767, y
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(0, 0, 0);
 color: rgb(255, 255, 255);</string>
@@ -105,6 +108,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(22, 207, 75);</string>
       </property>
@@ -131,6 +137,9 @@ color: rgb(255, 255, 255);</string>
        <font>
         <pointsize>14</pointsize>
        </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 0, 0);</string>
@@ -159,6 +168,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(10, 149, 255);</string>
       </property>
@@ -186,6 +198,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
@@ -212,6 +227,9 @@ color: rgb(255, 255, 255);</string>
        <font>
         <pointsize>14</pointsize>
        </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 0);</string>
@@ -259,6 +277,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(0, 0, 0);
 color: rgb(255, 255, 255);</string>
@@ -287,6 +308,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(22, 207, 75);</string>
       </property>
@@ -313,6 +337,9 @@ color: rgb(255, 255, 255);</string>
        <font>
         <pointsize>14</pointsize>
        </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 0, 0);</string>
@@ -341,6 +368,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(10, 149, 255);</string>
       </property>
@@ -368,6 +398,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
@@ -394,6 +427,9 @@ color: rgb(255, 255, 255);</string>
        <font>
         <pointsize>14</pointsize>
        </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 0);</string>
@@ -499,6 +535,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(0, 0, 0);
 color: rgb(255, 255, 255);</string>
@@ -527,6 +566,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(22, 207, 75);</string>
       </property>
@@ -553,6 +595,9 @@ color: rgb(255, 255, 255);</string>
        <font>
         <pointsize>14</pointsize>
        </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(10, 149, 255);</string>
@@ -581,6 +626,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 0);</string>
       </property>
@@ -608,6 +656,9 @@ color: rgb(255, 255, 255);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
@@ -634,6 +685,9 @@ color: rgb(255, 255, 255);</string>
        <font>
         <pointsize>14</pointsize>
        </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 0, 0);</string>

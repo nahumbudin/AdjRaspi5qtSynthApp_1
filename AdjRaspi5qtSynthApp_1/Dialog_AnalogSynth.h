@@ -1,0 +1,380 @@
+/**
+* @file		Dialog_AnalogSynth.h
+*	@author		Nahum Budin
+*	@date		25-Oct-2024
+*	@version	1.0
+*
+*	@brief		Used for controling the Analog Synthesizer instrument
+*				
+*	History:
+*			Based on the AdjModSynth project ver 1.1 16-Jan-2021 
+*
+*/
+
+#pragma once
+
+#include <QDialog>
+#include <QTHread>
+#include <QSlider>
+
+#include "libAdjRaspi5SynthAPI.h"
+#include "Defs.h"
+
+#include "qcustomplot.h"
+
+namespace Ui
+{
+	class Dialog_AnalogSynth;
+}
+
+class Dialog_AnalogSynth : public QDialog
+{
+	Q_OBJECT
+		
+public :
+	
+	~Dialog_AnalogSynth();
+	
+	static Dialog_AnalogSynth *get_instance(QWidget *parent = 0);
+	
+	
+	void control_box_ui_update_callback(int evnt, uint16_t val);
+	
+	void control_box_events_handler_osc_1(int evnt, uint16_t val);
+	void control_box_events_handler_osc_2_noise(int evnt, uint16_t val);
+	void control_box_events_handler_mso(int evnt, uint16_t val);
+	
+	void osc1_set_unison_mode(int mode);
+	
+	QList<QString> string_unison_labels_hammond;
+	QList<QString> string_unison_labels_octaves;
+	QList<QString> string_unison_labels_c_chord;
+	QList<QString> string_unison_labels_cm_chord;
+	QList<QString> string_unison_labels_c7_chord;
+	QList<QString> string_unison_labels_cm7_chord;
+	
+	
+public slots :	
+	void closeEvent(QCloseEvent *event);
+	virtual void update_gui(); // Called by a Timer
+
+protected:
+	void timerEvent(QTimerEvent *event);
+	
+protected slots:
+	void on_dialog_close();
+	
+	void on_tab_selected(int tab);
+	
+	
+	void on_osc1_enable_changed(bool en);
+	
+	void on_osc1_waveform_symetry_spinbox_changed(int val);
+	void on_osc1_send_filter_1_spinbox_changed(int val);
+	void on_osc1_send_filter_2_spinbox_changed(int val);
+	void on_osc1_freq_mod_lfo_level_spinbox_changed(int val);
+	void on_osc1_freq_mod_adsr_level_spinbox_changed(int val);
+	void on_osc1_pwm_mod_lfo_level_spinbox_changed(int val);
+	void on_osc1_pwm_mod_adsr_level_spinbox_changed(int val);
+	void on_osc1_amp_mod_lfo_level_spinbox_changed(int val);
+	void on_osc1_amp_mod_adsr_level_spinbox_changed(int val);
+	
+	void on_osc1_unison_level_1_spinbox_changed(int val);
+	void on_osc1_unison_level_2_spinbox_changed(int val);
+	void on_osc1_unison_level_3_spinbox_changed(int val);
+	void on_osc1_unison_level_4_spinbox_changed(int val);
+	void on_osc1_unison_level_5_spinbox_changed(int val);
+	void on_osc1_unison_level_6_spinbox_changed(int val);
+	void on_osc1_unison_level_7_spinbox_changed(int val);
+	void on_osc1_unison_level_8_spinbox_changed(int val);
+	void on_osc1_unison_level_9_spinbox_changed(int val);
+	void on_osc1_unison_distortion_spinbox_changed(int val);
+	void on_osc1_unison_detune_spinbox_changed(int val);
+	
+	void on_osc1_waveform_symetry_slider_cahanged(int val);
+	
+	void on_osc1_unison_sqare_enable_changed(bool en);
+	void on_osc1_unison_level_1_slider_changed(int val);
+	void on_osc1_unison_level_2_slider_changed(int val);
+	void on_osc1_unison_level_3_slider_changed(int val);
+	void on_osc1_unison_level_4_slider_changed(int val);
+	void on_osc1_unison_level_5_slider_changed(int val);
+	void on_osc1_unison_level_6_slider_changed(int val);
+	void on_osc1_unison_level_7_slider_changed(int val);
+	void on_osc1_unison_level_8_slider_changed(int val);
+	void on_osc1_unison_level_9_slider_changed(int val);
+	void on_osc1_unison_distortion_slider_changed(int val);
+	void on_osc1_unison_detune_slider_changed(int val);
+	
+	void on_osc1_send_filter_1_dial_changed(int val);
+	void on_osc1_send_filter_2_dial_changed(int val);
+	void on_osc1_freq_mod_lfo_level_dial_changed(int val);
+	void on_osc1_freq_mod_adsr_level_dial_changed(int val);
+	void on_osc1_pwm_mod_lfo_level_dial_changed(int val);
+	void on_osc1_pwm_mod_adsr_level_dial_changed(int val);
+	void on_osc1_amp_mod_lfo_level_dial_changed(int val);
+	void on_osc1_amp_mod_adsr_level_dial_changed(int val);
+	
+	void on_osc1_waveform_combobox_changed(int val);
+	void on_osc1_tune_octave_combobox_changed(int val);
+	void on_osc1_tune_semitones_combobox_changed(int val);
+	void on_osc1_tune_cents_combobox_changed(int val);
+	void on_osc1_freq_mod_lfo_combobox_changed(int val);
+	void on_osc1_freq_mod_adsr_combobox_changed(int val);
+	void on_osc1_pwm_mod_lfo_combobox_changed(int val);
+	void on_osc1_pwm_mod_adsr_combobox_changed(int val);
+	void on_osc1_amp_mod_lfo_combobox_changed(int val);
+	void on_osc1_amp_mod_adsr_combobox_changed(int val);
+	void on_osc1_hammond_percussion_mode_combobox_changed(int val);
+	void on_osc1_unison_mode_combobox_changed(int val);
+	
+	
+	void on_osc2_enable_changed(bool en);
+	
+	void on_osc2_waveform_symetry_spinbox_changed(int val);
+	void on_osc2_send_filter_1_spinbox_changed(int val);
+	void on_osc2_send_filter_2_spinbox_changed(int val);
+	void on_osc2_freq_mod_lfo_level_spinbox_changed(int val);
+	void on_osc2_freq_mod_adsr_level_spinbox_changed(int val);
+	void on_osc2_pwm_mod_lfo_level_spinbox_changed(int val);
+	void on_osc2_pwm_mod_adsr_level_spinbox_changed(int val);
+	void on_osc2_amp_mod_lfo_level_spinbox_changed(int val);
+	void on_osc2_amp_mod_adsr_level_spinbox_changed(int val);
+	
+	void on_osc2_send_filter_1_dial_changed(int val);
+	void on_osc2_send_filter_2_dial_changed(int val);
+	void on_osc2_freq_mod_lfo_level_dial_changed(int val);
+	void on_osc2_freq_mod_adsr_level_dial_changed(int val);
+	void on_osc2_pwm_mod_lfo_level_dial_changed(int val);
+	void on_osc2_pwm_mod_adsr_level_dial_changed(int val);
+	void on_osc2_amp_mod_lfo_level_dial_changed(int val);
+	void on_osc2_amp_mod_adsr_level_dial_changed(int val);
+	
+	void on_osc2_waveform_symetry_slider_cahanged(int val);
+	
+	void on_osc2_waveform_combobox_changed(int val);
+	void on_osc2_tune_octave_combobox_changed(int val);
+	void on_osc2_tune_semitones_combobox_changed(int val);
+	void on_osc2_tune_cents_combobox_changed(int val);
+	void on_osc2_freq_mod_lfo_combobox_changed(int val);
+	void on_osc2_freq_mod_adsr_combobox_changed(int val);
+	void on_osc2_pwm_mod_lfo_combobox_changed(int val);
+	void on_osc2_pwm_mod_adsr_combobox_changed(int val);
+	void on_osc2_amp_mod_lfo_combobox_changed(int val);
+	void on_osc2_amp_mod_adsr_combobox_changed(int val);
+	
+	void on_osc2_sync_on_osc1_enable_changed(bool en);
+	
+	
+	void on_noise_enable_changed(bool en);
+	
+	void on_noise_send_filter_1_spinbox_changed(int val);
+	void on_noise_send_filter_2_spinbox_changed(int val);
+	void on_noise_amp_mod_lfo_level_spinbox_changed(int val);
+	void on_noise_amp_mod_adsr_level_spinbox_changed(int val);
+	
+	void on_noise_send_filter_1_dial_changed(int val);
+	void on_noise_send_filter_2_dial_changed(int val);
+	void on_noise_amp_mod_lfo_level_dial_changed(int val);
+	void on_noise_amp_mod_adsr_level_dial_changed(int val);
+	
+	void on_noise_color_combobox_changed(int val);
+	void on_noise_amp_mod_lfo_combobox_changed(int val);
+	void on_noise_amp_mod_adsr_combobox_changed(int val);
+	
+	void on_mso_point_a_slider_moved(int val);
+	void on_mso_point_b_slider_moved(int val);
+	void on_mso_point_c_slider_moved(int val);
+	void on_mso_point_d_slider_moved(int val);
+	void on_mso_point_e_slider_moved(int val);
+	void on_mso_point_f_slider_moved(int val);
+	void on_mso_symetry_slider_changed(int val);
+
+	void on_mso_detune_octave_combobox_changed(int val);
+	void on_mso_detune_semitones_combobox_changed(int val);
+	void on_mso_detune_cents_combobox_changed(int val);
+	
+	void on_mso_freq_mod_lfo_combobox_changed(int val);
+	void on_mso_freq_mod_env_combobox_changed(int val);
+	void on_mso_pwm_mod_lfo_combobox_changed(int val);
+	void on_mso_pwm_mod_env_combobox_changed(int val);
+	void on_mso_amp_mod_lfo_combobox_changed(int val);
+	void on_mso_amp_mod_env_combobox_changed(int val);
+	void on_mso_preset_combobox_changed(int val);
+	
+	void on_mso_send_filter_1_dial_changed(int val);
+	void on_mso_send_filter_2_dial_changed(int val);
+	void on_mso_freq_mod_lfo_level_dial_changed(int val);
+	void on_mso_freq_mod_env_level_dial_changed(int val);
+	void on_mso_pwm_mod_lfo_level_dial_changed(int val);
+	void on_mso_pwm_mod_env_level_dial_changed(int val);
+	void on_mso_amp_mod_lfo_level_dial_changed(int val);
+	void on_mso_amp_mod_env_level_dial_changed(int val);
+		 	   
+	void on_mso_enable_checkbox_changed(bool val);
+
+	
+	
+private:
+	
+	explicit Dialog_AnalogSynth(QWidget *parent = 0);
+	
+	Ui::Dialog_AnalogSynth *ui;
+	
+	static Dialog_AnalogSynth *dialog_analog_synth_instance;
+	
+	int active_tab, prev_active_tab;
+	int active_frames_group_osc1, prev_active_frames_group_osc1;
+	int active_frames_group_osc2noise, prev_active_frames_group_osc2noise;
+	int active_frames_group_mso, prev_active_frames_group_mso;
+	
+	bool osc1_enabled = true;
+	bool osc1_unison_square = false;
+	
+	int osc1_send_filter_1_level = 0;
+	int osc1_send_filter_2_level = 0;
+	
+	int osc1_unison_levels[9] = { 0 };
+	int osc_1_unison_distortion = 0;
+	int osc_1_unison_detune = 0;
+	
+	int osc1_unison_mode = _OSC_UNISON_MODE_12345678;
+	int osc1_hammond_percussion_mode = _HAMMOND_PERCUSION_MODE_OFF;
+	
+	int osc1_waveform = _OSC_WAVEFORM_SINE;
+	int osc1_waveform_symetry = 50;
+	
+	int osc1_tune_octave = 0;
+	int osc1_tune_semitones = 0;
+	int osc1_tune_cents = 0;
+	
+	int osc1_freq_mod_lfo_level = 0; 
+	int osc1_freq_mod_adsr_level = 0;
+	int osc1_freq_mod_lfo_num = _LFO_NONE;
+	int osc1_freq_mod_adsr_num = _ENV_NONE;
+	
+	int osc1_pwm_mod_lfo_level = 0; 
+	int osc1_pwm_mod_adsr_level = 0;
+	int osc1_pwm_mod_lfo_num = _LFO_NONE;
+	int osc1_pwm_mod_adsr_num = _ENV_NONE;
+	
+	int osc1_amp_mod_lfo_level = 0; 
+	int osc1_amp_mod_adsr_level = 0;
+	int osc1_amp_mod_lfo_num = _LFO_NONE;
+	int osc1_amp_mod_adsr_num = _ENV_NONE;
+	
+	bool osc2_enabled = false;
+	
+	int osc2_send_filter_1_level = 0;
+	int osc2_send_filter_2_level = 0;
+	
+	int osc2_waveform = _OSC_WAVEFORM_SINE;
+	int osc2_waveform_symetry = 50;
+	
+	int osc2_tune_octave = 0;
+	int osc2_tune_semitones = 0;
+	int osc2_tune_cents = 0;
+	
+	int osc2_freq_mod_lfo_level = 0; 
+	int osc2_freq_mod_adsr_level = 0;
+	int osc2_freq_mod_lfo_num = _LFO_NONE;
+	int osc2_freq_mod_adsr_num = _ENV_NONE;
+	
+	int osc2_pwm_mod_lfo_level = 0; 
+	int osc2_pwm_mod_adsr_level = 0;
+	int osc2_pwm_mod_lfo_num = _LFO_NONE;
+	int osc2_pwm_mod_adsr_num = _ENV_NONE;
+	
+	int osc2_amp_mod_lfo_level = 0; 
+	int osc2_amp_mod_adsr_level = 0;
+	int osc2_amp_mod_lfo_num = _LFO_NONE;
+	int osc2_amp_mod_adsr_num = _ENV_NONE;
+	
+	bool osc_2_sync_on_osc_1 = false;
+	
+	bool noise_enabled = false;
+	
+	int noise_send_filter_1_level = 0;
+	int noise_send_filter_2_level = 0;
+	
+	int noise_amp_mod_lfo_level = 0; 
+	int noise_amp_mod_adsr_level = 0;
+	int noise_amp_mod_lfo_num = _LFO_NONE;
+	int noise_amp_mod_adsr_num = _ENV_NONE;
+	
+	int noise_color = _WHITE_NOISE;
+	
+	bool mso_enabled = false;
+	bool update_mso_plot = true;
+	
+	int mso_pos_a, mso_pos_b, mso_pos_c, mso_pos_d, mso_pos_e, mso_pos_f;
+	int mso_symetry = 70;
+	int mso_tune_octave, mso_tune_semitones, mso_tune_cents;
+	int mso_send_filter_1_level = 0;
+	int mso_send_filter_2_level = 0;
+	
+	int mso_freq_mod_lfo_level = 0; 
+	int mso_freq_mod_adsr_level = 0;
+	int mso_freq_mod_lfo_num = _LFO_NONE;
+	int mso_freq_mod_adsr_num = _ENV_NONE;
+	
+	int mso_pwm_mod_lfo_level = 0; 
+	int mso_pwm_mod_adsr_level = 0;
+	int mso_pwm_mod_lfo_num = _LFO_NONE;
+	int mso_pwm_mod_adsr_num = _ENV_NONE;
+	
+	int mso_amp_mod_lfo_level = 0; 
+	int mso_amp_mod_adsr_level = 0;
+	int mso_amp_mod_lfo_num = _LFO_NONE;
+	int mso_amp_mod_adsr_num = _ENV_NONE;
+	
+	int mso_preset = 0;
+	
+	bool mso_replot_waveform = false;
+	
+	void start_update_timer(int interval);
+	
+	void set_osc1_signals_connections();
+	void init_osc1_combboxes_and_labels();
+	
+	void set_osc2_signals_connections();
+	void init_osc2_combboxes_and_labels();
+	
+	void set_noise_signals_connections();
+	void init_noise_combboxes_and_labels();
+	
+	void set_mso_signals_connections();
+	void init_mso_combboxes_and_labels();
+	
+	void setup_mso_plot(QCustomPlot *custom_plot);
+	void update_mso_waveform_plot();
+	
+	void mso_handle_preset_change(int newPres);
+	void mso_set_preset_positions(const int pos[]);
+	
+	void osc1_set_unison_labales(QList<QString> str, uint16_t mask);
+	void osc1_set_unison_labales(int mode);
+	void osc1_en_dis_sliders(uint16_t mask);
+	
+	void osc1_update();
+	void osc2_update();
+	void noise_update();
+	void mso_update();
+	
+	QList<QString> string_waveforms_list;
+	QList<QString> string_unison_modes_list;
+	QList<QString> string_hammond_modes_list;
+
+	QList<QString> string_unison_labels_harmonized;
+	
+	QList<QString> string_adsr_values;
+	QList<QString> string_lfo_values;
+	QList<QString> string_waveforms;
+	
+	QList<QString> string_noise_colors_list;
+	
+	QList<QString> string_mso_presets_list;
+	
+	QSlider *unison_level_sliders[9];
+	
+};

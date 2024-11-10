@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>843</width>
-    <height>435</height>
+    <width>833</width>
+    <height>412</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -143,11 +143,16 @@ background-color: rgb(209, 209, 209);</string>
   <widget class="QPushButton" name="pushButton_MidiMapperOK">
    <property name="geometry">
     <rect>
-     <x>650</x>
-     <y>390</y>
-     <width>75</width>
-     <height>23</height>
+     <x>714</x>
+     <y>362</y>
+     <width>91</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>OK</string>
@@ -563,19 +568,6 @@ background-color: rgb(209, 209, 209);</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_MidiMapperCancel">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>390</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Cancel</string>
-   </property>
-  </widget>
   <widget class="QComboBox" name="comboBox_MidiMapperCh_4">
    <property name="geometry">
     <rect>
@@ -694,6 +686,47 @@ background-color: rgb(209, 209, 209);</string>
    </property>
    <property name="text">
     <string>CH 14</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_MidiMapperSetAll">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>360</y>
+     <width>311</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+border-color: rgb(0, 0, 0);
+background-color: rgb(209, 209, 209);</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_MidiMapperSetAll">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>363</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>All</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

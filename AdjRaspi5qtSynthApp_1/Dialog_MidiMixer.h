@@ -15,8 +15,6 @@
 
 #include "libAdjRaspi5SynthAPI.h"
 
-#define _MIDI_MIXER_CHANNELS_1_8 0
-#define _MIDI_MIXER_CHANNELS_9_16 1
 
 namespace Ui
 {

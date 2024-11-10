@@ -83,11 +83,11 @@ Dialog_FluidSynthChannels::Dialog_FluidSynthChannels(QWidget *parent)
 	ui->setupUi(this);
 	dialog_fluid_synth_channels_instance = this;
 	
-	init_channels_table_widget(_CHANNELS_SHEET_1_8);
-	init_channels_table_widget(_CHANNELS_SHEET_9_16);
+	init_channels_table_widget(_MIDI_MIXER_CHANNELS_1_8);
+	init_channels_table_widget(_MIDI_MIXER_CHANNELS_9_16);
 	
-	refresh_channels_table_widget(_CHANNELS_SHEET_1_8);
-	refresh_channels_table_widget(_CHANNELS_SHEET_9_16);
+	refresh_channels_table_widget(_MIDI_MIXER_CHANNELS_1_8);
+	refresh_channels_table_widget(_MIDI_MIXER_CHANNELS_9_16);
 	
 	dialog_fluid_synth_select_program = new Dialog_FluidSynthSelectProgram(this);
 	dialog_fluid_synth_select_program->move(10, 150);
@@ -95,7 +95,7 @@ Dialog_FluidSynthChannels::Dialog_FluidSynthChannels(QWidget *parent)
 	//mod_synth_register_callback_control_box_event_update_ui(
 	//	&fluid_channels_control_box_event_update_ui_callback_wrapper);
 	
-	active_channels_tab = _CHANNELS_SHEET_1_8;
+	active_channels_tab = _MIDI_MIXER_CHANNELS_1_8;
 	
 	this->setFocus(Qt::ActiveWindowFocusReason);
 	
@@ -139,8 +139,8 @@ Dialog_FluidSynthChannels *Dialog_FluidSynthChannels::get_instance(QWidget *pare
 		//init_channels_table_widget_wraper(_CHANNELS_SHEET_1_8);
 		//init_channels_table_widget_wraper(_CHANNELS_SHEET_9_16);
 		
-		refresh_channels_table_widget_wraper(_CHANNELS_SHEET_1_8);
-		refresh_channels_table_widget_wraper(_CHANNELS_SHEET_9_16);
+		refresh_channels_table_widget_wraper(_MIDI_MIXER_CHANNELS_1_8);
+		refresh_channels_table_widget_wraper(_MIDI_MIXER_CHANNELS_9_16);
 	}
 	
 	return dialog_fluid_synth_channels_instance;
@@ -167,14 +167,14 @@ void Dialog_FluidSynthChannels::control_box_ui_update_callback(int evnt, uint16_
 			 (val == 0))
 	{
 		/* Toggle selected channels group */
-		if (active_channels_tab == _CHANNELS_SHEET_1_8)
+		if (active_channels_tab == _MIDI_MIXER_CHANNELS_1_8)
 		{
-			active_channels_tab = _CHANNELS_SHEET_9_16;
+			active_channels_tab = _MIDI_MIXER_CHANNELS_9_16;
 			ui->tabWidget_channels_table->setCurrentIndex(active_channels_tab);
 		}
 		else
 		{
-			active_channels_tab = _CHANNELS_SHEET_1_8;
+			active_channels_tab = _MIDI_MIXER_CHANNELS_1_8;
 			ui->tabWidget_channels_table->setCurrentIndex(active_channels_tab);
 		}
 	}
@@ -185,7 +185,7 @@ void Dialog_FluidSynthChannels::control_box_ui_update_callback(int evnt, uint16_
 		{
 			selected_raw = 0;
 			/* Only when pressed */
-			if (active_channels_tab == _CHANNELS_SHEET_1_8)
+			if (active_channels_tab == _MIDI_MIXER_CHANNELS_1_8)
 			{
 				fluid_channels_sheet_1_8->onDoubleCliked(0, 0);
 			}
@@ -227,11 +227,11 @@ int Dialog_FluidSynthChannels::init_channels_table_widget(int chan_group)
 	
 	for (int i = 0; i < 8; i++)
 	{
-		if (chan_group == _CHANNELS_SHEET_1_8)
+		if (chan_group == _MIDI_MIXER_CHANNELS_1_8)
 		{
 			channels_table_vertical_headers_1_8.push_back("");
 		}
-		else if (chan_group == _CHANNELS_SHEET_9_16)
+		else if (chan_group == _MIDI_MIXER_CHANNELS_9_16)
 		{
 			channels_table_vertical_headers_9_16.push_back("");
 		}
@@ -247,12 +247,12 @@ int Dialog_FluidSynthChannels::init_channels_table_widget(int chan_group)
 	channels_table_columns_width.push_back(50);
 	channels_table_columns_width.push_back(200);
 	
-	if (chan_group == _CHANNELS_SHEET_1_8)
+	if (chan_group == _MIDI_MIXER_CHANNELS_1_8)
 	{
 		fluid_channels_sheet_1_8 = new NQgridWidget(8, 6);
 		fluid_channels_sheet = fluid_channels_sheet_1_8;
 	}
-	else if (chan_group == _CHANNELS_SHEET_9_16)
+	else if (chan_group == _MIDI_MIXER_CHANNELS_9_16)
 	{
 		fluid_channels_sheet_9_16 = new NQgridWidget(8, 6);
 		fluid_channels_sheet = fluid_channels_sheet_9_16;
@@ -266,11 +266,11 @@ int Dialog_FluidSynthChannels::init_channels_table_widget(int chan_group)
 	
 	fluid_channels_sheet->setHorizontalHeaders(&channels_table_horizontal_headers);
 	
-	if (chan_group == _CHANNELS_SHEET_1_8)
+	if (chan_group == _MIDI_MIXER_CHANNELS_1_8)
 	{
 		fluid_channels_sheet->setVerticalHeaders(&channels_table_vertical_headers_1_8);
 	}
-	else if (chan_group == _CHANNELS_SHEET_9_16)
+	else if (chan_group == _MIDI_MIXER_CHANNELS_9_16)
 	{
 		fluid_channels_sheet->setVerticalHeaders(&channels_table_vertical_headers_9_16);
 	}	
@@ -330,19 +330,19 @@ int Dialog_FluidSynthChannels::init_channels_table_widget(int chan_group)
 		*/
 	//}
 		
-	if (chan_group == _CHANNELS_SHEET_1_8)
+	if (chan_group == _MIDI_MIXER_CHANNELS_1_8)
 	{
 		fluid_channels_sheet->registerOnDoubleClickEvent(&on_row_double_click_wraper_1_8);	
 		ui->scrollArea_channels_1_8->setWidget(fluid_channels_sheet);
 		// Set Channels current presets  data
-		refresh_channels_table_widget(_CHANNELS_SHEET_1_8);
+		refresh_channels_table_widget(_MIDI_MIXER_CHANNELS_1_8);
 	}
-	else if (chan_group == _CHANNELS_SHEET_9_16)
+	else if (chan_group == _MIDI_MIXER_CHANNELS_9_16)
 	{
 		fluid_channels_sheet->registerOnDoubleClickEvent(&on_row_double_click_wraper_9_16);	
 		ui->scrollArea_channels_9_16->setWidget(fluid_channels_sheet);
 		// Set Channels current presets  data
-		refresh_channels_table_widget(_CHANNELS_SHEET_9_16);
+		refresh_channels_table_widget(_MIDI_MIXER_CHANNELS_9_16);
 	}
 
 	fluid_channels_sheet->show();
@@ -363,12 +363,12 @@ int Dialog_FluidSynthChannels::refresh_channels_table_widget(int chan_group)
 	int bank, program, sfont_id; 
 	std::string	preset_name, sf_name;
 	
-	if (chan_group == _CHANNELS_SHEET_1_8)
+	if (chan_group == _MIDI_MIXER_CHANNELS_1_8)
 	{
 		fluid_channels_sheet = fluid_channels_sheet_1_8;
 		start_chan = 0;
 	}
-	else if (chan_group == _CHANNELS_SHEET_9_16)
+	else if (chan_group == _MIDI_MIXER_CHANNELS_9_16)
 	{
 		fluid_channels_sheet = fluid_channels_sheet_9_16;
 		start_chan = 8;
@@ -460,11 +460,11 @@ int Dialog_FluidSynthChannels::channel_selected(int channel, int col, int chan_g
 	dialog_fluid_synth_select_program->show();
 	dialog_fluid_synth_select_program->update_soundfonts_table(&sound_fonts_names_dispaly_data);
 
-	if (chan_group == _CHANNELS_SHEET_1_8)
+	if (chan_group == _MIDI_MIXER_CHANNELS_1_8)
 	{
 		fluid_channels_sheet_1_8->getTableWidget()->clearSelection();
 	}
-	if (chan_group == _CHANNELS_SHEET_9_16)
+	if (chan_group == _MIDI_MIXER_CHANNELS_9_16)
 	{
 		fluid_channels_sheet_9_16->getTableWidget()->clearSelection();
 	}
@@ -479,12 +479,12 @@ int Dialog_FluidSynthChannels::channel_selected(int channel, int col, int chan_g
 */
 void Dialog_FluidSynthChannels::on_row_double_click_ch_1_8(int *raw, int *col)
 {
-	channel_selected(*raw, *col, _CHANNELS_SHEET_1_8);
+	channel_selected(*raw, *col, _MIDI_MIXER_CHANNELS_1_8);
 }
 
 void Dialog_FluidSynthChannels::on_row_double_click_ch_9_16(int *raw, int *col)
 {
-	channel_selected(*raw + 8, *col, _CHANNELS_SHEET_9_16);
+	channel_selected(*raw + 8, *col, _MIDI_MIXER_CHANNELS_9_16);
 }
 
 /**

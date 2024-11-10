@@ -21,6 +21,7 @@
 #include "Dialog_MidiPlayer.h"
 #include "Dialog_MidiMixer.h"
 #include "Dialog_MidiMapper.h"
+#include "Dialog_AnalogSynth.h"
 
 class Dialog_InstrumentConnections;
 
@@ -72,6 +73,7 @@ protected slots :
 	
 	Dialog_InstrumentConnections *connections_dialog;	
 	Dialog_AdjFluidSynth *dialog_adj_fluid_synth;
+	Dialog_AnalogSynth *dialog_analog_synth;
 	Dialog_MidiPlayer *dialog_adj_midi_player;
 	Dialog_MidiMixer *dialog_midi_mixer;
 	Dialog_MidiMapper * dialog_midi_mapper;

@@ -73,6 +73,8 @@ public slots :
 	void ch_15_instrument_changed(int inst);
 	void ch_16_instrument_changed(int inst);
 	
+	void set_all_channels_instrument_changed(int inst);
+	
 protected slots :
 
 	void on_dialog_close();
@@ -93,7 +95,7 @@ private:
 	
 	QPoint last_position;
 	
-	QComboBox *channels_combos[16];
+	QComboBox *channels_combos[17];
 	
 	QMutex *active_modules_mutex;
 	

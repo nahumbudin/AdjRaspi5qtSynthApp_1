@@ -91,7 +91,7 @@ Dialog_FluidSynthSelectProgram::Dialog_FluidSynthSelectProgram(QWidget *parent)
 			this, 
 			SLOT(program_selection_other(QAbstractButton*)));
 	
-	active_channels_group = _CHANNELS_SHEET_1_8;
+	active_channels_group = _MIDI_MIXER_CHANNELS_1_8;
 	
 	Dialog_FluidSynthChannels::get_instance()->refresh_channels_table_widget(active_channels_group);
 }

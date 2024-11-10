@@ -13,6 +13,7 @@
 #include <QObject>
 #include <QTimer>
 #include <QMoveEvent>
+#include <QMessageBox>
 
 #include "MainWindow.h"
 #include "Dialog_MidiMapper.h"
@@ -25,8 +26,8 @@ vector<active_module_data_t> active_synth_modules, prev_active_synth_modules;
 vector<active_module_data_t> added_synth_modules, removed_synth_modules;
 vector<active_module_data_t> active_modules_data;
 
-int channels_combo_box_selection_index[16] = { 0 };
-active_module_data_t channels_combo_box_selected_module_data[16];
+int channels_combo_box_selection_index[17] = { 0 };
+active_module_data_t channels_combo_box_selected_module_data[17];
 
 bool found;
 
@@ -83,6 +84,7 @@ Dialog_MidiMapper::Dialog_MidiMapper(QWidget *parent)
 	channels_combos[13] = ui->comboBox_MidiMapperCh_14;
 	channels_combos[14] = ui->comboBox_MidiMapperCh_15;
 	channels_combos[15] = ui->comboBox_MidiMapperCh_16;
+	channels_combos[16] = ui->comboBox_MidiMapperSetAll;
 	
 	update_channels_combo_boxes();
 	
@@ -165,6 +167,16 @@ Dialog_MidiMapper::Dialog_MidiMapper(QWidget *parent)
 		SIGNAL(currentIndexChanged(int)),
 		this,
 		SLOT(ch_16_instrument_changed(int)));
+	
+	connect(ui->comboBox_MidiMapperSetAll,
+		SIGNAL(currentIndexChanged(int)),
+		this,
+		SLOT(set_all_channels_instrument_changed(int)));
+	
+	connect(ui->pushButton_MidiMapperOK,
+		SIGNAL(clicked()),
+		this,
+		SLOT(on_dialog_close()));
 	
 	active_modules_mutex = new QMutex();
 	
@@ -477,6 +489,24 @@ void Dialog_MidiMapper::ch_16_instrument_changed(int inst)
 	set_channel_instrument(15, inst);
 }
 
+void Dialog_MidiMapper::set_all_channels_instrument_changed(int inst)
+{
+	QMessageBox msgBox;
+	msgBox.setIcon(QMessageBox::QMessageBox::Warning);
+	msgBox.setWindowTitle("Warning?");
+	msgBox.setText("Are you sure you want to set all channels instrument?\nAll current settings will be lost!");
+	msgBox.setStandardButtons(QMessageBox::Yes);
+	msgBox.addButton(QMessageBox::No);
+	msgBox.setDefaultButton(QMessageBox::No);
+	if (msgBox.exec() == QMessageBox::Yes)
+	{
+		for (int ch = 0; ch < 16; ch++)
+		{
+			channels_combos[ch]->setCurrentIndex(inst);
+		}
+	}
+}
+
 void Dialog_MidiMapper::control_box_ui_update_callback(int evnt, uint16_t val)
 {
 	if (!this->hasFocus())
@@ -515,7 +545,7 @@ void Dialog_MidiMapper::update_channels_combo_boxes()
 {
 	bool last_selected = false;
 	
-	for (int ch = 0; ch < 16; ch++)
+	for (int ch = 0; ch <= 16; ch++)
 	{
 		channels_combos[ch]->blockSignals(true);
 		channels_combos[ch]->clear();
@@ -550,7 +580,11 @@ void Dialog_MidiMapper::update_channels_combo_boxes()
 			channels_combo_box_selection_index[ch] = 0;
 			channels_combos[ch]->setCurrentIndex(0);
 			//fprintf(stderr, "Last selected is no longer active. ch%i\n", ch);
-			mod_synth_allocate_midi_channel_synth(ch, en_modules_ids_t::none_module_id);
+			if (ch < 16)
+			{
+				/* Skip the all channels selection */
+				mod_synth_allocate_midi_channel_synth(ch, en_modules_ids_t::none_module_id);
+			}
 		}
 		
 		channels_combos[ch]->blockSignals(false);

@@ -1005,9 +1005,9 @@ void Dialog_InstrumentConnections::update()
 	/* Update the list of Jack iput clients */	
 	num_of_jack_input_clients = mod_synth_get_num_of_input_jack_clients();
 	
-	if (num_of_jack_input_clients > _MAX_NUM_OF_JACK_CLIENTS)
+	if (num_of_jack_input_clients > _MAX_NUM_OF_GUI_JACK_CLIENTS)
 	{
-		num_of_jack_input_clients = _MAX_NUM_OF_JACK_CLIENTS;
+		num_of_jack_input_clients = _MAX_NUM_OF_GUI_JACK_CLIENTS;
 	}
 	
 	input_ports_count = 0;

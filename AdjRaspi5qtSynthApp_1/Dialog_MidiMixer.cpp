@@ -15,6 +15,7 @@
 #include "MainWindow.h"
 #include "Dialog_MidiMixer.h"
 #include "ui_Dialog_MidiMixer.h"
+#include "Defs.h"
 
 void midi_mixer_control_box_event_update_ui_callback_wrapper(int evnt, uint16_t val)
 {

@@ -44,6 +44,7 @@ ModulePannel::ModulePannel(QWidget *parent,
 	
 	connections_dialog = NULL;	
 	dialog_adj_fluid_synth = NULL;
+	dialog_analog_synth = NULL;
 	dialog_adj_midi_player = NULL;
 	dialog_midi_mixer = NULL;
 	dialog_midi_mapper = NULL;
@@ -65,15 +66,12 @@ ModulePannel::ModulePannel(QWidget *parent,
 		this, 
 		SLOT(on_module_connections_clicked()));
 	
-	connections_dialog = NULL;
-	
-	dialog_adj_fluid_synth = NULL;
-	dialog_adj_midi_player = NULL;
-	
-	if ((module_id == adj_midi_player) || (module_id == adj_reverb_effect) ||
-		(module_id == adj_reverb_effect) || (module_id == adj_distortion_effect) ||
-		(module_id == adj_graphic_equilizer) || (module_id == midi_mixer) ||
-		(module_id == midi_mixer) || (module_id == adj_ext_midi_interface))
+	if ((module_id == adj_midi_player) || 
+		(module_id == adj_reverb_effect) || 
+		(module_id == adj_distortion_effect) ||
+		(module_id == adj_graphic_equilizer) || 
+		(module_id == midi_mixer) || 
+		(module_id == adj_ext_midi_interface))
 	{
 		ui->pushButton_ModuleConnections->setDisabled(true);
 	}
@@ -117,6 +115,23 @@ void ModulePannel::on_module_open_clicked()
 				dialog_adj_fluid_synth = Dialog_AdjFluidSynth::get_instance(this);
 				//dialog_adj_fluid_synth->setAttribute(Qt::WA_DeleteOnClose);
 				dialog_adj_fluid_synth->show();
+			}
+		}
+	}
+	else if (module_name == _INSTRUMENT_NAME_ANALOG_SYNTH_STR_KEY)
+	{	
+		if (dialog_analog_synth == NULL)
+		{
+			dialog_analog_synth = Dialog_AnalogSynth::get_instance(this);
+			dialog_analog_synth->show();
+		}
+		else
+		{
+			if (!dialog_analog_synth->isVisible())
+			{
+				/* Only one instance */
+				dialog_analog_synth = Dialog_AnalogSynth::get_instance(this);
+				dialog_analog_synth->show();
 			}
 		}
 	}
