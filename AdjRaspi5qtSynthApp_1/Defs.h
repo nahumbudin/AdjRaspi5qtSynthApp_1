@@ -47,6 +47,12 @@
 #define _OSC1_UNISON_DISTORTION_MAX	100
 #define _OSC1_UNISON_DISTORTION_MIN	0
 
+#define _KPS_MAX_SLIDER_VALUE		100
+#define _KPS_MIN_SLIDER_VALUE		1
+
+#define _PAD_MAX_SLIDER_VALUE		100
+#define _PAD_MIN_SLIDER_VALUE		0
+
 class ModulePannel;
 
 typedef struct activeModules

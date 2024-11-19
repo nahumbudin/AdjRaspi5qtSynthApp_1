@@ -43,7 +43,7 @@ void Dialog_AnalogSynth::control_box_events_handler_mso(int evnt, uint16_t val)
 	static int prev_combobox_mso_tune_cents = 64;
 	
 	
-	if (!this->hasFocus() || !osc1_enabled)
+	if (!this->hasFocus())
 	{
 		return;
 	}
@@ -59,7 +59,34 @@ void Dialog_AnalogSynth::control_box_events_handler_mso(int evnt, uint16_t val)
 			active_frames_group_mso = _FRAMES_GROUP_1;
 		}		
 	}
-	else if (evnt == _CONTROL_SLIDER_BLUE_BLACK)
+	else if (evnt == _CONTROL_PUSHBUTTON_BLUE_BLACK)
+	{
+		/* Enable Mso - allways active */
+		if (val == 0)
+		{
+			/* Only when pushbutton is pressed */			
+			checked = ui->checkBox_MsoActive->checkState();
+			
+			/* Toggle */
+			if (checked == Qt::CheckState::Checked)
+			{
+				checked = Qt::CheckState::Unchecked;
+			}
+			else
+			{
+				checked = Qt::CheckState::Checked;
+			}
+							
+			on_mso_enable_checkbox_changed(checked);
+		}
+	}	
+	
+	if (!mso_enabled)
+	{
+		return;
+	}
+	
+	if (evnt == _CONTROL_SLIDER_BLUE_BLACK)
 	{
 		if (active_frames_group_mso == _FRAMES_GROUP_1)
 		{
@@ -78,7 +105,7 @@ void Dialog_AnalogSynth::control_box_events_handler_mso(int evnt, uint16_t val)
 				on_mso_point_a_slider_moved(level);			
 			}	
 		}
-	}
+	}	
 	else if (evnt == _CONTROL_SLIDER_BLUE_GRAY)
 	{
 		if (active_frames_group_mso == _FRAMES_GROUP_1)
@@ -463,7 +490,5 @@ void Dialog_AnalogSynth::control_box_events_handler_mso(int evnt, uint16_t val)
 
 			on_mso_amp_mod_env_level_dial_changed(mso_amp_mod_adsr_level);
 		}
-	}
-	
-	
+	}	
 }

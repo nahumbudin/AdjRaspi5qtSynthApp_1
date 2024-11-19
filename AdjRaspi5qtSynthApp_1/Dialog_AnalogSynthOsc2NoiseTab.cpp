@@ -283,6 +283,10 @@ void Dialog_AnalogSynth::osc2_update()
 	ui->horizontalSlider_Osc2Symetry->blockSignals(true);
 	ui->horizontalSlider_Osc2Symetry->setValue(mod_synth_get_active_osc2_pwm_percents());
 	ui->horizontalSlider_Osc2Symetry->blockSignals(false);
+	
+	ui->spinBox_Osc2Symetry->blockSignals(true);
+	ui->spinBox_Osc2Symetry->setValue(mod_synth_get_active_osc2_pwm_percents());
+	ui->spinBox_Osc2Symetry->blockSignals(false) ;
 
 	ui->comboBox_Osc2TuneOctave->blockSignals(true);
 	ui->comboBox_Osc2TuneOctave->setCurrentIndex(mod_synth_get_active_osc2_detune_octave() - 
@@ -302,10 +306,18 @@ void Dialog_AnalogSynth::osc2_update()
 	ui->dial_Osc2SendFilter1->blockSignals(true);
 	ui->dial_Osc2SendFilter1->setValue(mod_synth_get_active_osc2_send_filter_1());
 	ui->dial_Osc2SendFilter1->blockSignals(false);
+	
+	ui->spinBox_Osc2SendFilter1->blockSignals(true);
+	ui->spinBox_Osc2SendFilter1->setValue(mod_synth_get_active_osc2_send_filter_1());
+	ui->spinBox_Osc2SendFilter1->blockSignals(false);
 
 	ui->dial_Osc2SendFilter2->blockSignals(true);
 	ui->dial_Osc2SendFilter2->setValue(mod_synth_get_active_osc2_send_filter_2());
 	ui->dial_Osc2SendFilter2->blockSignals(false);
+	
+	ui->spinBox_Osc2SendFilter2->blockSignals(true);
+	ui->spinBox_Osc2SendFilter2->setValue(mod_synth_get_active_osc2_send_filter_2());
+	ui->spinBox_Osc2SendFilter2->blockSignals(false);
 
 	ui->comboBox_Osc2FreqModLFO->blockSignals(true);
 	ui->comboBox_Osc2FreqModLFO->setCurrentIndex(mod_synth_get_active_osc2_freq_mod_lfo());
@@ -314,6 +326,10 @@ void Dialog_AnalogSynth::osc2_update()
 	ui->dial_Osc2FreqModLFOLevel->blockSignals(true);
 	ui->dial_Osc2FreqModLFOLevel->setValue(mod_synth_get_active_osc2_freq_mod_lfo_level());
 	ui->dial_Osc2FreqModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_Osc2FreqModLfoLevel->blockSignals(true);
+	ui->spinBox_Osc2FreqModLfoLevel->setValue(mod_synth_get_active_osc2_freq_mod_lfo_level());
+	ui->spinBox_Osc2FreqModLfoLevel->blockSignals(false);
 
 	ui->comboBox_Osc2FreqModAdsr->blockSignals(true);
 	ui->comboBox_Osc2FreqModAdsr->setCurrentIndex(mod_synth_get_active_osc2_freq_mod_env());
@@ -322,6 +338,10 @@ void Dialog_AnalogSynth::osc2_update()
 	ui->dial_Osc2FreqModAdsrLevel->blockSignals(true);
 	ui->dial_Osc2FreqModAdsrLevel->setValue(mod_synth_get_active_osc2_freq_mod_env_level());
 	ui->dial_Osc2FreqModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_Osc2FreqModAdsrLevel->blockSignals(true);
+	ui->spinBox_Osc2FreqModAdsrLevel->setValue(mod_synth_get_active_osc2_freq_mod_env_level());
+	ui->spinBox_Osc2FreqModAdsrLevel->blockSignals(false);
 
 	ui->comboBox_Osc2PwmModLFO->blockSignals(true);
 	ui->comboBox_Osc2PwmModLFO->setCurrentIndex(mod_synth_get_active_osc2_pwm_mod_lfo());
@@ -330,6 +350,10 @@ void Dialog_AnalogSynth::osc2_update()
 	ui->dial_Osc2PwmModLFOLevel->blockSignals(true);
 	ui->dial_Osc2PwmModLFOLevel->setValue(mod_synth_get_active_osc2_pwm_mod_lfo_level());
 	ui->dial_Osc2PwmModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_Osc2PwmModLfoLevel->blockSignals(true);
+	ui->spinBox_Osc2PwmModLfoLevel->setValue(mod_synth_get_active_osc2_pwm_mod_lfo_level());
+	ui->spinBox_Osc2PwmModLfoLevel->blockSignals(false);
 
 	ui->comboBox_Osc2PwmModAdsr->blockSignals(true);
 	ui->comboBox_Osc2PwmModAdsr->setCurrentIndex(mod_synth_get_active_osc2_pwm_mod_env());
@@ -338,6 +362,10 @@ void Dialog_AnalogSynth::osc2_update()
 	ui->dial_Osc2PwmModAdsrLevel->blockSignals(true);
 	ui->dial_Osc2PwmModAdsrLevel->setValue(mod_synth_get_active_osc2_pwm_mod_env_level());
 	ui->dial_Osc2PwmModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_Osc2PwmModAdsrLevel->blockSignals(true);
+	ui->spinBox_Osc2PwmModAdsrLevel->setValue(mod_synth_get_active_osc2_pwm_mod_env_level());
+	ui->spinBox_Osc2PwmModAdsrLevel->blockSignals(false);
 
 	ui->comboBox_Osc1AmpModLFO->blockSignals(true);
 	ui->comboBox_Osc1AmpModLFO->setCurrentIndex(mod_synth_get_active_osc1_amp_mod_lfo());
@@ -346,6 +374,10 @@ void Dialog_AnalogSynth::osc2_update()
 	ui->dial_Osc2AmpModLFOLevel->blockSignals(true);
 	ui->dial_Osc2AmpModLFOLevel->setValue(mod_synth_get_active_osc2_amp_mod_lfo_level());
 	ui->dial_Osc2AmpModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_Osc2AmpModLfoLevel->blockSignals(true);
+	ui->spinBox_Osc2AmpModLfoLevel->setValue(mod_synth_get_active_osc2_amp_mod_lfo_level());
+	ui->spinBox_Osc2AmpModLfoLevel->blockSignals(false);
 
 	ui->comboBox_Osc2AmpModAdsr->blockSignals(true);
 	ui->comboBox_Osc2AmpModAdsr->setCurrentIndex(mod_synth_get_active_osc2_amp_mod_env());
@@ -354,6 +386,10 @@ void Dialog_AnalogSynth::osc2_update()
 	ui->dial_Osc2AmpModAdsrLevel->blockSignals(true);
 	ui->dial_Osc2AmpModAdsrLevel->setValue(mod_synth_get_active_osc2_amp_mod_env_level());
 	ui->dial_Osc2AmpModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_Osc2AmpModAdsrLevel->blockSignals(true);
+	ui->spinBox_Osc2AmpModAdsrLevel->setValue(mod_synth_get_active_osc2_amp_mod_env_level());
+	ui->spinBox_Osc2AmpModAdsrLevel->blockSignals(false);
 
 	
 	
@@ -390,10 +426,12 @@ void Dialog_AnalogSynth::on_osc2_enable_changed(bool en)
 	if (en)
 	{
 		ui->checkBox_Osc2Active->setCheckState(Qt::Checked);
+		mod_synth_enable_osc2();
 	}
 	else
 	{
 		ui->checkBox_Osc2Active->setCheckState(Qt::Unchecked);
+		mod_synth_disable_osc2();
 	}
 	ui->checkBox_Osc2Active->blockSignals(false);
 	
@@ -860,10 +898,18 @@ void Dialog_AnalogSynth::noise_update()
 	ui->dial_NoiseSendFilter1->blockSignals(true);
 	ui->dial_NoiseSendFilter1->setValue(mod_synth_get_active_noise_send_filter_1());
 	ui->dial_NoiseSendFilter1->blockSignals(false);
+	
+	ui->spinBox_NoiseSendFilter1->blockSignals(true);
+	ui->spinBox_NoiseSendFilter1->setValue(mod_synth_get_active_noise_send_filter_1());
+	ui->spinBox_NoiseSendFilter1->blockSignals(false);
 
 	ui->dial_NoiseSendFilter2->blockSignals(true);
 	ui->dial_NoiseSendFilter2->setValue(mod_synth_get_active_noise_send_filter_2());
 	ui->dial_NoiseSendFilter2->blockSignals(false);
+	
+	ui->spinBox_NoiseSendFilter2->blockSignals(true);
+	ui->spinBox_NoiseSendFilter2->setValue(mod_synth_get_active_noise_send_filter_2());
+	ui->spinBox_NoiseSendFilter2->blockSignals(false);
 
 	ui->comboBox_NoiseAmpModLFO->blockSignals(true);
 	ui->comboBox_NoiseAmpModLFO->setCurrentIndex(mod_synth_get_active_noise_amp_mod_lfo());
@@ -872,6 +918,10 @@ void Dialog_AnalogSynth::noise_update()
 	ui->dial_NoiseAmpModLFOLevel->blockSignals(true);
 	ui->dial_NoiseAmpModLFOLevel->setValue(mod_synth_get_active_noise_amp_mod_lfo_level());
 	ui->dial_NoiseAmpModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_NoiseAmpModLfoLevel->blockSignals(true);
+	ui->spinBox_NoiseAmpModLfoLevel->setValue(mod_synth_get_active_noise_amp_mod_lfo_level());
+	ui->spinBox_NoiseAmpModLfoLevel->blockSignals(false);
 
 	ui->comboBox_NoiseAmpModAdsr->blockSignals(true);
 	ui->comboBox_NoiseAmpModAdsr->setCurrentIndex(mod_synth_get_active_noise_amp_mod_env());
@@ -880,6 +930,10 @@ void Dialog_AnalogSynth::noise_update()
 	ui->dial_NoiseAmpModAdsrLevel->blockSignals(true);
 	ui->dial_NoiseAmpModAdsrLevel->setValue(mod_synth_get_active_noise_amp_mod_env_level());
 	ui->dial_NoiseAmpModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_NoiseAmpModAdsrLevel->blockSignals(true);
+	ui->spinBox_NoiseAmpModAdsrLevel->setValue(mod_synth_get_active_noise_amp_mod_env_level());
+	ui->spinBox_NoiseAmpModAdsrLevel->blockSignals(false);
 
 	noise_enabled = mod_synth_get_active_noise_enable_state();
 	ui->checkBox_NoiseActive->blockSignals(true);
@@ -904,10 +958,12 @@ void Dialog_AnalogSynth::on_noise_enable_changed(bool en)
 	if (en)
 	{
 		ui->checkBox_NoiseActive->setCheckState(Qt::Checked);
+		mod_synth_enable_noise();
 	}
 	else
 	{
 		ui->checkBox_NoiseActive->setCheckState(Qt::Unchecked);
+		mod_synth_disable_noise();
 	}
 	ui->checkBox_NoiseActive->blockSignals(false);
 	

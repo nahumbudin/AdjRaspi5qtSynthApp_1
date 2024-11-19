@@ -42,6 +42,12 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 	prev_active_frames_group_osc2noise = -1;
 	active_frames_group_mso = _FRAMES_GROUP_1;
 	prev_active_frames_group_mso = -1;
+	active_frames_group_kps = _FRAMES_GROUP_1;
+	prev_active_frames_group_kps = -1;
+	active_frames_group_pad = _FRAMES_GROUP_1;
+	prev_active_frames_group_pad = -1;
+	active_frames_group_filters_amps = _FRAMES_GROUP_1;
+	prev_active_frames_group_filters_amps = -1;
 	
 	osc1_unison_levels[0] = 100;
 	
@@ -57,15 +63,32 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 	
 	set_osc1_signals_connections();
 	init_osc1_combboxes_and_labels();
+	osc1_update();
 	
 	set_osc2_signals_connections();
 	init_osc2_combboxes_and_labels();
+	osc2_update();
 	
 	set_noise_signals_connections();
 	init_noise_combboxes_and_labels();
+	noise_update();
 	
 	set_mso_signals_connections();
 	init_mso_combboxes_and_labels();
+	mso_update();
+	
+	set_kps_signals_connections();
+	init_kps_combboxes_and_labels();
+	kps_update();
+	
+	set_pad_signals_connections();
+	init_pad_combboxes_and_labels();
+	pad_update();
+	
+	set_filters_amps_signals_connections();
+	init_filters_amps_combboxes_and_labels();
+	filters_update();
+	amps_update();
 	
 	ui->frame_Osc1Waveform->setStyleSheet(_BACKGROUND_COLOR_CYAN);
 	ui->frame_Osc1TuneOffset->setStyleSheet(_BACKGROUND_COLOR_CYAN);
@@ -97,7 +120,14 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 	ui->frame_MsoAmpMod->setStyleSheet(_BACKGROUND_COLOR_GRAY);
 	ui->frame_MsoSendFiltersTuneOffset->setStyleSheet(_BACKGROUND_COLOR_GRAY);
 	
+	ui->frame_PAD_SendFiltersTuneOffset->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+	ui->frame_PAD_FreqMod->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
 	
+	ui->frame_PAD_AmpMod->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	ui->frame_PAD_Profile->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	
+	ui->frame_PAD_Haromonys1_6->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	ui->frame__PAD_Haromonys7_10->setStyleSheet(_BACKGROUND_COLOR_GRAY);
 	
 	mod_synth_register_callback_control_box_event_update_ui(
 		&analog_synth_control_box_event_update_ui_callback_wrapper);
@@ -171,11 +201,11 @@ void Dialog_AnalogSynth::control_box_ui_update_callback(int evnt, uint16_t val)
 	}
 	else if (active_tab == _KARPLUS_TAB)
 	{
-		
+		control_box_events_handler_kps(evnt, val);
 	}
 	else if (active_tab == _PAD_SYNTH_TAB)
 	{
-		
+		control_box_events_handler_pad(evnt, val);
 	}
 	else if (active_tab == _FILTERS_TAB)
 	{
@@ -220,6 +250,20 @@ void Dialog_AnalogSynth::update_gui()
 		ui->widget_MsoWaveformPlot->replot();
 		
 		mso_replot_waveform = false;
+	}
+	
+	if (update_profile_plot)
+	{
+		pad_replot_profile();
+		
+		update_profile_plot = false;
+	}
+	
+	if (update_spectrum_plot)
+	{
+		pad_replot_spectrum();
+		
+		update_profile_plot = false;
 	}
 	
 	if (active_tab == _OSC_1_TAB)
@@ -350,8 +394,63 @@ void Dialog_AnalogSynth::update_gui()
 				ui->frame_MsoAmpMod->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
 				ui->frame_MsoSendFiltersTuneOffset->setStyleSheet(_BACKGROUND_COLOR_CYAN);
 			}
+			
+			prev_active_frames_group_mso = active_frames_group_mso;
 		}
 		
+	}
+	else if (active_tab == _KARPLUS_TAB)
+	{
+		if (active_frames_group_mso != prev_active_frames_group_mso)
+		{
+			if (active_frames_group_mso == _FRAMES_GROUP_1)
+			{
+				
+			}
+			
+			prev_active_frames_group_kps = active_frames_group_kps;
+		}
+	}
+	else if (active_tab == _PAD_SYNTH_TAB)
+	{
+		if (active_frames_group_pad != prev_active_frames_group_pad)
+		{
+			if (active_frames_group_pad == _FRAMES_GROUP_1)
+			{
+				ui->frame_PAD_SendFiltersTuneOffset->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_PAD_FreqMod->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+				
+				ui->frame_PAD_AmpMod->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_PAD_Profile->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				
+				ui->frame_PAD_Haromonys1_6->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame__PAD_Haromonys7_10->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+			}
+			else if (active_frames_group_pad == _FRAMES_GROUP_2)
+			{
+				ui->frame_PAD_SendFiltersTuneOffset->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_PAD_FreqMod->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				
+				ui->frame_PAD_AmpMod->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_PAD_Profile->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+				
+				ui->frame_PAD_Haromonys1_6->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame__PAD_Haromonys7_10->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+			}
+			else if (active_frames_group_pad == _FRAMES_GROUP_3)
+			{
+				ui->frame_PAD_SendFiltersTuneOffset->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_PAD_FreqMod->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				
+				ui->frame_PAD_AmpMod->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_PAD_Profile->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				
+				ui->frame_PAD_Haromonys1_6->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame__PAD_Haromonys7_10->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+			}
+			
+			prev_active_frames_group_pad = active_frames_group_pad;
+		}
 	}
 }
 

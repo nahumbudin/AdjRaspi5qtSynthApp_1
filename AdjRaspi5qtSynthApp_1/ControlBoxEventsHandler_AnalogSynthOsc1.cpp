@@ -43,7 +43,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 	static int prev_combobox_tune_semitones = 64;
 	static int prev_combobox_tune_cents = 64;
 	
-	if (!this->hasFocus() || !osc1_enabled)
+	if (!this->hasFocus())
 	{
 		return;
 	}
@@ -57,7 +57,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 		{
 			active_frames_group_osc1 = _FRAMES_GROUP_1;
 		}		
-	}
+	}	
 	else if (evnt == _CONTROL_PUSHBUTTON_BLUE_BLACK)
 	{
 		/* Enable Osc1 - allways active */
@@ -79,7 +79,13 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 			on_osc1_enable_changed(checked);
 		}
 	}
-	else if (evnt == _CONTROL_PUSHBUTTON_BLUE_GREEN)
+	
+	if (!osc1_enabled)
+	{
+		return;
+	}
+	
+	if (evnt == _CONTROL_PUSHBUTTON_BLUE_GREEN)
 	{
 		if (active_frames_group_osc1 == _FRAMES_GROUP_3)
 		{

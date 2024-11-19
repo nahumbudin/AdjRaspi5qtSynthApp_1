@@ -43,16 +43,13 @@ public :
 	void control_box_events_handler_osc_1(int evnt, uint16_t val);
 	void control_box_events_handler_osc_2_noise(int evnt, uint16_t val);
 	void control_box_events_handler_mso(int evnt, uint16_t val);
+	void control_box_events_handler_kps(int evnt, uint16_t val);
+	void control_box_events_handler_pad(int evnt, uint16_t val);
+	void control_box_events_handler_filters_amps(int evnt, uint16_t val);
 	
 	void osc1_set_unison_mode(int mode);
 	
-	QList<QString> string_unison_labels_hammond;
-	QList<QString> string_unison_labels_octaves;
-	QList<QString> string_unison_labels_c_chord;
-	QList<QString> string_unison_labels_cm_chord;
-	QList<QString> string_unison_labels_c7_chord;
-	QList<QString> string_unison_labels_cm7_chord;
-	
+		
 	
 public slots :	
 	void closeEvent(QCloseEvent *event);
@@ -212,6 +209,56 @@ protected slots:
 	void on_mso_amp_mod_env_level_dial_changed(int val);
 		 	   
 	void on_mso_enable_checkbox_changed(bool val);
+	
+	void on_karplus_excitation_waveform_combobox_changed(int val);
+	void on_karplus_excitation_waveform_variations_slider_changed(int val);
+	void on_karplus_string_damping_slider_changed(int val);
+	void on_karplus_string_damping_variation_slider_changed(int val);
+	void on_karplus_string_damping_calc_mode_combobox_hanged(int val);
+	void on_karplus_pluck_damping_slider_changed(int val);
+	void on_karplus_pluck_damping_variation_slider_changed(int val);
+	void on_karplus_on_decay_slider_changed(int val);
+	void on_karplus_off_decay_slider_changed(int val);
+	void on_karplus_send_filter1_dial_changed(int val);
+	void on_karplus_send_filter2_dial_changed(int val);
+	
+	void on_karplus_enable_checkbox_changed(bool val);
+	
+	void on_pad_enable_checkbox_changed(bool val);
+
+	void on_pad_detune_octave_combobox_changed(int val);
+	void on_pad_detune_semitones_combobox_changed(int val);
+	void on_pad_detune_cents_combobox_changed(int val);
+	void on_pad_send_filter1_dial_changed(int val);
+	void on_pad_send_filter2_dial_changed(int val);
+	void on_pad_freq_mod_lfo_combobox_changed(int val);
+	void on_pad_freq_mod_lfo_level_dial_changed(int val);
+	void on_pad_freq_mod_env_combobox_changed(int val);
+	void on_pad_freq_mod_env_level_dial_changed(int val);
+	void on_pad_amp_mod_lfo_combobox_changed(int val);
+	void on_pad_amp_mod_lfo_level_dial_changed(int val);
+	void on_pad_amp_mod_env_combobox_changed(int val);
+	void on_pad_amp_mod_env_level_dial_changed(int val);
+
+	void on_pad_quality_combobox_changed(int val);
+	void on_pad_base_note_combobox_changed(int val);
+	void on_pad_base_width_slider_changed(int val);
+	void on_pad_shape_combobox_changed(int val);
+	void on_pad_shape_cutoff_combobox_changed(int val);
+	void on_pad_generate_pushbutton_clicked();
+
+	void on_pad_harmony1_level_slider_changed(int val);
+	void on_pad_harmony2_level_slider_changed(int val);
+	void on_pad_harmony3_level_slider_changed(int val);
+	void on_pad_harmony4_level_slider_changed(int val);
+	void on_pad_harmony5_level_slider_changed(int val);
+	void on_pad_harmony6_level_slider_changed(int val);
+	void on_pad_harmony7_level_slider_changed(int val);
+	void on_pad_harmony8_level_slider_changed(int val);
+	void on_pad_harmony9_level_slider_changed(int val);
+	void on_pad_harmony10_level_slider_changed(int val);
+
+	void on_pad_harmonies_detune_slider_changed(int val);
 
 	
 	
@@ -227,6 +274,9 @@ private:
 	int active_frames_group_osc1, prev_active_frames_group_osc1;
 	int active_frames_group_osc2noise, prev_active_frames_group_osc2noise;
 	int active_frames_group_mso, prev_active_frames_group_mso;
+	int active_frames_group_kps, prev_active_frames_group_kps;
+	int active_frames_group_pad, prev_active_frames_group_pad;
+	int active_frames_group_filters_amps, prev_active_frames_group_filters_amps;
 	
 	bool osc1_enabled = true;
 	bool osc1_unison_square = false;
@@ -309,7 +359,9 @@ private:
 	
 	int mso_pos_a, mso_pos_b, mso_pos_c, mso_pos_d, mso_pos_e, mso_pos_f;
 	int mso_symetry = 70;
-	int mso_tune_octave, mso_tune_semitones, mso_tune_cents;
+	int mso_tune_octave = 0;
+	int mso_tune_semitones = 0;
+	int mso_tune_cents = 0;
 	int mso_send_filter_1_level = 0;
 	int mso_send_filter_2_level = 0;
 	
@@ -332,6 +384,61 @@ private:
 	
 	bool mso_replot_waveform = false;
 	
+	bool kps_enabled = false;
+	
+	int kps_excitation_waveform = _KARPLUS_STRONG_EXCITATION_WHITE_NOISE;
+	int kps_string_dump_calculation_mode = _KARPLUS_STRONG_STRING_DAMPING_CALC_DIRECT;
+	int kps_waveform_variations = 0;
+	int kps_string_damping = 0;
+	int kps_string_damping_variations = 0;
+	int kps_pluck_damping = 0;
+	int kps_pluck_damping_variations = 0;
+	int kps_on_decay = 0;
+	int kps_off_decay = 0;
+	int kps_send_filter_1_level = 0;
+	int kps_send_filter_2_level = 0;
+	
+	bool pad_enabled = false;
+	bool update_profile_plot = true;
+	bool update_spectrum_plot = true;
+	
+	int pad_tune_octave = 0;
+	int pad_tune_semitones = 0;
+	int pad_tune_cents = 0;
+	int pad_send_filter_1_level = 0;
+	int pad_send_filter_2_level = 0;
+	
+	int pad_freq_mod_lfo_level = 0; 
+	int pad_freq_mod_adsr_level = 0;
+	int pad_freq_mod_lfo_num = _LFO_NONE;
+	int pad_freq_mod_adsr_num = _ENV_NONE;
+	
+	int pad_amp_mod_lfo_level = 0; 
+	int pad_amp_mod_adsr_level = 0;
+	int pad_amp_mod_lfo_num = _LFO_NONE;
+	int pad_amp_mod_adsr_num = _ENV_NONE;
+	
+	int pad_quality = 0;
+	int pad_base_note = 0;
+	int pad_shape = 0;
+	int pad_shape_cutoff = 0;
+	
+	int pad_base_width = 1;
+	
+	int pad_harmony_1_level = 100;
+	int pad_harmony_2_level = 0;
+	int pad_harmony_3_level = 30;
+	int pad_harmony_4_level = 0;
+	int pad_harmony_5_level = 0;
+	int pad_harmony_6_level = 0;
+	int pad_harmony_7_level = 0;
+	int pad_harmony_8_level = 0;
+	int pad_harmony_9_level = 0;
+	int pad_harmony_10_level = 0;
+	int pad_harmony_detune = 0;
+	
+	
+	
 	void start_update_timer(int interval);
 	
 	void set_osc1_signals_connections();
@@ -346,11 +453,26 @@ private:
 	void set_mso_signals_connections();
 	void init_mso_combboxes_and_labels();
 	
+	void set_kps_signals_connections();
+	void init_kps_combboxes_and_labels();
+	
+	void set_pad_signals_connections();
+	void init_pad_combboxes_and_labels();
+	
+	void set_filters_amps_signals_connections();
+	void init_filters_amps_combboxes_and_labels();
+	
 	void setup_mso_plot(QCustomPlot *custom_plot);
 	void update_mso_waveform_plot();
 	
 	void mso_handle_preset_change(int newPres);
 	void mso_set_preset_positions(const int pos[]);
+	
+	void pad_setup_profile_plot(QCustomPlot *profilePlot);
+	void pad_setup_spectrum_plot(QCustomPlot *spectrumPlot);
+	
+	void pad_replot_profile();
+	void pad_replot_spectrum();
 	
 	void osc1_set_unison_labales(QList<QString> str, uint16_t mask);
 	void osc1_set_unison_labales(int mode);
@@ -360,6 +482,17 @@ private:
 	void osc2_update();
 	void noise_update();
 	void mso_update();
+	void kps_update();
+	void pad_update();
+	void filters_update();
+	void amps_update();
+	
+	QList<QString> string_unison_labels_hammond;
+	QList<QString> string_unison_labels_octaves;
+	QList<QString> string_unison_labels_c_chord;
+	QList<QString> string_unison_labels_cm_chord;
+	QList<QString> string_unison_labels_c7_chord;
+	QList<QString> string_unison_labels_cm7_chord;
 	
 	QList<QString> string_waveforms_list;
 	QList<QString> string_unison_modes_list;
@@ -374,6 +507,16 @@ private:
 	QList<QString> string_noise_colors_list;
 	
 	QList<QString> string_mso_presets_list;
+	
+	QList<QString> string_karplus_excitation_waveform_list;
+	QList<QString> string_karplus_string_damping_calc_mode_list;
+	
+	QList<QString> string_pad_qualities_list;
+	QList<QString> string_pad_base_notes_list;
+	QList<QString> string_pad_shapes_list;
+	QList<QString> string_pad_shape_cutoffs_list;
+	
+	QList<QString> string_filter_bands_list;
 	
 	QSlider *unison_level_sliders[9];
 	

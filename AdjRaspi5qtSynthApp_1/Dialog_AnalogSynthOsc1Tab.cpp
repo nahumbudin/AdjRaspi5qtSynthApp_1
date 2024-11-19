@@ -765,6 +765,10 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->horizontalSlider_Osc1Symetry->blockSignals(true);
 	ui->horizontalSlider_Osc1Symetry->setValue(mod_synth_get_active_osc1_pwm_percents());
 	ui->horizontalSlider_Osc1Symetry->blockSignals(false);
+	
+	ui->spinBox_Osc1Symetry->blockSignals(true);
+	ui->spinBox_Osc1Symetry->setValue(mod_synth_get_active_osc1_pwm_percents());
+	ui->spinBox_Osc1Symetry->blockSignals(false);
 
 	ui->comboBox_Osc1TuneOctave->blockSignals(true);
 	ui->comboBox_Osc1TuneOctave->setCurrentIndex(mod_synth_get_active_osc1_detune_octave() - mod_synth_get_osc_detune_min_octave());
@@ -781,10 +785,18 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->dial_Osc1SendFilter1->blockSignals(true);
 	ui->dial_Osc1SendFilter1->setValue(mod_synth_get_active_osc1_send_filter_1());
 	ui->dial_Osc1SendFilter1->blockSignals(false);
+	
+	ui->spinBox_Osc1SendFilter1->blockSignals(true);
+	ui->spinBox_Osc1SendFilter1->setValue(mod_synth_get_active_osc1_send_filter_1());
+	ui->spinBox_Osc1SendFilter1->blockSignals(false);
 
 	ui->dial_Osc1SendFilter2->blockSignals(true);
 	ui->dial_Osc1SendFilter2->setValue(mod_synth_get_active_osc1_send_filter_2());
 	ui->dial_Osc1SendFilter2->blockSignals(false);
+	
+	ui->spinBox_Osc1SendFilter2->blockSignals(true);
+	ui->spinBox_Osc1SendFilter2->setValue(mod_synth_get_active_osc1_send_filter_2());
+	ui->spinBox_Osc1SendFilter2->blockSignals(false);
 
 	ui->comboBox_Osc1FreqModLFO->blockSignals(true);
 	ui->comboBox_Osc1FreqModLFO->setCurrentIndex(mod_synth_get_active_osc1_freq_mod_lfo());
@@ -793,6 +805,10 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->dial_Osc1FreqModLFOLevel->blockSignals(true);
 	ui->dial_Osc1FreqModLFOLevel->setValue(mod_synth_get_active_osc1_freq_mod_lfo_level());
 	ui->dial_Osc1FreqModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_Osc1FreqModLfoLevel->blockSignals(true);
+	ui->spinBox_Osc1FreqModLfoLevel->setValue(mod_synth_get_active_osc1_freq_mod_lfo_level());
+	ui->spinBox_Osc1FreqModLfoLevel->blockSignals(false);
 
 	ui->comboBox_Osc1FreqModAdsr->blockSignals(true);
 	ui->comboBox_Osc1FreqModAdsr->setCurrentIndex(mod_synth_get_active_osc1_freq_mod_env());
@@ -801,6 +817,10 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->dial_Osc1FreqModAdsrLevel->blockSignals(true);
 	ui->dial_Osc1FreqModAdsrLevel->setValue(mod_synth_get_active_osc1_freq_mod_env_level());
 	ui->dial_Osc1FreqModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_Osc1FreqModAdsrLevel->blockSignals(true);
+	ui->spinBox_Osc1FreqModAdsrLevel->setValue(mod_synth_get_active_osc1_freq_mod_env_level());
+	ui->spinBox_Osc1FreqModAdsrLevel->blockSignals(false);
 
 	ui->comboBox_Osc1PwmModLFO->blockSignals(true);
 	ui->comboBox_Osc1PwmModLFO->setCurrentIndex(mod_synth_get_active_osc1_pwm_mod_lfo());
@@ -809,6 +829,10 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->dial_Osc1PwmModLFOLevel->blockSignals(true);
 	ui->dial_Osc1PwmModLFOLevel->setValue(mod_synth_get_active_osc1_pwm_mod_lfo_level());
 	ui->dial_Osc1PwmModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_Osc1PwmModLfoLevel->blockSignals(true);
+	ui->spinBox_Osc1PwmModLfoLevel->setValue(mod_synth_get_active_osc1_pwm_mod_lfo_level());
+	ui->spinBox_Osc1PwmModLfoLevel->blockSignals(false);
 
 	ui->comboBox_Osc1PwmModAdsr->blockSignals(true);
 	ui->comboBox_Osc1PwmModAdsr->setCurrentIndex(mod_synth_get_active_osc1_pwm_mod_env());
@@ -817,6 +841,10 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->dial_Osc1PwmModAdsrLevel->blockSignals(true);
 	ui->dial_Osc1PwmModAdsrLevel->setValue(mod_synth_get_active_osc1_pwm_mod_env_level());
 	ui->dial_Osc1PwmModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_Osc1PwmModAdsrLevel->blockSignals(true);
+	ui->spinBox_Osc1PwmModAdsrLevel->setValue(mod_synth_get_active_osc1_pwm_mod_env_level());
+	ui->spinBox_Osc1PwmModAdsrLevel->blockSignals(false);
 
 	ui->comboBox_Osc1AmpModLFO->blockSignals(true);
 	ui->comboBox_Osc1AmpModLFO->setCurrentIndex(mod_synth_get_active_osc1_amp_mod_lfo());
@@ -825,6 +853,10 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->dial_Osc1AmpModLFOLevel->blockSignals(true);
 	ui->dial_Osc1AmpModLFOLevel->setValue(mod_synth_get_active_osc1_amp_mod_lfo_level());
 	ui->dial_Osc1AmpModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_Osc1AmpModLfoLevel->blockSignals(true);
+	ui->spinBox_Osc1AmpModLfoLevel->setValue(mod_synth_get_active_osc1_amp_mod_lfo_level());
+	ui->spinBox_Osc1AmpModLfoLevel->blockSignals(false);
 
 	ui->comboBox_Osc1AmpModAdsr->blockSignals(true);
 	ui->comboBox_Osc1AmpModAdsr->setCurrentIndex(mod_synth_get_active_osc1_amp_mod_env());
@@ -833,6 +865,10 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->dial_Osc1AmpModAdsrLevel->blockSignals(true);
 	ui->dial_Osc1AmpModAdsrLevel->setValue(mod_synth_get_active_osc1_amp_mod_env_level());
 	ui->dial_Osc1AmpModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_Osc1AmpModAdsrLevel->blockSignals(true);
+	ui->spinBox_Osc1AmpModAdsrLevel->setValue(mod_synth_get_active_osc1_amp_mod_env_level());
+	ui->spinBox_Osc1AmpModAdsrLevel->blockSignals(false);
 
 	ui->comboBox_Osc1UnisonMode->blockSignals(true);
 	ui->comboBox_Osc1UnisonMode->setCurrentIndex(mod_synth_get_active_osc1_unison_mode());
@@ -879,6 +915,46 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->verticalSlider_Osc1HarmonyDistortLevel->blockSignals(true);
 	ui->verticalSlider_Osc1HarmonyDistortLevel->setValue(mod_synth_get_active_osc1_harmonies_dist_factor());
 	ui->verticalSlider_Osc1HarmonyDistortLevel->blockSignals(false);
+	
+	ui->spinBox_Osc1UnisonLevel_1->blockSignals(true);
+	ui->spinBox_Osc1UnisonLevel_1->setValue(mod_synth_get_active_osc1_harmonies_levels(0));
+	ui->spinBox_Osc1UnisonLevel_1->blockSignals(false);
+
+	ui->spinBox_Osc1UnisonLevel_2->blockSignals(true);
+	ui->spinBox_Osc1UnisonLevel_2->setValue(mod_synth_get_active_osc1_harmonies_levels(1));
+	ui->spinBox_Osc1UnisonLevel_2->blockSignals(false);
+
+	ui->spinBox_Osc1UnisonLevel_3->blockSignals(true);
+	ui->spinBox_Osc1UnisonLevel_3->setValue(mod_synth_get_active_osc1_harmonies_levels(2));
+	ui->spinBox_Osc1UnisonLevel_3->blockSignals(false);
+
+	ui->spinBox_Osc1UnisonLevel_4->blockSignals(true);
+	ui->spinBox_Osc1UnisonLevel_4->setValue(mod_synth_get_active_osc1_harmonies_levels(3));
+	ui->spinBox_Osc1UnisonLevel_4->blockSignals(false);
+
+	ui->spinBox_Osc1UnisonLevel_5->blockSignals(true);
+	ui->spinBox_Osc1UnisonLevel_5->setValue(mod_synth_get_active_osc1_harmonies_levels(4));
+	ui->spinBox_Osc1UnisonLevel_5->blockSignals(false);
+
+	ui->spinBox_Osc1UnisonLevel_6->blockSignals(true);
+	ui->spinBox_Osc1UnisonLevel_6->setValue(mod_synth_get_active_osc1_harmonies_levels(5));
+	ui->spinBox_Osc1UnisonLevel_6->blockSignals(false);
+
+	ui->spinBox_Osc1UnisonLevel_7->blockSignals(true);
+	ui->spinBox_Osc1UnisonLevel_7->setValue(mod_synth_get_active_osc1_harmonies_levels(6));
+	ui->spinBox_Osc1UnisonLevel_7->blockSignals(false);
+
+	ui->spinBox_Osc1UnisonLevel_8->blockSignals(true);
+	ui->spinBox_Osc1UnisonLevel_8->setValue(mod_synth_get_active_osc1_harmonies_levels(7));
+	ui->spinBox_Osc1UnisonLevel_8->blockSignals(false);
+
+	ui->spinBox_Osc1HarmonyDetune->blockSignals(true);
+	ui->spinBox_Osc1HarmonyDetune->setValue(mod_synth_get_active_osc1_harmonies_detune_factor());
+	ui->spinBox_Osc1HarmonyDetune->blockSignals(false);
+
+	ui->spinBox_Osc1HarmonyDistort->blockSignals(true);
+	ui->spinBox_Osc1HarmonyDistort->setValue(mod_synth_get_active_osc1_harmonies_dist_factor());
+	ui->spinBox_Osc1HarmonyDistort->blockSignals(false);
 
 	if (mod_synth_get_active_osc1_unison_mode() == _OSC_UNISON_MODE_HAMMOND)
 	{
@@ -930,10 +1006,12 @@ void Dialog_AnalogSynth::on_osc1_enable_changed(bool en)
 	if (en)
 	{
 		ui->checkBox_Osc1Active->setCheckState(Qt::Checked);
+		mod_synth_enable_osc1();
 	}
 	else
 	{
 		ui->checkBox_Osc1Active->setCheckState(Qt::Unchecked);
+		mod_synth_disable_osc1();
 	}
 	ui->checkBox_Osc1Active->blockSignals(false);
 	

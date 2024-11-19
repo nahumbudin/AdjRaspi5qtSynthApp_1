@@ -36,7 +36,7 @@ void Dialog_AnalogSynth::set_mso_signals_connections()
 	connect(ui->checkBox_MsoActive,
 		SIGNAL(toggled(bool)),
 		this,
-		SLOT(on_mso_enable_check_box_changed(bool)));
+		SLOT(on_mso_enable_checkbox_changed(bool)));
 
 	connect(ui->verticalSlider_MSO_Pos_a,
 		SIGNAL(valueChanged(int)),
@@ -419,26 +419,51 @@ void Dialog_AnalogSynth::mso_update()
 	ui->verticalSlider_MSO_Pos_a->setValue(mod_synth_get_active_mso_table_segment_point(0));
 	ui->verticalSlider_MSO_Pos_a->blockSignals(false);
 
-	ui->verticalSlider_MSO_Pos_a->blockSignals(true);
-	ui->verticalSlider_MSO_Pos_a->setValue(mod_synth_get_active_mso_table_segment_point(1));
-	ui->verticalSlider_MSO_Pos_a->blockSignals(false);
+	ui->verticalSlider_MSO_Pos_b->blockSignals(true);
+	ui->verticalSlider_MSO_Pos_b->setValue(mod_synth_get_active_mso_table_segment_point(1));
+	ui->verticalSlider_MSO_Pos_b->blockSignals(false);
 
-	ui->verticalSlider_MSO_Pos_a->blockSignals(true);
-	ui->verticalSlider_MSO_Pos_a->setValue(mod_synth_get_active_mso_table_segment_point(2));
-	ui->verticalSlider_MSO_Pos_a->blockSignals(false);
+	ui->verticalSlider_MSO_Pos_c->blockSignals(true);
+	ui->verticalSlider_MSO_Pos_c->setValue(mod_synth_get_active_mso_table_segment_point(2));
+	ui->verticalSlider_MSO_Pos_c->blockSignals(false);
 
-	ui->verticalSlider_MSO_Pos_a->blockSignals(true);
-	ui->verticalSlider_MSO_Pos_a->setValue(mod_synth_get_active_mso_table_segment_point(3));
-	ui->verticalSlider_MSO_Pos_a->blockSignals(false);
+	ui->verticalSlider_MSO_Pos_d->blockSignals(true);
+	ui->verticalSlider_MSO_Pos_d->setValue(mod_synth_get_active_mso_table_segment_point(3));
+	ui->verticalSlider_MSO_Pos_d->blockSignals(false);
 
-	ui->verticalSlider_MSO_Pos_a->blockSignals(true);
-	ui->verticalSlider_MSO_Pos_a->setValue(mod_synth_get_active_mso_table_segment_point(4));
-	ui->verticalSlider_MSO_Pos_a->blockSignals(false);
+	ui->verticalSlider_MSO_Pos_e->blockSignals(true);
+	ui->verticalSlider_MSO_Pos_e->setValue(mod_synth_get_active_mso_table_segment_point(4));
+	ui->verticalSlider_MSO_Pos_e->blockSignals(false);
 
-	ui->verticalSlider_MSO_Pos_a->blockSignals(true);
-	ui->verticalSlider_MSO_Pos_a->setValue(mod_synth_get_active_mso_table_segment_point(5));
-	ui->verticalSlider_MSO_Pos_a->blockSignals(false);
+	ui->verticalSlider_MSO_Pos_f->blockSignals(true);
+	ui->verticalSlider_MSO_Pos_f->setValue(mod_synth_get_active_mso_table_segment_point(5));
+	ui->verticalSlider_MSO_Pos_f->blockSignals(false);
+	
+	
+	ui->spinBox_MSO_Pos_a->blockSignals(true);
+	ui->spinBox_MSO_Pos_a->setValue(mod_synth_get_active_mso_table_segment_point(0));
+	ui->spinBox_MSO_Pos_a->blockSignals(false);
 
+	ui->spinBox_MSO_Pos_b->blockSignals(true);
+	ui->spinBox_MSO_Pos_b->setValue(mod_synth_get_active_mso_table_segment_point(1));
+	ui->spinBox_MSO_Pos_b->blockSignals(false);
+
+	ui->spinBox_MSO_Pos_c->blockSignals(true);
+	ui->spinBox_MSO_Pos_c->setValue(mod_synth_get_active_mso_table_segment_point(2));
+	ui->spinBox_MSO_Pos_c->blockSignals(false);
+
+	ui->spinBox_MSO_Pos_d->blockSignals(true);
+	ui->spinBox_MSO_Pos_d->setValue(mod_synth_get_active_mso_table_segment_point(3));
+	ui->spinBox_MSO_Pos_d->blockSignals(false);
+
+	ui->spinBox_MSO_Pos_e->blockSignals(true);
+	ui->spinBox_MSO_Pos_e->setValue(mod_synth_get_active_mso_table_segment_point(4));
+	ui->spinBox_MSO_Pos_e->blockSignals(false);
+
+	ui->spinBox_MSO_Pos_f->blockSignals(true);
+	ui->spinBox_MSO_Pos_f->setValue(mod_synth_get_active_mso_table_segment_point(5));
+	ui->spinBox_MSO_Pos_f->blockSignals(false);
+	
 	ui->horizontalSlider_MsoMorph->blockSignals(true);
 	ui->horizontalSlider_MsoMorph->setValue(mod_synth_get_active_mso_symetry());
 	ui->horizontalSlider_MsoMorph->blockSignals(false);
@@ -484,10 +509,18 @@ void Dialog_AnalogSynth::mso_update()
 	ui->dial_MsoSendFilter1->blockSignals(true);
 	ui->dial_MsoSendFilter1->setValue(mod_synth_get_active_mso_send_filter_1());
 	ui->dial_MsoSendFilter1->blockSignals(false);
+	
+	ui->spinBox_MsoSendFilter1->blockSignals(true);
+	ui->spinBox_MsoSendFilter1->setValue(mod_synth_get_active_mso_send_filter_1());
+	ui->spinBox_MsoSendFilter1->blockSignals(false);
 
 	ui->dial_MsoSendFilter2->blockSignals(true);
 	ui->dial_MsoSendFilter2->setValue(mod_synth_get_active_mso_send_filter_2());
 	ui->dial_MsoSendFilter2->blockSignals(false);
+	
+	ui->spinBox_MsoSendFilter2->blockSignals(true);
+	ui->spinBox_MsoSendFilter2->setValue(mod_synth_get_active_mso_send_filter_2());
+	ui->spinBox_MsoSendFilter2->blockSignals(false);
 
 	ui->comboBox_MsoFreqModLFO->blockSignals(true);
 	ui->comboBox_MsoFreqModLFO->setCurrentIndex(mod_synth_get_active_mso_freq_mod_lfo());
@@ -496,6 +529,10 @@ void Dialog_AnalogSynth::mso_update()
 	ui->dial_MsoFreqModLFOLevel->blockSignals(true);
 	ui->dial_MsoFreqModLFOLevel->setValue(mod_synth_get_active_mso_freq_mod_lfo_level());
 	ui->dial_MsoFreqModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_MsoFreqModLfoLevel->blockSignals(true);
+	ui->spinBox_MsoFreqModLfoLevel->setValue(mod_synth_get_active_mso_freq_mod_lfo_level());
+	ui->spinBox_MsoFreqModLfoLevel->blockSignals(false);
 
 	ui->comboBox_MsoFreqModAdsr->blockSignals(true);
 	ui->comboBox_MsoFreqModAdsr->setCurrentIndex(mod_synth_get_active_mso_freq_mod_env());
@@ -504,6 +541,10 @@ void Dialog_AnalogSynth::mso_update()
 	ui->dial_MsoFreqModAdsrLevel->blockSignals(true);
 	ui->dial_MsoFreqModAdsrLevel->setValue(mod_synth_get_active_mso_freq_mod_env_level());
 	ui->dial_MsoFreqModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_MsoFreqModAdsrLevel->blockSignals(true);
+	ui->spinBox_MsoFreqModAdsrLevel->setValue(mod_synth_get_active_mso_freq_mod_env_level());
+	ui->spinBox_MsoFreqModAdsrLevel->blockSignals(false);
 
 	ui->comboBox_MsoPwmModLFO->blockSignals(true);
 	ui->comboBox_MsoPwmModLFO->setCurrentIndex(mod_synth_get_active_mso_pwm_mod_lfo());
@@ -512,6 +553,10 @@ void Dialog_AnalogSynth::mso_update()
 	ui->dial_MsoPwmModLFOLevel->blockSignals(true);
 	ui->dial_MsoPwmModLFOLevel->setValue(mod_synth_get_active_mso_pwm_mod_lfo_level());
 	ui->dial_MsoPwmModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_MsoPwmModLfoLevel->blockSignals(true);
+	ui->spinBox_MsoPwmModLfoLevel->setValue(mod_synth_get_active_mso_pwm_mod_lfo_level());
+	ui->spinBox_MsoPwmModLfoLevel->blockSignals(false);
 
 	ui->comboBox_MsoPwmModAdsr->blockSignals(true);
 	ui->comboBox_MsoPwmModAdsr->setCurrentIndex(mod_synth_get_active_mso_pwm_mod_env());
@@ -520,6 +565,10 @@ void Dialog_AnalogSynth::mso_update()
 	ui->dial_MsoPwmModAdsrLevel->blockSignals(true);
 	ui->dial_MsoPwmModAdsrLevel->setValue(mod_synth_get_active_mso_pwm_mod_env_level());
 	ui->dial_MsoPwmModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_MsoPwmModAdsrLevel->blockSignals(true);
+	ui->spinBox_MsoPwmModAdsrLevel->setValue(mod_synth_get_active_mso_pwm_mod_env_level());
+	ui->spinBox_MsoPwmModAdsrLevel->blockSignals(false);
 
 	ui->comboBox_MsoAmpModLFO->blockSignals(true);
 	ui->comboBox_MsoAmpModLFO->setCurrentIndex(mod_synth_get_active_mso_amp_mod_lfo());
@@ -528,6 +577,10 @@ void Dialog_AnalogSynth::mso_update()
 	ui->dial_MsoAmpModLFOLevel->blockSignals(true);
 	ui->dial_MsoAmpModLFOLevel->setValue(mod_synth_get_active_mso_amp_mod_lfo_level());
 	ui->dial_MsoAmpModLFOLevel->blockSignals(false);
+	
+	ui->spinBox_MsoAmpModLfoLevel->blockSignals(true);
+	ui->spinBox_MsoAmpModLfoLevel->setValue(mod_synth_get_active_mso_amp_mod_lfo_level());
+	ui->spinBox_MsoAmpModLfoLevel->blockSignals(false);
 
 	ui->comboBox_MsoAmpModAdsr->blockSignals(true);
 	ui->comboBox_MsoAmpModAdsr->setCurrentIndex(mod_synth_get_active_mso_amp_mod_env());
@@ -536,6 +589,10 @@ void Dialog_AnalogSynth::mso_update()
 	ui->dial_MsoAmpModAdsrLevel->blockSignals(true);
 	ui->dial_MsoAmpModAdsrLevel->setValue(mod_synth_get_active_mso_amp_mod_env_level());
 	ui->dial_MsoAmpModAdsrLevel->blockSignals(false);
+	
+	ui->spinBox_MsoAmpModAdsrLevel->blockSignals(true);
+	ui->spinBox_MsoAmpModAdsrLevel->setValue(mod_synth_get_active_mso_amp_mod_env_level());
+	ui->spinBox_MsoAmpModAdsrLevel->blockSignals(false);
 
 	if (update_mso_plot == false)
 	{
@@ -1003,16 +1060,18 @@ void Dialog_AnalogSynth::on_mso_enable_checkbox_changed(bool val)
 	if (val)
 	{
 		ui->checkBox_MsoActive->setCheckState(Qt::Checked);
+		mod_synth_enable_mso();
 	}
 	else
 	{
 		ui->checkBox_MsoActive->setCheckState(Qt::Unchecked);
 	}
 	ui->checkBox_MsoActive->blockSignals(false);
+	mod_synth_disable_mso();
 	
 	mso_enabled = val;
 	
-	mod_synth_mso_event_bool(_MSO_1_EVENT, _OSC_ENABLE, val);
+	mod_synth_mso_event_bool(_MSO_1_EVENT, _MSO_ENABLE, val);
 	
 	mso_update();
 	
