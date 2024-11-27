@@ -181,7 +181,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_2_noise(int evnt, uint16
 				val,
 				&prev_combobox_osc2_pwm_lfo,
 				_LFO_NONE,
-				_LFO_5_DELAYED_2000MS,
+				_LFO_6_DELAYED_2000MS,
 				1);
 			
 			on_osc2_pwm_mod_lfo_combobox_changed(osc2_pwm_mod_lfo_num);
@@ -265,7 +265,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_2_noise(int evnt, uint16
 				val,
 				&prev_combobox_osc2_pwm_adsr,
 				_ENV_NONE,
-				_ENV_5,
+				_ENV_6,
 				1);
 			
 			on_osc2_pwm_mod_adsr_combobox_changed(osc2_pwm_mod_adsr_num);
@@ -355,7 +355,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_2_noise(int evnt, uint16
 				val,
 				&prev_combobox_osc2_freq_lfo,
 				_LFO_NONE,
-				_LFO_5_DELAYED_2000MS,
+				_LFO_6_DELAYED_2000MS,
 				1);
 			
 			on_osc2_freq_mod_lfo_combobox_changed(osc2_freq_mod_lfo_num);
@@ -368,7 +368,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_2_noise(int evnt, uint16
 				val,
 				&prev_combobox_osc2_amp_lfo,
 				_LFO_NONE,
-				_LFO_5_DELAYED_2000MS,
+				_LFO_6_DELAYED_2000MS,
 				1);
 			
 			on_osc2_amp_mod_lfo_combobox_changed(osc2_amp_mod_lfo_num);
@@ -381,7 +381,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_2_noise(int evnt, uint16
 				val,
 				&prev_combobox_noise_amp_lfo,
 				_LFO_NONE,
-				_LFO_5_DELAYED_2000MS,
+				_LFO_6_DELAYED_2000MS,
 				1);
 			
 			on_noise_amp_mod_lfo_combobox_changed(noise_amp_mod_lfo_num);
@@ -439,7 +439,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_2_noise(int evnt, uint16
 				val,
 				&prev_combobox_osc2_freq_adsr,
 				_ENV_NONE,
-				_ENV_5,
+				_ENV_6,
 				1);
 			
 			on_osc2_freq_mod_adsr_combobox_changed(osc2_freq_mod_adsr_num);
@@ -452,7 +452,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_2_noise(int evnt, uint16
 				val,
 				&prev_combobox_osc2_amp_adsr,
 				_ENV_NONE,
-				_ENV_5,
+				_ENV_6,
 				1);
 			
 			on_osc2_amp_mod_adsr_combobox_changed(osc2_amp_mod_adsr_num);
@@ -465,7 +465,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_2_noise(int evnt, uint16
 				val,
 				&prev_combobox_noise_amp_adsr,
 				_ENV_NONE,
-				_ENV_5,
+				_ENV_6,
 				1);
 			
 			on_noise_amp_mod_adsr_combobox_changed(noise_amp_mod_adsr_num);

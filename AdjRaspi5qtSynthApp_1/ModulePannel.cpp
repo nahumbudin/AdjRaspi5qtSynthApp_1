@@ -209,7 +209,7 @@ void ModulePannel::on_module_connections_clicked()
 		{
 			if (!connections_dialog->isVisible())
 			{
-				connections_dialog = new Dialog_InstrumentConnections(this, module_name);
+				//connections_dialog = new Dialog_InstrumentConnections(this, module_name);
 				MainWindow::get_instance()->register_active_dialog(connections_dialog);
 				connections_dialog->show();
 				Dialog_InstrumentConnections::dialog_is_open = true;

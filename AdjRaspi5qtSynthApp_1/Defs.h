@@ -10,10 +10,9 @@
 #define _MSO_TAB					2
 #define _KARPLUS_TAB				3
 #define _PAD_SYNTH_TAB				4
-#define _FILTERS_TAB				5
-#define _AMP_TAB					6
-#define _MODULATORS_1_TAB			7
-#define _MODULATORS_2_TAB			8
+#define _FILTERS_AMPS_TAB			5
+#define _MODULATORS_1_TAB			6
+#define _MODULATORS_2_TAB			7
 
 #define _FRAMES_GROUP_1				0
 #define _FRAMES_GROUP_2				1
@@ -52,6 +51,18 @@
 
 #define _PAD_MAX_SLIDER_VALUE		100
 #define _PAD_MIN_SLIDER_VALUE		0
+
+#define _FILTER_KNOB_MAX_VALUE		100
+#define _FILTER_KNOB_MIN_VALUE		0
+
+#define _AMP_KNOB_MAX_VALUE			100
+#define _AMP_KNOB_MIN_VALUE			0
+
+#define _MSO_PRESET_USER			0
+#define _MSO_PRESET_SINE			1
+#define _MSO_PRESET_SQUARE			2
+#define _MSO_PRESET_PULSE			3
+#define _MSO_PRESET_SAW				4
 
 class ModulePannel;
 

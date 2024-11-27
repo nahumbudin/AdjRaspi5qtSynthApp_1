@@ -918,7 +918,7 @@ void Dialog_InstrumentConnections::control_box_ui_update_callback(int evnt, uint
 }
 
 void Dialog_InstrumentConnections::update()
-{
+{	
 	int cln;
 	std::string cln_name, port_name, input_name;
 	int num_of_alsa_input_clients, connection_number;

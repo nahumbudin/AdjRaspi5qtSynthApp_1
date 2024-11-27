@@ -196,6 +196,7 @@ void Dialog_AnalogSynth::init_osc2_combboxes_and_labels()
 		string_adsr_values.append("ENV 3");
 		string_adsr_values.append("ENV 4");
 		string_adsr_values.append("ENV 5");
+		string_adsr_values.append("ENV 6");
 	
 		string_lfo_values.append("-----");
 		string_lfo_values.append("LFO 1");
@@ -203,26 +204,31 @@ void Dialog_AnalogSynth::init_osc2_combboxes_and_labels()
 		string_lfo_values.append("LFO 3");
 		string_lfo_values.append("LFO 4");
 		string_lfo_values.append("LFO 5");
+		string_lfo_values.append("LFO 6");
 		string_lfo_values.append("LFO 1 0.5s");
 		string_lfo_values.append("LFO 2 0.5s");
 		string_lfo_values.append("LFO 3 0.5s");
 		string_lfo_values.append("LFO 4 0.5s");
 		string_lfo_values.append("LFO 5 0.5s");
+		string_lfo_values.append("LFO 6 0.5s");
 		string_lfo_values.append("LFO 1 1.0s");
 		string_lfo_values.append("LFO 2 1.0s");
 		string_lfo_values.append("LFO 3 1.0s");
 		string_lfo_values.append("LFO 4 1.0s");
 		string_lfo_values.append("LFO 5 1.0s");
+		string_lfo_values.append("LFO 6 1.0s");
 		string_lfo_values.append("LFO 1 1.5s");
 		string_lfo_values.append("LFO 2 1.5s");
 		string_lfo_values.append("LFO 3 1.5s");
 		string_lfo_values.append("LFO 4 1.5s");
 		string_lfo_values.append("LFO 5 1.5s");
+		string_lfo_values.append("LFO 6 1.5s");
 		string_lfo_values.append("LFO 1 2.0s");
 		string_lfo_values.append("LFO 2 2.0s");
 		string_lfo_values.append("LFO 3 2.0s");
 		string_lfo_values.append("LFO 4 2.0s");
 		string_lfo_values.append("LFO 5 2.0s");
+		string_lfo_values.append("LFO 6 2.0s");
 	}
 	
 	ui->comboBox_Osc2FreqModAdsr->blockSignals(true);

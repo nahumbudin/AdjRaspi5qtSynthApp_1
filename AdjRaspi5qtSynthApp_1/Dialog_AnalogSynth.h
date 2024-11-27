@@ -37,7 +37,6 @@ public :
 	
 	static Dialog_AnalogSynth *get_instance(QWidget *parent = 0);
 	
-	
 	void control_box_ui_update_callback(int evnt, uint16_t val);
 	
 	void control_box_events_handler_osc_1(int evnt, uint16_t val);
@@ -50,7 +49,6 @@ public :
 	void osc1_set_unison_mode(int mode);
 	
 		
-	
 public slots :	
 	void closeEvent(QCloseEvent *event);
 	virtual void update_gui(); // Called by a Timer
@@ -259,6 +257,41 @@ protected slots:
 	void on_pad_harmony10_level_slider_changed(int val);
 
 	void on_pad_harmonies_detune_slider_changed(int val);
+	
+	void on_filter1_freq_dial_changed(int val);
+	void on_filter1_q_dial_changed(int val);
+	void on_filter1_octave_dial_changed(int val);
+	void on_filter1_kbd_track_dial_changed(int val);
+	void on_filter1_band_combo_hanged(int val);
+	void on_filter1_freq_mod_lfo_combo_changed(int val);
+	void on_filter1_freq_mod_level_lfo_dial_changed(int val);
+	void on_filter1_freq_mod_adsr_combo_changed(int val);
+	void on_filter1_freq_mod_level_adsr_dial_hanged(int val);
+
+	void on_filter2_freq_dial_changed(int val);
+	void on_filter2_q_dial_changed(int val);
+	void on_filter2_octave_dial_changed(int val);
+	void on_filter2_kbd_track_dial_changed(int val);
+	void on_filter2_band_combo_hanged(int val);
+	void on_filter2_freq_mod_lfo_combo_changed(int val);
+	void on_filter2_freq_mod_level_lfo_dial_changed(int val);
+	void on_filter2_freq_mod_adsr_combo_changed(int val);
+	void on_filter2_freq_mod_level_adsr_dial_hanged(int val);
+	void on_filter2_track_filter1_checkbox_changed(bool val);
+	
+	void on_amp1_level_dial_hanged(int val);
+	void on_amp1_pan_dial_changed(int val);
+	void on_amp1_send_dial_changed(int val);
+	void on_amp1_pan_mod_lfo_combo_changed(int val);
+	void on_amp1_pan_mod_level_lfo_dial_changed(int val);
+
+	void on_amp2_level_dial_hanged(int val);
+	void on_amp2_pan_dial_changed(int val);
+	void on_amp2_send_dial_changed(int val);
+	void on_amp2_pan_mod_lfo_combo_changed(int val);
+	void on_amp2_pan_mod_level_lfo_dial_changed(int val);
+
+	void on_fixed_amp_checkbox_Changed(bool val);
 
 	
 	
@@ -437,6 +470,43 @@ private:
 	int pad_harmony_10_level = 0;
 	int pad_harmony_detune = 0;
 	
+	int filter1_frequency_entry = 0;
+	int filter1_q_entry = 1;
+	int filter1_octave_entry = 0;
+	int filter1_keyboard_track = 100;
+	int filter1_band = 0;
+	int filter1_freq_mod_lfo = 0;
+	int filter1_freq_mod_lfo_level = 0;
+	int filter1_freq_mod_adsr = 0;
+	int filter1_freq_mod_adsr_level = 0;
+	
+	
+	int filter2_frequency_entry = 0;
+	int filter2_q_entry = 1;
+	int filter2_octave_entry = 0;
+	int filter2_keyboard_track = 100;
+	int filter2_band = 0;
+	int filter2_freq_mod_lfo = 0;
+	int filter2_freq_mod_lfo_level = 0;
+	int filter2_freq_mod_adsr = 0;
+	int filter2_freq_mod_adsr_level = 0;
+	
+	bool filter_2_follows_filter_1 = false;
+	
+	int amp1_level = 50;
+	int amp1_pan = 50;
+	int amp1_send = 50;
+	int amp1_pan_mod_lfo = 0;
+	int amp1_pan_mod_lfo_level = 0;
+	
+	
+	int amp2_level = 50;
+	int amp2_pan = 50;
+	int amp2_send = 50;
+	int amp2_pan_mod_lfo = 0;
+	int amp2_pan_mod_lfo_level = 0;
+	
+	bool amp_fixed = false;
 	
 	
 	void start_update_timer(int interval);
@@ -477,6 +547,8 @@ private:
 	void osc1_set_unison_labales(QList<QString> str, uint16_t mask);
 	void osc1_set_unison_labales(int mode);
 	void osc1_en_dis_sliders(uint16_t mask);
+	
+	void copy_filter1_to_filter2();
 	
 	void osc1_update();
 	void osc2_update();

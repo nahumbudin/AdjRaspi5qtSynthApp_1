@@ -129,6 +129,15 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 	ui->frame_PAD_Haromonys1_6->setStyleSheet(_BACKGROUND_COLOR_GRAY);
 	ui->frame__PAD_Haromonys7_10->setStyleSheet(_BACKGROUND_COLOR_GRAY);
 	
+	ui->frame_FilterParams_1->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+	ui->frame_FilterWaveformFreqMod_1->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+	
+	ui->frame_FilterParams_2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	ui->frame_FilterWaveformFreqMod_2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	
+	ui->frame_Amp1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	ui->frame_Amp2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	
 	mod_synth_register_callback_control_box_event_update_ui(
 		&analog_synth_control_box_event_update_ui_callback_wrapper);
 	
@@ -207,13 +216,9 @@ void Dialog_AnalogSynth::control_box_ui_update_callback(int evnt, uint16_t val)
 	{
 		control_box_events_handler_pad(evnt, val);
 	}
-	else if (active_tab == _FILTERS_TAB)
+	else if (active_tab == _FILTERS_AMPS_TAB)
 	{
-		
-	}
-	else if (active_tab == _AMP_TAB)
-	{
-		
+		control_box_events_handler_filters_amps(evnt, val);
 	}
 	else if ((active_tab == _MODULATORS_1_TAB) || (active_tab == _MODULATORS_2_TAB))
 	{
@@ -450,6 +455,45 @@ void Dialog_AnalogSynth::update_gui()
 			}
 			
 			prev_active_frames_group_pad = active_frames_group_pad;
+		}
+	}
+	else if (active_tab == _FILTERS_AMPS_TAB)
+	{
+		if (active_frames_group_filters_amps != prev_active_frames_group_filters_amps)
+		{
+			if (active_frames_group_filters_amps == _FRAMES_GROUP_1)
+			{
+				ui->frame_FilterParams_1->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_FilterWaveformFreqMod_1->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+	
+				ui->frame_FilterParams_2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_FilterWaveformFreqMod_2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	
+				ui->frame_Amp1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_Amp2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+			}
+			else if (active_frames_group_filters_amps == _FRAMES_GROUP_2)
+			{
+				ui->frame_FilterParams_1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_FilterWaveformFreqMod_1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	
+				ui->frame_FilterParams_2->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_FilterWaveformFreqMod_2->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+	
+				ui->frame_Amp1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_Amp2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+			}
+			else if (active_frames_group_filters_amps == _FRAMES_GROUP_3)
+			{
+				ui->frame_FilterParams_1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_FilterWaveformFreqMod_1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	
+				ui->frame_FilterParams_2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_FilterWaveformFreqMod_2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	
+				ui->frame_Amp1->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_Amp2->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+			}
 		}
 	}
 }

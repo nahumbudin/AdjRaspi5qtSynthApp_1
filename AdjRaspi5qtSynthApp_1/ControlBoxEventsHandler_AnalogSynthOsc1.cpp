@@ -357,7 +357,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 				val,
 				&prev_combobox_pwm_lfo,
 				_LFO_NONE,
-				_LFO_5_DELAYED_2000MS,
+				_LFO_6_DELAYED_2000MS,
 				1);
 			
 			on_osc1_pwm_mod_lfo_combobox_changed(osc1_pwm_mod_lfo_num);
@@ -416,7 +416,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 				val,
 				&prev_combobox_pwm_adsr,
 				_ENV_NONE,
-				_ENV_5,
+				_ENV_6,
 				1);
 			
 			on_osc1_pwm_mod_adsr_combobox_changed(osc1_pwm_mod_adsr_num);
@@ -506,7 +506,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 				val,
 				&prev_combobox_freq_lfo,
 				_LFO_NONE,
-				_LFO_5_DELAYED_2000MS,
+				_LFO_6_DELAYED_2000MS,
 				1);
 			
 			on_osc1_freq_mod_lfo_combobox_changed(osc1_freq_mod_lfo_num);
@@ -519,7 +519,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 				val,
 				&prev_combobox_amp_lfo,
 				_LFO_NONE,
-				_LFO_5_DELAYED_2000MS,
+				_LFO_6_DELAYED_2000MS,
 				1);
 			
 			on_osc1_amp_mod_lfo_combobox_changed(osc1_amp_mod_lfo_num);
@@ -564,7 +564,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 				val,
 				&prev_combobox_freq_adsr,
 				_ENV_NONE,
-				_ENV_5,
+				_ENV_6,
 				1);
 			
 			on_osc1_freq_mod_adsr_combobox_changed(osc1_freq_mod_adsr_num);
@@ -577,7 +577,7 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 				val,
 				&prev_combobox_amp_adsr,
 				_ENV_NONE,
-				_ENV_5,
+				_ENV_6,
 				1);
 			
 			on_osc1_amp_mod_adsr_combobox_changed(osc1_amp_mod_adsr_num);
