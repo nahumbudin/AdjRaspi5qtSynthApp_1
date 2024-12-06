@@ -24,10 +24,10 @@ void osc1_unison_mode_selected_wrapper(int mod)
 
 void Dialog_AnalogSynth::set_osc1_signals_connections()
 {
-	connect(ui->horizontalSlider_Osc1Symetry,
+	connect(ui->horizontalSlider_Osc1Symmetry,
 		SIGNAL(valueChanged(int)),
 		this,
-		SLOT(on_osc1_waveform_symetry_slider_cahanged(int)));
+		SLOT(on_osc1_waveform_symmetry_slider_cahanged(int)));
 	
 	
 	connect(ui->verticalSlider_Osc1UnisonLevel_1,
@@ -85,10 +85,10 @@ void Dialog_AnalogSynth::set_osc1_signals_connections()
 		this,
 		SLOT(on_osc1_unison_detune_slider_changed(int)));
 	
-	connect(ui->spinBox_Osc1Symetry,
+	connect(ui->spinBox_Osc1Symmetry,
 		SIGNAL(valueChanged(int)),
 		this,
-		SLOT(on_osc1_waveform_symetry_spinbox_changed(int)));
+		SLOT(on_osc1_waveform_symmetry_spinbox_changed(int)));
 	
 	connect(ui->spinBox_Osc1SendFilter1,
 		SIGNAL(valueChanged(int)),
@@ -768,13 +768,13 @@ void Dialog_AnalogSynth::osc1_update()
 	ui->comboBox_Osc1Waveform->setCurrentIndex(mod_synth_get_active_osc1_waveform());
 	ui->comboBox_Osc1Waveform->blockSignals(false);
 
-	ui->horizontalSlider_Osc1Symetry->blockSignals(true);
-	ui->horizontalSlider_Osc1Symetry->setValue(mod_synth_get_active_osc1_pwm_percents());
-	ui->horizontalSlider_Osc1Symetry->blockSignals(false);
+	ui->horizontalSlider_Osc1Symmetry->blockSignals(true);
+	ui->horizontalSlider_Osc1Symmetry->setValue(mod_synth_get_active_osc1_pwm_percents());
+	ui->horizontalSlider_Osc1Symmetry->blockSignals(false);
 	
-	ui->spinBox_Osc1Symetry->blockSignals(true);
-	ui->spinBox_Osc1Symetry->setValue(mod_synth_get_active_osc1_pwm_percents());
-	ui->spinBox_Osc1Symetry->blockSignals(false);
+	ui->spinBox_Osc1Symmetry->blockSignals(true);
+	ui->spinBox_Osc1Symmetry->setValue(mod_synth_get_active_osc1_pwm_percents());
+	ui->spinBox_Osc1Symmetry->blockSignals(false);
 
 	ui->comboBox_Osc1TuneOctave->blockSignals(true);
 	ui->comboBox_Osc1TuneOctave->setCurrentIndex(mod_synth_get_active_osc1_detune_octave() - mod_synth_get_osc_detune_min_octave());
@@ -1033,9 +1033,9 @@ void Dialog_AnalogSynth::on_osc1_enable_changed(bool en)
 
 
 
-void Dialog_AnalogSynth::on_osc1_waveform_symetry_spinbox_changed(int val)
+void Dialog_AnalogSynth::on_osc1_waveform_symmetry_spinbox_changed(int val)
 {
-	on_osc1_waveform_symetry_slider_cahanged(val);
+	on_osc1_waveform_symmetry_slider_cahanged(val);
 }
 
 void Dialog_AnalogSynth::on_osc1_send_filter_1_spinbox_changed(int val)
@@ -1134,22 +1134,22 @@ void Dialog_AnalogSynth::on_osc1_unison_detune_spinbox_changed(int val)
 }
 
 
-void Dialog_AnalogSynth::on_osc1_waveform_symetry_slider_cahanged(int val)
+void Dialog_AnalogSynth::on_osc1_waveform_symmetry_slider_cahanged(int val)
 {
 	if ((val < _OSC_WAVEFORM_SYMETRY_MIN) || (val > _OSC_WAVEFORM_SYMETRY_MAX))
 	{
 		return; 
 	}
 	
-	ui->horizontalSlider_Osc1Symetry->blockSignals(true);
-	ui->horizontalSlider_Osc1Symetry->setValue(val);
-	ui->horizontalSlider_Osc1Symetry->blockSignals(false);
+	ui->horizontalSlider_Osc1Symmetry->blockSignals(true);
+	ui->horizontalSlider_Osc1Symmetry->setValue(val);
+	ui->horizontalSlider_Osc1Symmetry->blockSignals(false);
 	
-	ui->spinBox_Osc1Symetry->blockSignals(true);
-	ui->spinBox_Osc1Symetry->setValue(val);
-	ui->spinBox_Osc1Symetry->blockSignals(false);
+	ui->spinBox_Osc1Symmetry->blockSignals(true);
+	ui->spinBox_Osc1Symmetry->setValue(val);
+	ui->spinBox_Osc1Symmetry->blockSignals(false);
 	
-	osc1_waveform_symetry = val;
+	osc1_waveform_symmetry = val;
 	
 	mod_synth_vco_event_int(_OSC_1_EVENT, _OSC_PWM_SYMMETRY, val);
 	

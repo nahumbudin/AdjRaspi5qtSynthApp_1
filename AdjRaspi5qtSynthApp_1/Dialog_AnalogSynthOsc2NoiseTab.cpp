@@ -20,15 +20,15 @@
 
 void Dialog_AnalogSynth::set_osc2_signals_connections()
 {
-	connect(ui->horizontalSlider_Osc2Symetry,
+	connect(ui->horizontalSlider_Osc2Symmetry,
 		SIGNAL(valueChanged(int)),
 		this,
-		SLOT(on_osc2_waveform_symetry_slider_cahanged(int)));
+		SLOT(on_osc2_waveform_symmetry_slider_cahanged(int)));
 	
-	connect(ui->spinBox_Osc2Symetry,
+	connect(ui->spinBox_Osc2Symmetry,
 		SIGNAL(valueChanged(int)),
 		this,
-		SLOT(on_osc2_waveform_symetry_spinbox_changed(int)));
+		SLOT(on_osc2_waveform_symmetry_spinbox_changed(int)));
 	
 	connect(ui->spinBox_Osc2SendFilter1,
 		SIGNAL(valueChanged(int)),
@@ -286,13 +286,13 @@ void Dialog_AnalogSynth::osc2_update()
 	ui->comboBox_Osc2Waveform->setCurrentIndex(mod_synth_get_active_osc2_waveform());
 	ui->comboBox_Osc2Waveform->blockSignals(false);
 
-	ui->horizontalSlider_Osc2Symetry->blockSignals(true);
-	ui->horizontalSlider_Osc2Symetry->setValue(mod_synth_get_active_osc2_pwm_percents());
-	ui->horizontalSlider_Osc2Symetry->blockSignals(false);
+	ui->horizontalSlider_Osc2Symmetry->blockSignals(true);
+	ui->horizontalSlider_Osc2Symmetry->setValue(mod_synth_get_active_osc2_pwm_percents());
+	ui->horizontalSlider_Osc2Symmetry->blockSignals(false);
 	
-	ui->spinBox_Osc2Symetry->blockSignals(true);
-	ui->spinBox_Osc2Symetry->setValue(mod_synth_get_active_osc2_pwm_percents());
-	ui->spinBox_Osc2Symetry->blockSignals(false) ;
+	ui->spinBox_Osc2Symmetry->blockSignals(true);
+	ui->spinBox_Osc2Symmetry->setValue(mod_synth_get_active_osc2_pwm_percents());
+	ui->spinBox_Osc2Symmetry->blockSignals(false) ;
 
 	ui->comboBox_Osc2TuneOctave->blockSignals(true);
 	ui->comboBox_Osc2TuneOctave->setCurrentIndex(mod_synth_get_active_osc2_detune_octave() - 
@@ -474,9 +474,9 @@ void Dialog_AnalogSynth::on_osc2_sync_on_osc1_enable_changed(bool en)
 	this->setFocus(Qt::ActiveWindowFocusReason);
 }
 
-void Dialog_AnalogSynth::on_osc2_waveform_symetry_spinbox_changed(int val)
+void Dialog_AnalogSynth::on_osc2_waveform_symmetry_spinbox_changed(int val)
 {
-	on_osc2_waveform_symetry_slider_cahanged(val);
+	on_osc2_waveform_symmetry_slider_cahanged(val);
 }
 
 void Dialog_AnalogSynth::on_osc2_send_filter_1_spinbox_changed(int val)
@@ -519,22 +519,22 @@ void Dialog_AnalogSynth::on_osc2_amp_mod_adsr_level_spinbox_changed(int val)
 	on_osc2_amp_mod_adsr_level_dial_changed(val);
 }
 
-void Dialog_AnalogSynth::on_osc2_waveform_symetry_slider_cahanged(int val)
+void Dialog_AnalogSynth::on_osc2_waveform_symmetry_slider_cahanged(int val)
 {
 	if ((val < _OSC_WAVEFORM_SYMETRY_MIN) || (val > _OSC_WAVEFORM_SYMETRY_MAX))
 	{
 		return; 
 	}
 	
-	ui->horizontalSlider_Osc2Symetry->blockSignals(true);
-	ui->horizontalSlider_Osc2Symetry->setValue(val);
-	ui->horizontalSlider_Osc2Symetry->blockSignals(false);
+	ui->horizontalSlider_Osc2Symmetry->blockSignals(true);
+	ui->horizontalSlider_Osc2Symmetry->setValue(val);
+	ui->horizontalSlider_Osc2Symmetry->blockSignals(false);
 	
-	ui->spinBox_Osc2Symetry->blockSignals(true);
-	ui->spinBox_Osc2Symetry->setValue(val);
-	ui->spinBox_Osc2Symetry->blockSignals(false);
+	ui->spinBox_Osc2Symmetry->blockSignals(true);
+	ui->spinBox_Osc2Symmetry->setValue(val);
+	ui->spinBox_Osc2Symmetry->blockSignals(false);
 	
-	osc2_waveform_symetry = val;
+	osc2_waveform_symmetry = val;
 	
 	mod_synth_vco_event_int(_OSC_2_EVENT, _OSC_PWM_SYMMETRY, val);
 	

@@ -11,8 +11,9 @@
 #define _KARPLUS_TAB				3
 #define _PAD_SYNTH_TAB				4
 #define _FILTERS_AMPS_TAB			5
-#define _MODULATORS_1_TAB			6
-#define _MODULATORS_2_TAB			7
+#define _MODULATORS_ADSRS_TAB		6
+#define _MODULATORS_LFOS_TAB		7
+#define _DISTORTION_TAB				8
 
 #define _FRAMES_GROUP_1				0
 #define _FRAMES_GROUP_2				1
@@ -63,6 +64,25 @@
 #define _MSO_PRESET_SQUARE			2
 #define _MSO_PRESET_PULSE			3
 #define _MSO_PRESET_SAW				4
+
+#define _LFO_RATE_ENTRY_MAX			100
+#define _LFO_RATE_ENTRY_MIN			0
+#define _LFO_SYMMETRY_ENTRY_MAX		95
+#define _LFO_SYMMETRY_ENTRY_MIN		5
+
+#define _ADSR_SLIDER_VALUE_MAX		100
+#define _ADSR_SLIDER_VALUE_MIN		0
+
+#define _DISTORTION_ENTRY_MAX		100
+#define _DISTORTION_ENTRY_MIN		0
+
+#define _ADSR_CURVE_START_POINT					0
+#define _ADSR_CURVE_TIME_MULTIPLIER				10		// 10 pixels per second
+#define _ADSR_CURVE_SUSTAIN_SEGMENT_LENGTH		40
+#define _ADSR_CURVE_HEIGHT						100
+
+#define _ADSR_CURVE_VIEW_WIDGET_SHOW_TIME_SEC	5
+
 
 class ModulePannel;
 

@@ -316,7 +316,7 @@ background-color: rgb(255, 0, 0);
        <number>4</number>
       </property>
      </widget>
-     <widget class="QSlider" name="horizontalSlider_Osc1Symetry">
+     <widget class="QSlider" name="horizontalSlider_Osc1Symmetry">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -359,13 +359,13 @@ background-color: rgb(255, 0, 0);
        </font>
       </property>
       <property name="text">
-       <string>Symetry</string>
+       <string>Symmetry</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_Osc1Symetry">
+     <widget class="QSpinBox" name="spinBox_Osc1Symmetry">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -430,9 +430,9 @@ background-color: rgb(255, 0, 0);
      <zorder>label_51</zorder>
      <zorder>label_52</zorder>
      <zorder>comboBox_Osc1Waveform</zorder>
-     <zorder>horizontalSlider_Osc1Symetry</zorder>
+     <zorder>horizontalSlider_Osc1Symmetry</zorder>
      <zorder>label_4</zorder>
-     <zorder>spinBox_Osc1Symetry</zorder>
+     <zorder>spinBox_Osc1Symmetry</zorder>
     </widget>
     <widget class="QFrame" name="frame_Osc1TuneOffset">
      <property name="geometry">
@@ -1905,7 +1905,6 @@ background-color: rgb(57, 176, 255);
      <zorder>frame_11</zorder>
      <zorder>spinBox_Osc1UnisonLevel_7</zorder>
      <zorder>verticalSlider_Osc1UnisonLevel_7</zorder>
-     <zorder>verticalSlider_Osc1UnisonLevel_8</zorder>
      <zorder>verticalSlider_Osc1UnisonLevel_9</zorder>
      <zorder>verticalSlider_Osc1HarmonyDistortLevel</zorder>
      <zorder>verticalSlider_Osc1HarmonyDetuneLevel</zorder>
@@ -1920,6 +1919,7 @@ background-color: rgb(57, 176, 255);
      <zorder>label_Osc1HarmonyLevel_8</zorder>
      <zorder>label_Osc1HarmonyLevel_7</zorder>
      <zorder>label_Osc1HarmonyLevel_9</zorder>
+     <zorder>verticalSlider_Osc1UnisonLevel_8</zorder>
     </widget>
     <widget class="QFrame" name="frame_Osc1FreqMod">
      <property name="geometry">
@@ -3019,6 +3019,14 @@ color: rgb(255, 255, 255);</string>
       </property>
      </widget>
     </widget>
+    <zorder>frame_Osc1Waveform</zorder>
+    <zorder>frame_Osc1TuneOffset</zorder>
+    <zorder>frame_Osc1Drawbars_1_6</zorder>
+    <zorder>frame_Osc1FreqMod</zorder>
+    <zorder>frame_Osc1PwmMod</zorder>
+    <zorder>frame_Osc1AmpMod</zorder>
+    <zorder>frame_Osc1Active</zorder>
+    <zorder>frame_Osc1Drawbars_7_9</zorder>
    </widget>
    <widget class="QWidget" name="tab_osc2_noise">
     <attribute name="title">
@@ -3355,7 +3363,7 @@ background-color: rgb(255, 0, 0);
         </rect>
        </property>
        <property name="autoFillBackground">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 0, 0);</string>
@@ -4328,7 +4336,7 @@ background-color: rgb(255, 0, 0);
         <number>4</number>
        </property>
       </widget>
-      <widget class="QSlider" name="horizontalSlider_Osc2Symetry">
+      <widget class="QSlider" name="horizontalSlider_Osc2Symmetry">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -4374,13 +4382,13 @@ background-color: rgb(255, 0, 0);
         </font>
        </property>
        <property name="text">
-        <string>Symetry</string>
+        <string>Symmetry</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox_Osc2Symetry">
+      <widget class="QSpinBox" name="spinBox_Osc2Symmetry">
        <property name="geometry">
         <rect>
          <x>50</x>
@@ -4445,9 +4453,9 @@ background-color: rgb(255, 0, 0);
       <zorder>label_53</zorder>
       <zorder>label_54</zorder>
       <zorder>comboBox_Osc2Waveform</zorder>
-      <zorder>horizontalSlider_Osc2Symetry</zorder>
+      <zorder>horizontalSlider_Osc2Symmetry</zorder>
       <zorder>label_37</zorder>
-      <zorder>spinBox_Osc2Symetry</zorder>
+      <zorder>spinBox_Osc2Symmetry</zorder>
      </widget>
      <widget class="QLabel" name="label_38">
       <property name="geometry">
@@ -14628,84 +14636,6 @@ color: rgb(255, 255, 255);</string>
      <property name="midLineWidth">
       <number>2</number>
      </property>
-     <widget class="QSpinBox" name="spinBox_AdsrS_1">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrD_1">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
      <widget class="QSlider" name="verticalSlider_AdsrR_1">
       <property name="geometry">
        <rect>
@@ -14725,52 +14655,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrA_1">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QSlider" name="verticalSlider_AdsrD_1">
@@ -14792,7 +14683,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -14820,7 +14711,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -14848,52 +14739,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>80</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrR_1">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_Osc1HarmonyLevel_26">
@@ -15001,40 +14853,81 @@ color: rgb(255, 255, 255);</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QFrame" name="frame_ADSRplot">
+     <widget class="QLineEdit" name="lineEdit_AdsrA_1">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>160</y>
-        <width>360</width>
-        <height>280</height>
+        <x>10</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(207, 207, 207);</string>
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
-      <property name="lineWidth">
-       <number>2</number>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrD_1">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
       </property>
-      <property name="midLineWidth">
-       <number>2</number>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
-      <widget class="QCustomPlot" name="widget_ADSRplot" native="true">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>341</width>
-         <height>261</height>
-        </rect>
-       </property>
-      </widget>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrS_1">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>240</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrR_1">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
     </widget>
     <widget class="QFrame" name="frame_ADSR_3">
@@ -15101,52 +14994,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrA_3">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QSlider" name="verticalSlider_AdsrS_3">
@@ -15168,7 +15022,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>80</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -15196,84 +15050,6 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrS_3">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrR_3">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_Osc1HarmonyLevel_40">
@@ -15316,7 +15092,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -15365,7 +15141,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -15395,22 +15171,14 @@ color: rgb(255, 255, 255);</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrD_3">
+     <widget class="QLineEdit" name="lineEdit_AdsrR_3">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>230</y>
-        <width>60</width>
+        <x>270</x>
+        <y>240</y>
+        <width>81</width>
         <height>22</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -15419,19 +15187,64 @@ color: rgb(255, 255, 255);</string>
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
        <bool>true</bool>
       </property>
-      <property name="minimum">
-       <number>0</number>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrD_3">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
       </property>
-      <property name="maximum">
-       <number>100</number>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
-      <property name="value">
-       <number>0</number>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrA_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrS_3">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>240</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -15499,52 +15312,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>80</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrS_5">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QSlider" name="verticalSlider_AdsrD_5">
@@ -15566,7 +15340,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -15615,52 +15389,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrR_5">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_Osc1HarmonyLevel_50">
@@ -15682,45 +15417,6 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrD_5">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_Osc1HarmonyLevel_51">
@@ -15763,52 +15459,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrA_5">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>230</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_Osc1HarmonyLevel_52">
@@ -15830,6 +15487,82 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrR_5">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrA_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrS_5">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>240</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrD_5">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -15899,45 +15632,6 @@ color: rgb(255, 255, 255);</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrD_2">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_Osc1HarmonyLevel_35">
       <property name="geometry">
        <rect>
@@ -15999,52 +15693,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrA_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QSlider" name="verticalSlider_AdsrD_2">
@@ -16066,52 +15721,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrS_2">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QSlider" name="verticalSlider_AdsrA_2">
@@ -16133,7 +15749,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -16161,52 +15777,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>80</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrR_2">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_Osc1HarmonyLevel_37">
@@ -16228,6 +15805,82 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrR_2">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrD_2">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrA_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrS_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>240</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -16276,84 +15929,6 @@ color: rgb(255, 255, 255);</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrD_4">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrA_4">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_Osc1HarmonyLevel_44">
       <property name="geometry">
        <rect>
@@ -16394,7 +15969,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>80</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -16445,45 +16020,6 @@ color: rgb(255, 255, 255);</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrR_4">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
      <widget class="QSlider" name="verticalSlider_AdsrA_4">
       <property name="geometry">
        <rect>
@@ -16503,7 +16039,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -16552,52 +16088,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrS_4">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QSlider" name="verticalSlider_AdsrR_4">
@@ -16619,13 +16116,89 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrR_4">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrD_4">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrA_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrS_4">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>240</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -16674,84 +16247,6 @@ color: rgb(255, 255, 255);</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrD_6">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrA_6">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_Osc1HarmonyLevel_54">
       <property name="geometry">
        <rect>
@@ -16792,7 +16287,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>80</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -16843,45 +16338,6 @@ color: rgb(255, 255, 255);</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrR_6">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
      <widget class="QSlider" name="verticalSlider_AdsrA_6">
       <property name="geometry">
        <rect>
@@ -16901,7 +16357,7 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -16950,52 +16406,13 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_AdsrS_6">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>240</y>
-        <width>60</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="accelerated">
-       <bool>true</bool>
-      </property>
-      <property name="minimum">
-       <number>0</number>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="value">
-       <number>0</number>
       </property>
      </widget>
      <widget class="QSlider" name="verticalSlider_AdsrR_6">
@@ -17017,13 +16434,89 @@ color: rgb(255, 255, 255);</string>
        <number>100</number>
       </property>
       <property name="value">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="tickPosition">
        <enum>QSlider::TicksBothSides</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrA_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrR_6">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrD_6">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>240</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_AdsrS_6">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>240</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -17071,7 +16564,7 @@ color: rgb(255, 255, 255);</string>
        </font>
       </property>
       <property name="text">
-       <string>RATE</string>
+       <string>Rate</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -17092,7 +16585,7 @@ color: rgb(255, 255, 255);</string>
        </font>
       </property>
       <property name="text">
-       <string>Symetry</string>
+       <string>Symmetry</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -17101,9 +16594,9 @@ color: rgb(255, 255, 255);</string>
      <widget class="QLineEdit" name="lineEdit_LFOrate_4">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>240</x>
         <y>240</y>
-        <width>61</width>
+        <width>81</width>
         <height>22</height>
        </rect>
       </property>
@@ -17117,7 +16610,7 @@ color: rgb(255, 255, 255);</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QDial" name="dial_LFOsymetry_4">
+     <widget class="QDial" name="dial_LFOsymmetry_4">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -17224,7 +16717,7 @@ color: rgb(255, 255, 255);</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_LFOsymetry_4">
+     <widget class="QSpinBox" name="spinBox_LFOsymmetry_4">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -17293,7 +16786,7 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="focusPolicy">
@@ -17391,7 +16884,7 @@ background-color: rgb(57, 176, 255);
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="focusPolicy">
@@ -17465,7 +16958,7 @@ background-color: rgb(170, 85, 255);
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_LFOsymetry_1">
+     <widget class="QSpinBox" name="spinBox_LFOsymmetry_1">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -17504,7 +16997,7 @@ background-color: rgb(170, 85, 255);
        <number>50</number>
       </property>
      </widget>
-     <widget class="QDial" name="dial_LFOsymetry_1">
+     <widget class="QDial" name="dial_LFOsymmetry_1">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -17553,7 +17046,7 @@ background-color: rgb(170, 85, 255);
        </font>
       </property>
       <property name="text">
-       <string>Symetry</string>
+       <string>Symmetry</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -17574,7 +17067,7 @@ background-color: rgb(170, 85, 255);
        </font>
       </property>
       <property name="text">
-       <string>RATE</string>
+       <string>Rate</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -17583,9 +17076,9 @@ background-color: rgb(170, 85, 255);
      <widget class="QLineEdit" name="lineEdit_LFOrate_1">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>240</x>
         <y>240</y>
-        <width>61</width>
+        <width>81</width>
         <height>22</height>
        </rect>
       </property>
@@ -17639,13 +17132,13 @@ background-color: rgb(170, 85, 255);
        </font>
       </property>
       <property name="text">
-       <string>RATE</string>
+       <string>Rate</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_LFOsymetry_2">
+     <widget class="QSpinBox" name="spinBox_LFOsymmetry_2">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -17695,7 +17188,7 @@ background-color: rgb(170, 85, 255);
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="focusPolicy">
@@ -17782,7 +17275,7 @@ background-color: rgb(170, 85, 255);
        </font>
       </property>
       <property name="text">
-       <string>Symetry</string>
+       <string>Symmetry</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -17791,9 +17284,9 @@ background-color: rgb(170, 85, 255);
      <widget class="QLineEdit" name="lineEdit_LFOrate_2">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>250</x>
         <y>240</y>
-        <width>61</width>
+        <width>81</width>
         <height>22</height>
        </rect>
       </property>
@@ -17807,7 +17300,7 @@ background-color: rgb(170, 85, 255);
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QDial" name="dial_LFOsymetry_2">
+     <widget class="QDial" name="dial_LFOsymmetry_2">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -17885,12 +17378,12 @@ background-color: rgb(170, 85, 255);
      </widget>
      <zorder>frame_69</zorder>
      <zorder>label_135</zorder>
-     <zorder>spinBox_LFOsymetry_2</zorder>
+     <zorder>spinBox_LFOsymmetry_2</zorder>
      <zorder>comboBox_LFOwaveform_2</zorder>
      <zorder>dial_LFOrate_2</zorder>
      <zorder>label_136</zorder>
      <zorder>lineEdit_LFOrate_2</zorder>
-     <zorder>dial_LFOsymetry_2</zorder>
+     <zorder>dial_LFOsymmetry_2</zorder>
      <zorder>label_137</zorder>
      <zorder>label_Osc1HarmonyLevel_59</zorder>
     </widget>
@@ -17933,7 +17426,7 @@ background-color: rgb(170, 85, 255);
        </font>
       </property>
       <property name="text">
-       <string>RATE</string>
+       <string>Rate</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -17942,9 +17435,9 @@ background-color: rgb(170, 85, 255);
      <widget class="QLineEdit" name="lineEdit_LFOrate_3">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>240</x>
         <y>240</y>
-        <width>61</width>
+        <width>81</width>
         <height>22</height>
        </rect>
       </property>
@@ -18040,7 +17533,7 @@ background-color: rgb(170, 85, 255);
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="focusPolicy">
@@ -18062,7 +17555,7 @@ background-color: rgb(57, 176, 255);
        <number>10</number>
       </property>
      </widget>
-     <widget class="QDial" name="dial_LFOsymetry_3">
+     <widget class="QDial" name="dial_LFOsymmetry_3">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -18111,13 +17604,13 @@ background-color: rgb(57, 176, 255);
        </font>
       </property>
       <property name="text">
-       <string>Symetry</string>
+       <string>Symmetry</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_LFOsymetry_3">
+     <widget class="QSpinBox" name="spinBox_LFOsymmetry_3">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -18217,7 +17710,7 @@ background-color: rgb(57, 176, 255);
        </font>
       </property>
       <property name="text">
-       <string>RATE</string>
+       <string>Rate</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -18247,9 +17740,9 @@ background-color: rgb(57, 176, 255);
      <widget class="QLineEdit" name="lineEdit_LFOrate_5">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>240</x>
         <y>240</y>
-        <width>61</width>
+        <width>81</width>
         <height>22</height>
        </rect>
       </property>
@@ -18278,7 +17771,7 @@ background-color: rgb(57, 176, 255);
        </font>
       </property>
       <property name="text">
-       <string>Symetry</string>
+       <string>Symmetry</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -18295,7 +17788,7 @@ background-color: rgb(57, 176, 255);
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="focusPolicy">
@@ -18388,7 +17881,7 @@ background-color: rgb(170, 85, 255);
        <enum>QFrame::Raised</enum>
       </property>
      </widget>
-     <widget class="QDial" name="dial_LFOsymetry_5">
+     <widget class="QDial" name="dial_LFOsymmetry_5">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -18422,7 +17915,7 @@ background-color: rgb(170, 85, 255);
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_LFOsymetry_5">
+     <widget class="QSpinBox" name="spinBox_LFOsymmetry_5">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -18469,8 +17962,8 @@ background-color: rgb(170, 85, 255);
      <zorder>comboBox_LFOwaveform_5</zorder>
      <zorder>dial_LFOrate_5</zorder>
      <zorder>label_146</zorder>
-     <zorder>dial_LFOsymetry_5</zorder>
-     <zorder>spinBox_LFOsymetry_5</zorder>
+     <zorder>dial_LFOsymmetry_5</zorder>
+     <zorder>spinBox_LFOsymmetry_5</zorder>
     </widget>
     <widget class="QFrame" name="frame_LFO_6">
      <property name="geometry">
@@ -18511,13 +18004,13 @@ background-color: rgb(170, 85, 255);
        </font>
       </property>
       <property name="text">
-       <string>RATE</string>
+       <string>Rate</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QDial" name="dial_LFOsymetry_6">
+     <widget class="QDial" name="dial_LFOsymmetry_6">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -18566,7 +18059,7 @@ background-color: rgb(170, 85, 255);
        </font>
       </property>
       <property name="text">
-       <string>Symetry</string>
+       <string>Symmetry</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -18577,7 +18070,7 @@ background-color: rgb(170, 85, 255);
        <rect>
         <x>260</x>
         <y>240</y>
-        <width>61</width>
+        <width>71</width>
         <height>22</height>
        </rect>
       </property>
@@ -18591,7 +18084,7 @@ background-color: rgb(170, 85, 255);
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_LFOsymetry_6">
+     <widget class="QSpinBox" name="spinBox_LFOsymmetry_6">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -18733,7 +18226,7 @@ background-color: rgb(170, 85, 255);
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="focusPolicy">
@@ -18761,13 +18254,612 @@ background-color: rgb(170, 85, 255);
     <attribute name="title">
      <string>Distortion</string>
     </attribute>
+    <widget class="QFrame" name="frame_Distortion_1">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>381</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0, 255, 255);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>2</number>
+     </property>
+     <property name="midLineWidth">
+      <number>2</number>
+     </property>
+     <widget class="QDial" name="dial_DistortionDrive_1">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>80</y>
+        <width>60</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 85, 255);</string>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="notchTarget">
+       <double>8.000000000000000</double>
+      </property>
+      <property name="notchesVisible">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_150">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>50</y>
+        <width>51</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Drive</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_DistortionDrive_1">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>150</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_DistortionRange_1">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>150</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_151">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>50</y>
+        <width>51</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Range</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QDial" name="dial_DistortionRange_1">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>80</y>
+        <width>60</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(22, 207, 75);</string>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="notchTarget">
+       <double>8.000000000000000</double>
+      </property>
+      <property name="notchesVisible">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_DistortionBlend_1">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>150</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QDial" name="dial_DistortionBlend_1">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>80</y>
+        <width>60</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="notchTarget">
+       <double>8.000000000000000</double>
+      </property>
+      <property name="notchesVisible">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_152">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>50</y>
+        <width>51</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Blend</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_153">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>0</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Distortion 1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_Distortion_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>381</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 85, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>2</number>
+     </property>
+     <property name="midLineWidth">
+      <number>2</number>
+     </property>
+     <widget class="QDial" name="dial_DistortionDrive_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>80</y>
+        <width>60</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 85, 255);</string>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="notchTarget">
+       <double>8.000000000000000</double>
+      </property>
+      <property name="notchesVisible">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_154">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>50</y>
+        <width>51</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Drive</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_DistortionDrive_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>150</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_DistortionRange_2">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>150</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_155">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>50</y>
+        <width>51</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Range</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QDial" name="dial_DistortionRange_2">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>80</y>
+        <width>60</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(22, 207, 75);</string>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="notchTarget">
+       <double>8.000000000000000</double>
+      </property>
+      <property name="notchesVisible">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_DistortionBlend_2">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>150</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QDial" name="dial_DistortionBlend_2">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>80</y>
+        <width>60</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="notchTarget">
+       <double>8.000000000000000</double>
+      </property>
+      <property name="notchesVisible">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_156">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>50</y>
+        <width>51</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Blend</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_157">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>0</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Distortion 2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_Osc1Active_2">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>10</y>
+       <width>121</width>
+       <height>371</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0, 255, 255);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>2</number>
+     </property>
+     <property name="midLineWidth">
+      <number>2</number>
+     </property>
+     <widget class="QCheckBox" name="checkBox_DistortionActive">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>101</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Active</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_DistortionAutoGain">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>101</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(57, 176, 255);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Auto Gain</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QPushButton" name="pushButton_AnalogSynthClose">
    <property name="geometry">
     <rect>
      <x>1020</x>
-     <y>640</y>
+     <y>650</y>
      <width>91</width>
      <height>31</height>
     </rect>
@@ -18805,6 +18897,69 @@ background-color: rgb(170, 85, 255);
    <property name="midLineWidth">
     <number>2</number>
    </property>
+   <widget class="QPushButton" name="pushButton_AnalogSynthSketch_1">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 85, 255);</string>
+    </property>
+    <property name="text">
+     <string>Sketch 1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_AnalogSynthSketch_2">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>20</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(22, 207, 75);</string>
+    </property>
+    <property name="text">
+     <string>Sketch 2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_AnalogSynthSketch_3">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>20</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Sketch 3</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QFrame" name="frame_59">
    <property name="geometry">
@@ -18831,6 +18986,46 @@ background-color: rgb(170, 85, 255);
     <number>2</number>
    </property>
   </widget>
+  <widget class="QFrame" name="frame_ADSRplot">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>590</y>
+     <width>241</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(207, 207, 207);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Panel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>2</number>
+   </property>
+   <property name="midLineWidth">
+    <number>2</number>
+   </property>
+   <widget class="QCustomPlot" name="widget_ADSRplot" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>220</width>
+      <height>100</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <zorder>frame_ADSRplot</zorder>
+  <zorder>frame_2</zorder>
+  <zorder>tabWidget</zorder>
+  <zorder>pushButton_AnalogSynthClose</zorder>
+  <zorder>frame_59</zorder>
  </widget>
  <customwidgets>
   <customwidget>

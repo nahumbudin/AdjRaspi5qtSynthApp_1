@@ -45,6 +45,9 @@ public :
 	void control_box_events_handler_kps(int evnt, uint16_t val);
 	void control_box_events_handler_pad(int evnt, uint16_t val);
 	void control_box_events_handler_filters_amps(int evnt, uint16_t val);
+	void control_box_events_handler_adsrs(int evnt, uint16_t val);
+	void control_box_events_handler_lfos(int evnt, uint16_t val);
+	void control_box_events_handler_distortion(int evnt, uint16_t val);
 	
 	void osc1_set_unison_mode(int mode);
 	
@@ -64,7 +67,7 @@ protected slots:
 	
 	void on_osc1_enable_changed(bool en);
 	
-	void on_osc1_waveform_symetry_spinbox_changed(int val);
+	void on_osc1_waveform_symmetry_spinbox_changed(int val);
 	void on_osc1_send_filter_1_spinbox_changed(int val);
 	void on_osc1_send_filter_2_spinbox_changed(int val);
 	void on_osc1_freq_mod_lfo_level_spinbox_changed(int val);
@@ -86,7 +89,7 @@ protected slots:
 	void on_osc1_unison_distortion_spinbox_changed(int val);
 	void on_osc1_unison_detune_spinbox_changed(int val);
 	
-	void on_osc1_waveform_symetry_slider_cahanged(int val);
+	void on_osc1_waveform_symmetry_slider_cahanged(int val);
 	
 	void on_osc1_unison_sqare_enable_changed(bool en);
 	void on_osc1_unison_level_1_slider_changed(int val);
@@ -126,7 +129,7 @@ protected slots:
 	
 	void on_osc2_enable_changed(bool en);
 	
-	void on_osc2_waveform_symetry_spinbox_changed(int val);
+	void on_osc2_waveform_symmetry_spinbox_changed(int val);
 	void on_osc2_send_filter_1_spinbox_changed(int val);
 	void on_osc2_send_filter_2_spinbox_changed(int val);
 	void on_osc2_freq_mod_lfo_level_spinbox_changed(int val);
@@ -145,7 +148,7 @@ protected slots:
 	void on_osc2_amp_mod_lfo_level_dial_changed(int val);
 	void on_osc2_amp_mod_adsr_level_dial_changed(int val);
 	
-	void on_osc2_waveform_symetry_slider_cahanged(int val);
+	void on_osc2_waveform_symmetry_slider_cahanged(int val);
 	
 	void on_osc2_waveform_combobox_changed(int val);
 	void on_osc2_tune_octave_combobox_changed(int val);
@@ -292,7 +295,62 @@ protected slots:
 	void on_amp2_pan_mod_level_lfo_dial_changed(int val);
 
 	void on_fixed_amp_checkbox_Changed(bool val);
+	
+	void on_lfo1_waveform_combo_changed(int val);
+	void on_lfo1_symmetry_dial_changed(int val);
+	void on_lfo1_rate_dial_changed(int val);
+	void on_lfo2_waveform_combo_changed(int val);
+	void on_lfo2_symmetry_dial_changed(int val);
+	void on_lfo2_rate_dial_changed(int val);
+	void on_lfo3_waveform_combo_changed(int val);
+	void on_lfo3_symmetry_dial_changed(int val);
+	void on_lfo3_rate_dial_changed(int val);
+	void on_lfo4_waveform_combo_changed(int val);
+	void on_lfo4_symmetry_dial_changed(int val);
+	void on_lfo4_rate_dial_changed(int val);
+	void on_lfo5_waveform_combo_changed(int val);
+	void on_lfo5_symmetry_dial_changed(int val);
+	void on_lfo5_rate_dial_changed(int val);
+	void on_lfo6_waveform_combo_changed(int val);
+	void on_lfo6_symmetry_dial_changed(int val);
+	void on_lfo6_rate_dial_changed(int val);
 
+	void on_adsr1_attack_slider_changed(int val);
+	void on_adsr1_decay_slider_changed(int val);
+	void on_adsr1_sustain_slider_changed(int val);
+	void on_adsr1_release_slider_changed(int val);
+	void on_adsr2_attack_slider_changed(int val);
+	void on_adsr2_decay_slider_changed(int val);
+	void on_adsr2_sustain_slider_changed(int val);
+	void on_adsr2_release_slider_changed(int val);
+	void on_adsr3_attack_slider_changed(int val);
+	void on_adsr3_decay_slider_changed(int val);
+	void on_adsr3_sustain_slider_changed(int val);
+	void on_adsr3_release_slider_changed(int val);
+	void on_adsr4_attack_slider_changed(int val);
+	void on_adsr4_decay_slider_changed(int val);
+	void on_adsr4_sustain_slider_changed(int val);
+	void on_adsr4_release_slider_changed(int val);
+	void on_adsr5_attack_slider_changed(int val);
+	void on_adsr5_decay_slider_changed(int val);
+	void on_adsr5_sustain_slider_changed(int val);
+	void on_adsr5_release_slider_changed(int val);
+	void on_adsr6_attack_slider_changed(int val);
+	void on_adsr6_decay_slider_changed(int val);
+	void on_adsr6_sustain_slider_changed(int val);
+	void on_adsr6_release_slider_changed(int val);
+	
+	void on_distortion1_drive_dial_changed(int val);
+	void on_distortion1_range_dial_changed(int val);
+	void on_distortion1_blend_dial_changed(int val);
+	
+	void on_distortion2_drive_dial_changed(int val);
+	void on_distortion2_range_dial_changed(int val);
+	void on_distortion2_blend_dial_changed(int val);
+	
+	void on_distortion_active_checkbox_Changed(bool val);
+	void on_distortion_auto_gain_checkbox_Changed(bool val);
+	
 	
 	
 private:
@@ -310,6 +368,9 @@ private:
 	int active_frames_group_kps, prev_active_frames_group_kps;
 	int active_frames_group_pad, prev_active_frames_group_pad;
 	int active_frames_group_filters_amps, prev_active_frames_group_filters_amps;
+	int active_frames_group_adsrs, prev_active_frames_group_adsrs;
+	int active_frames_group_lfos, prev_active_frames_group_lfos;
+	int active_frames_group_distortion, prev_active_frames_group_distortion;
 	
 	bool osc1_enabled = true;
 	bool osc1_unison_square = false;
@@ -325,7 +386,7 @@ private:
 	int osc1_hammond_percussion_mode = _HAMMOND_PERCUSION_MODE_OFF;
 	
 	int osc1_waveform = _OSC_WAVEFORM_SINE;
-	int osc1_waveform_symetry = 50;
+	int osc1_waveform_symmetry = 50;
 	
 	int osc1_tune_octave = 0;
 	int osc1_tune_semitones = 0;
@@ -352,7 +413,7 @@ private:
 	int osc2_send_filter_2_level = 0;
 	
 	int osc2_waveform = _OSC_WAVEFORM_SINE;
-	int osc2_waveform_symetry = 50;
+	int osc2_waveform_symmetry = 50;
 	
 	int osc2_tune_octave = 0;
 	int osc2_tune_semitones = 0;
@@ -508,6 +569,94 @@ private:
 	
 	bool amp_fixed = false;
 	
+	int adsr1_attack_entry = 5;
+	int adsr1_decay_entry = 10;
+	int adsr1_sustain_entry = 80;
+	int adsr1_release_entry = 10;
+	
+	int adsr2_attack_entry = 5;
+	int adsr2_decay_entry = 10;
+	int adsr2_sustain_entry = 80;
+	int adsr2_release_entry = 10;
+	
+	int adsr3_attack_entry = 5;
+	int adsr3_decay_entry = 10;
+	int adsr3_sustain_entry = 80;
+	int adsr3_release_entry = 10;
+	
+	int adsr4_attack_entry = 5;
+	int adsr4_decay_entry = 10;
+	int adsr4_sustain_entry = 80;
+	int adsr4_release_entry = 10;
+	
+	int adsr5_attack_entry = 5;
+	int adsr5_decay_entry = 10;
+	int adsr5_sustain_entry = 80;
+	int adsr5_release_entry = 10;
+	
+	int adsr6_attack_entry = 5;
+	int adsr6_decay_entry = 10;
+	int adsr6_sustain_entry = 80;
+	int adsr6_release_entry = 10;
+	
+	int last_modified_adsr = _ENV_NONE;
+	int adsr_plot_length;
+	
+	int adsr_view_widget_attack;
+	int adsr_view_widget_decay;
+	int adsr_view_widget_sustain;
+	int adsr_view_widget_release;
+	
+	int adsr_curve_attack_end_point;
+	int adsr_curve_decay_end_point;
+	int adsr_curve_sustain_end_point;
+	int adsr_curve_release_end_point;
+	
+	int adsr_curve_max_attack;
+	int adsr_curve_max_decay;
+	int adsr_curve_max_sustain;
+	int adsr_curve_max_release;
+	
+	int adsr_view_gadget_timer;
+	
+	bool update_adsr_plot = false;
+	bool adsr_plot_is_shown = false;
+	
+	
+	int lfo1_waveform_entry = _OSC_WAVEFORM_SINE;
+	int lfo1_symmetry_entry = 50;
+	int lfo1_rate_entry = 50;
+	
+	int lfo2_waveform_entry = _OSC_WAVEFORM_SINE;
+	int lfo2_symmetry_entry = 50;
+	int lfo2_rate_entry = 50;
+	
+	int lfo3_waveform_entry = _OSC_WAVEFORM_SINE;
+	int lfo3_symmetry_entry = 50;
+	int lfo3_rate_entry = 50;
+	
+	int lfo4_waveform_entry = _OSC_WAVEFORM_SINE;
+	int lfo4_symmetry_entry = 50;
+	int lfo4_rate_entry = 50;
+	
+	int lfo5_waveform_entry = _OSC_WAVEFORM_SINE;
+	int lfo5_symmetry_entry = 50;
+	int lfo5_rate_entry = 50;
+	
+	int lfo6_waveform_entry = _OSC_WAVEFORM_SINE;
+	int lfo6_symmetry_entry = 50;
+	int lfo6_rate_entry = 50;
+	
+	int distortion1_drive = 0;
+	int distortion1_range = 0;
+	int distortion1_blend = 0;
+	
+	int distortion2_drive = 0;
+	int distortion2_range = 0;
+	int distortion2_blend = 0;
+	
+	bool distortion_active = false;
+	bool distortion_auto_gain = false;	
 	
 	void start_update_timer(int interval);
 	
@@ -532,6 +681,18 @@ private:
 	void set_filters_amps_signals_connections();
 	void init_filters_amps_combboxes_and_labels();
 	
+	void set_adsrs_signals_connections();
+	void init_adsrs_combboxes_and_labels();
+	
+	void set_lfos_signals_connections();
+	void init_lfos_combboxes_and_labels();
+	
+	void set_distortion_signals_connections();
+	void init_distortion_combboxes_and_labels();
+	
+	
+	
+	
 	void setup_mso_plot(QCustomPlot *custom_plot);
 	void update_mso_waveform_plot();
 	
@@ -543,6 +704,9 @@ private:
 	
 	void pad_replot_profile();
 	void pad_replot_spectrum();
+	
+	void set_adsr_view_widget_points();
+	void refresh_adsr_curve_view(QCustomPlot *adsr_plot);
 	
 	void osc1_set_unison_labales(QList<QString> str, uint16_t mask);
 	void osc1_set_unison_labales(int mode);
@@ -558,6 +722,9 @@ private:
 	void pad_update();
 	void filters_update();
 	void amps_update();
+	void adsrs_update();
+	void lfos_update();
+	void distortion_update();
 	
 	QList<QString> string_unison_labels_hammond;
 	QList<QString> string_unison_labels_octaves;

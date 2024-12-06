@@ -116,15 +116,15 @@ void Dialog_AnalogSynth::control_box_events_handler_osc_1(int evnt, uint16_t val
 			/* Waveform Symetry */
 			level = normalize_slider_value(val, _OSC_WAVEFORM_SYMETRY_MAX, _OSC_WAVEFORM_SYMETRY_MIN);
 			/* Change slider value only when it matches the UI slider position */
-			if (osc1_waveform_symetry > _OSC_WAVEFORM_SYMETRY_MAX)
+			if (osc1_waveform_symmetry > _OSC_WAVEFORM_SYMETRY_MAX)
 			{
-				osc1_waveform_symetry = _OSC_WAVEFORM_SYMETRY_MAX; // TODO: how did we get here?
+				osc1_waveform_symmetry = _OSC_WAVEFORM_SYMETRY_MAX; // TODO: how did we get here?
 			}
-			level_slider_gap = osc1_waveform_symetry - level;
+			level_slider_gap = osc1_waveform_symmetry - level;
 			
 			if (abs((float)level_slider_gap) < ((_OSC_WAVEFORM_SYMETRY_MAX - _OSC_WAVEFORM_SYMETRY_MIN) / 5.0))
 			{
-				on_osc1_waveform_symetry_slider_cahanged(level);
+				on_osc1_waveform_symmetry_slider_cahanged(level);
 			}
 		}
 		else if (active_frames_group_osc1 == _FRAMES_GROUP_3)

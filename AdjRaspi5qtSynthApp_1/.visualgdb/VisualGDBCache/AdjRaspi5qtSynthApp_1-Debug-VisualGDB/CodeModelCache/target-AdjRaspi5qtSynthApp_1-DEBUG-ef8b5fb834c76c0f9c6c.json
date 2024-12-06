@@ -1,0 +1,849 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "AdjRaspi5qtSynthApp_1"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"set_property",
+			"_populate_Widgets_target_properties",
+			"find_package",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/lib/aarch64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
+			"C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/lib/aarch64-linux-gnu/cmake/Qt5/Qt5Config.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 0
+			},
+			{
+				"file" : 2,
+				"parent" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 28,
+				"parent" : 4
+			},
+			{
+				"file" : 1,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 213,
+				"parent" : 6
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 57,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 15,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-fPIC"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_WIDGETS_LIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"path" : "I:/Workspace/RaspberryPi5/VS_VGDB/AdjRaspi5qtSynth_1/AdjRaspi5qtSynthApp_1/AdjRaspi5qtSynthApp_1/build/VisualGDB/Debug"
+				},
+				{
+					"path" : "I:/Workspace/RaspberryPi5/VS_VGDB/AdjRaspi5qtSynth_1/AdjRaspi5qtSynthApp_1/AdjRaspi5qtSynthApp_1"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "I:/Workspace/RaspberryPi5/VS_VGDB/AdjRaspi5qtSynth_1/AdjRaspi5qtSynthApp_1/AdjRaspi5qtSynthApp_1/build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "I:/Workspace/RaspberryPi5/VS_VGDB/AdjRaspi5qtSynth_1/AdjRaspi5qtSynthApp_1/AdjRaspi5qtSynthApp_1/../../libAdjRaspi5Synth1_1/libAdjRaspi5Synth1_1/LibAPI"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/include/aarch64-linux-gnu/qt5"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/include/aarch64-linux-gnu/qt5/QtWidgets"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/include/aarch64-linux-gnu/qt5/QtGui"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/include/aarch64-linux-gnu/qt5/QtCore"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				4,
+				9,
+				12,
+				14,
+				19,
+				20,
+				21,
+				25,
+				29,
+				32,
+				35,
+				38,
+				39,
+				40,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58
+			],
+			"sysroot" : 
+			{
+				"path" : "C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot"
+			}
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "AdjRaspi5qtSynthApp_1_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "AdjRaspi5qtSynthApp_1_autogen::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "AdjRaspi5qtSynthApp_1::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-rdynamic",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "C:\\SysGCC\\raspberry64\\aarch64-linux-gnu\\sysroot\\usr\\lib\\aarch64-linux-gnu\\libQt5Widgets.so.5.15.8",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lAdjRaspi5Synth1_1",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lasound",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lfluidsynth",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lfftw3",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-ljack",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lQt5PrintSupport",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-LI:/Workspace/RaspberryPi5/VS_VGDB/AdjRaspi5qtSynth_1/libAdjRaspi5Synth1_1/libAdjRaspi5Synth1_1/VisualGDB/Debug",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-LC:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-LC:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/local/lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lbluetooth",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "C:\\SysGCC\\raspberry64\\aarch64-linux-gnu\\sysroot\\usr\\lib\\aarch64-linux-gnu\\libQt5Gui.so.5.15.8",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "C:\\SysGCC\\raspberry64\\aarch64-linux-gnu\\sysroot\\usr\\lib\\aarch64-linux-gnu\\libQt5Core.so.5.15.8",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX",
+		"sysroot" : 
+		{
+			"path" : "C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot"
+		},
+		"traceableCommandFragments" : 
+		[
+			{
+				"backtrace" : 2,
+				"fragment" : "Qt5::Widgets"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lAdjRaspi5Synth1_1"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lasound"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lfluidsynth"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lfftw3"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-ljack"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lQt5PrintSupport"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-LI:/Workspace/RaspberryPi5/VS_VGDB/AdjRaspi5qtSynth_1/libAdjRaspi5Synth1_1/libAdjRaspi5Synth1_1/VisualGDB/Debug"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-LC:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/lib"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-LC:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/local/lib"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "C:/SysGCC/raspberry64/aarch64-linux-gnu/sysroot/usr/lib/aarch64-linux-gnu/libbluetooth.so"
+			}
+		]
+	},
+	"name" : "AdjRaspi5qtSynthApp_1",
+	"nameOnDisk" : "AdjRaspi5qtSynthApp_1",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				4,
+				9,
+				12,
+				14,
+				19,
+				20,
+				21,
+				25,
+				29,
+				32,
+				35,
+				38,
+				39,
+				40,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				3,
+				5,
+				8,
+				15,
+				16,
+				17,
+				27,
+				30,
+				33,
+				37,
+				69
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				6,
+				7,
+				10,
+				11,
+				13,
+				18,
+				22,
+				23,
+				24,
+				26,
+				28,
+				31,
+				34,
+				36,
+				41,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				70
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "AdjRaspi5qtSynthApp_1.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "MainWindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "MainWindow.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ModulePannel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ModulePannel.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "MainWindow.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ModulePannel.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_InstrumentConnections.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_InstrumentConnections.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_InstrumentConnections.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "utils.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "utils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_AdjFluidSynth.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AdjFluidSynth.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_AdjFluidSynth.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_FluidSynthSelectProgram.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_FluidSynthChannels.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_FluidSynthChannels.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_FluidSynthChannels.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "NQgridWidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "NQgridWidgetItem.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "NQgridWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "NQgridWidgetItem.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Defs.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_FluidSynthSelectProgram.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_FluidSynthSelectProgram.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_FluidSynth.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_MidiPlayer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dilaog_MidiPlayer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_MidiMixer.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_MidiMixer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_MidiMixer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_MidiMapper.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_MidiMapper.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_MidiMapper.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_AnalogSynth.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Dialog_AnalogSynth.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynth.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ControlBoxEventsHandler_AnalogSynthOsc1.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynthOsc1Tab.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "qcustomplot.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qcustomplot.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ControlBoxEventsHandler_AnalogSynthOsc2noise.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ControlBoxEventsHandler_AnalogSynthMso.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynthOsc2NoiseTab.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynthMsoTab.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynthKarplusTab.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ControlBoxEventsHandler_AnalogSynthKps.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynthPadTab.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ControlBoxEventsHandler_AnalogSynthPad.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynthFiltersAmpsTab.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ControlBoxEventsHanfler_AnalogSynthFiltersAmps.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynthAdsrsTab.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynthLfosTab.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ControlBoxEventsHandler_AnalogSynthAdsrs.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ControlBoxEventsHandler_AnalogSynthLfos.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dialog_AnalogSynthDistortionTab.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ControlBoxEventsHandler_AnalogSynthDistortion.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_MainWindow.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_ModulePannel.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_Dialog_InstrumentConnections.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_Dialog_AdjFluidSynth.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_Dialog_FluidSynthSelectProgram.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_Dialog_FluidSynthChannels.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_Dialog_FluidSynth.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_Dialog_MidiMixer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_Dialog_MidiMapper.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/include/ui_Dialog_AnalogSynth.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/timestamp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/VisualGDB/Debug/AdjRaspi5qtSynthApp_1_autogen/timestamp.rule",
+			"sourceGroupIndex" : 3
+		}
+	],
+	"type" : "EXECUTABLE"
+}

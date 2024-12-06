@@ -18,6 +18,9 @@
 #include "Defs.h"
 #include "MainWindow.h"
 
+#define _UPDATE_TIMER_PERIOD_MS					100
+#define _ADSR_CURVE_VIEW_WIDGET_SHOW_TIME_SEC	5
+
 Dialog_AnalogSynth *Dialog_AnalogSynth::dialog_analog_synth_instance = NULL;
 
 void analog_synth_control_box_event_update_ui_callback_wrapper(int evnt, uint16_t val)
@@ -48,6 +51,12 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 	prev_active_frames_group_pad = -1;
 	active_frames_group_filters_amps = _FRAMES_GROUP_1;
 	prev_active_frames_group_filters_amps = -1;
+	active_frames_group_adsrs = _FRAMES_GROUP_1;
+	prev_active_frames_group_adsrs = -1;
+	active_frames_group_lfos = _FRAMES_GROUP_1;
+	prev_active_frames_group_lfos = -1;
+	active_frames_group_distortion = _FRAMES_GROUP_1;
+	prev_active_frames_group_distortion = -1;
 	
 	osc1_unison_levels[0] = 100;
 	
@@ -60,6 +69,37 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 	unison_level_sliders[6] = ui->verticalSlider_Osc1UnisonLevel_7;
 	unison_level_sliders[7] = ui->verticalSlider_Osc1UnisonLevel_8;
 	unison_level_sliders[8] = ui->verticalSlider_Osc1UnisonLevel_9;
+
+	
+	QPen pen;
+	pen.setStyle(Qt::SolidLine);
+	pen.setWidth(2);
+	pen.setColor(QColor("#0080ff"));
+	ui->widget_ADSRplot->addGraph();
+	ui->widget_ADSRplot->graph(0)->setPen(pen);
+	ui->widget_ADSRplot->addGraph();
+		
+	ui->widget_ADSRplot->xAxis->setVisible(false);
+	ui->widget_ADSRplot->xAxis->setTickLabels(true);
+	ui->widget_ADSRplot->yAxis->setVisible(false);
+	ui->widget_ADSRplot->yAxis->setTickLabels(true);
+	
+	adsr_curve_max_attack = mod_synth_get_adsr_max_attack_time_sec();
+	adsr_curve_max_decay = mod_synth_get_adsr_max_decay_time_sec();
+	adsr_curve_max_sustain = 100;  //%
+	adsr_curve_max_release = mod_synth_get_adsr_max_release_time_sec();
+	
+	adsr_plot_length = _ADSR_CURVE_START_POINT + _ADSR_CURVE_SUSTAIN_SEGMENT_LENGTH +
+		(adsr_curve_max_attack + adsr_curve_max_decay + 
+		adsr_curve_max_release) * _ADSR_CURVE_TIME_MULTIPLIER;
+
+	ui->widget_ADSRplot->yAxis->setRange(0, _ADSR_CURVE_HEIGHT);
+	ui->widget_ADSRplot->xAxis->setRange(0, adsr_plot_length);
+	
+	ui->widget_ADSRplot->setMinimumSize(adsr_plot_length, _ADSR_CURVE_HEIGHT);
+	ui->widget_ADSRplot->setBackground(QColor("#d2d2d2"));	
+	
+	ui->frame_ADSRplot->hide();
 	
 	set_osc1_signals_connections();
 	init_osc1_combboxes_and_labels();
@@ -89,6 +129,17 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 	init_filters_amps_combboxes_and_labels();
 	filters_update();
 	amps_update();
+	
+	set_adsrs_signals_connections();
+	init_adsrs_combboxes_and_labels();
+	adsrs_update();
+	
+	set_lfos_signals_connections();
+	init_lfos_combboxes_and_labels();
+	lfos_update();
+	
+	set_distortion_signals_connections();
+	distortion_update();
 	
 	ui->frame_Osc1Waveform->setStyleSheet(_BACKGROUND_COLOR_CYAN);
 	ui->frame_Osc1TuneOffset->setStyleSheet(_BACKGROUND_COLOR_CYAN);
@@ -138,6 +189,24 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 	ui->frame_Amp1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
 	ui->frame_Amp2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
 	
+	ui->frame_ADSR_1->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+	ui->frame_ADSR_2->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+	ui->frame_ADSR_3->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	ui->frame_ADSR_4->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	ui->frame_ADSR_5->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	ui->frame_ADSR_6->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	
+	ui->frame_LFO_1->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+	ui->frame_LFO_2->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+	ui->frame_LFO_3->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+	ui->frame_LFO_4->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+	ui->frame_LFO_5->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	ui->frame_LFO_6->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+	
+	ui->frame_Distortion_1->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+	ui->frame_Distortion_2->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+	
+	
 	mod_synth_register_callback_control_box_event_update_ui(
 		&analog_synth_control_box_event_update_ui_callback_wrapper);
 	
@@ -148,8 +217,8 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 		this,
 		SLOT(on_tab_selected(int)));
 	
-	// start a periodic timer after this timeout - 
-	start_update_timer(500);
+	// start a periodic timer - gui update 
+	start_update_timer(_UPDATE_TIMER_PERIOD_MS);
 	
 }
 
@@ -190,7 +259,7 @@ void Dialog_AnalogSynth::control_box_ui_update_callback(int evnt, uint16_t val)
 	{
 		/* Switch TAB */
 		active_tab++;
-		if (active_tab > _MODULATORS_2_TAB)
+		if (active_tab > _DISTORTION_TAB)
 		{
 			active_tab = _OSC_1_TAB;
 		}
@@ -220,9 +289,17 @@ void Dialog_AnalogSynth::control_box_ui_update_callback(int evnt, uint16_t val)
 	{
 		control_box_events_handler_filters_amps(evnt, val);
 	}
-	else if ((active_tab == _MODULATORS_1_TAB) || (active_tab == _MODULATORS_2_TAB))
+	else if (active_tab == _MODULATORS_ADSRS_TAB) 
 	{
-		
+		control_box_events_handler_adsrs(evnt, val);
+	}
+	else if (active_tab == _MODULATORS_LFOS_TAB) 
+	{
+		control_box_events_handler_lfos(evnt, val);
+	}
+	else if (active_tab == _DISTORTION_TAB) 
+	{
+		control_box_events_handler_distortion(evnt, val);
 	}
 	
 }
@@ -237,7 +314,7 @@ void Dialog_AnalogSynth::start_update_timer(int interval)
 void Dialog_AnalogSynth::timerEvent(QTimerEvent *event)
 {
 	killTimer(event->timerId());
-	start_update_timer(100);
+	start_update_timer(_UPDATE_TIMER_PERIOD_MS);
 }
 
 void Dialog_AnalogSynth::update_gui()
@@ -269,6 +346,25 @@ void Dialog_AnalogSynth::update_gui()
 		pad_replot_spectrum();
 		
 		update_profile_plot = false;
+	}
+	
+	if (update_adsr_plot)
+	{
+		refresh_adsr_curve_view(ui->widget_ADSRplot);
+		update_adsr_plot = false;
+		adsr_plot_is_shown = true;
+	}
+	
+	if (adsr_plot_is_shown)
+	{
+		adsr_view_gadget_timer++;
+		
+		if (adsr_view_gadget_timer >= _ADSR_CURVE_VIEW_WIDGET_SHOW_TIME_SEC * 1000 / _UPDATE_TIMER_PERIOD_MS)
+		{
+			adsr_view_gadget_timer = 0;
+			adsr_plot_is_shown = false;
+			ui->frame_ADSRplot->hide();
+		}			
 	}
 	
 	if (active_tab == _OSC_1_TAB)
@@ -495,6 +591,67 @@ void Dialog_AnalogSynth::update_gui()
 				ui->frame_Amp2->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
 			}
 		}
+	}
+	else if (active_tab == _MODULATORS_ADSRS_TAB)
+	{
+		if (active_frames_group_adsrs != prev_active_frames_group_adsrs)
+		{
+			if (active_frames_group_adsrs == _FRAMES_GROUP_1)
+			{
+				ui->frame_ADSR_1->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_ADSR_2->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+				ui->frame_ADSR_3->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_4->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_5->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_6->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+			}
+			else if (active_frames_group_adsrs == _FRAMES_GROUP_2)
+			{
+				ui->frame_ADSR_1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_3->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_ADSR_4->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+				ui->frame_ADSR_5->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_6->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+			}
+			else if (active_frames_group_adsrs == _FRAMES_GROUP_3)
+			{
+				ui->frame_ADSR_1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_3->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_4->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_ADSR_5->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_ADSR_6->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+			}
+		}
+	}
+	else if (active_tab == _MODULATORS_LFOS_TAB)
+	{
+		if (active_frames_group_lfos != prev_active_frames_group_lfos)
+		{
+			if (active_frames_group_lfos == _FRAMES_GROUP_1)
+			{
+				ui->frame_LFO_1->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_LFO_2->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+				ui->frame_LFO_3->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_LFO_4->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+				ui->frame_LFO_5->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_LFO_6->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+			}
+			else if (active_frames_group_lfos == _FRAMES_GROUP_2)
+			{
+				ui->frame_LFO_1->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_LFO_2->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_LFO_3->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_LFO_4->setStyleSheet(_BACKGROUND_COLOR_GRAY);
+				ui->frame_LFO_5->setStyleSheet(_BACKGROUND_COLOR_CYAN);
+				ui->frame_LFO_6->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
+			}
+		}
+	}
+	else if (active_tab == _DISTORTION_TAB) 
+	{
+		// Place holder - only one active frame
 	}
 }
 
