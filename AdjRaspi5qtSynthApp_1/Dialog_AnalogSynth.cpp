@@ -206,6 +206,10 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 	ui->frame_Distortion_1->setStyleSheet(_BACKGROUND_COLOR_CYAN);
 	ui->frame_Distortion_2->setStyleSheet(_BACKGROUND_COLOR_ORANGE);
 	
+	ui->pushButton_AnalogSynthSketch_1->setText("[Sketch 1]");
+	ui->pushButton_AnalogSynthSketch_2->setText("Sketch 2");
+	ui->pushButton_AnalogSynthSketch_3->setText("Sketch 3");
+	
 	
 	mod_synth_register_callback_control_box_event_update_ui(
 		&analog_synth_control_box_event_update_ui_callback_wrapper);
@@ -216,6 +220,21 @@ Dialog_AnalogSynth::Dialog_AnalogSynth(QWidget *parent)
 		SIGNAL(currentChanged(int)),
 		this,
 		SLOT(on_tab_selected(int)));
+	
+	connect(ui->pushButton_AnalogSynthSketch_1,
+		SIGNAL(clicked(bool)),
+		this,
+		SLOT(on_sketch1_selected(bool)));
+	
+	connect(ui->pushButton_AnalogSynthSketch_2,
+		SIGNAL(clicked(bool)),
+		this,
+		SLOT(on_sketch2_selected(bool)));
+	
+	connect(ui->pushButton_AnalogSynthSketch_3,
+		SIGNAL(clicked(bool)),
+		this,
+		SLOT(on_sketch3_selected(bool)));
 	
 	// start a periodic timer - gui update 
 	start_update_timer(_UPDATE_TIMER_PERIOD_MS);
@@ -244,7 +263,120 @@ void Dialog_AnalogSynth::closeEvent(QCloseEvent *event)
 	//	close_event_callback_ptr();
 	//}
 	
+	MainWindow::get_instance()->sketches_menu->setDisabled(true);
+	
 	hide();
+}
+
+void Dialog_AnalogSynth::update_all()
+{
+	osc1_update();
+	osc2_update();
+	noise_update();
+	mso_update();
+	kps_update();
+	pad_update();
+	filters_update();
+	amps_update();
+	adsrs_update();
+	lfos_update();
+	distortion_update();
+	
+	MainWindow::get_instance()->sketches_menu->setDisabled(false);
+}
+
+void Dialog_AnalogSynth::sketch_selected(int sketch, bool val)
+{
+	switch (sketch)
+	{
+	case 0:
+		/* Sketch 1 selected */
+		sketch1_active = true;
+		sketch2_active = false;
+		sketch3_active = false;
+		active_sketch = 0;
+		
+		ui->pushButton_AnalogSynthSketch_1->blockSignals(true);
+		ui->pushButton_AnalogSynthSketch_1->setChecked(true);
+		ui->pushButton_AnalogSynthSketch_1->setText("[Sketch 1]");
+		ui->pushButton_AnalogSynthSketch_1->blockSignals(false);
+		
+		ui->pushButton_AnalogSynthSketch_2->blockSignals(true);
+		ui->pushButton_AnalogSynthSketch_2->setChecked(false);
+		ui->pushButton_AnalogSynthSketch_2->setText("Sketch 2");
+		ui->pushButton_AnalogSynthSketch_2->blockSignals(false);
+		
+		ui->pushButton_AnalogSynthSketch_3->blockSignals(true);
+		ui->pushButton_AnalogSynthSketch_3->setChecked(false);
+		ui->pushButton_AnalogSynthSketch_3->setText("Sketch 3");
+		ui->pushButton_AnalogSynthSketch_3->blockSignals(false);
+		
+		mod_synth_set_active_sketch(_SKETCH_PROGRAM_1);
+		update_all();
+		// All notes off
+		mod_synth_panic_action();
+			
+		break;
+		
+	case 1:
+		/* Sketch 2 selected */
+		sketch1_active = false;
+		sketch2_active = true;
+		sketch3_active = false;
+		active_sketch = 1;
+		
+		ui->pushButton_AnalogSynthSketch_1->blockSignals(true);
+		ui->pushButton_AnalogSynthSketch_1->setChecked(false);
+		ui->pushButton_AnalogSynthSketch_1->setText("Sketch 1");
+		ui->pushButton_AnalogSynthSketch_1->blockSignals(false);
+		
+		ui->pushButton_AnalogSynthSketch_2->blockSignals(true);
+		ui->pushButton_AnalogSynthSketch_2->setChecked(true);
+		ui->pushButton_AnalogSynthSketch_2->setText("[Sketch 2]");
+		ui->pushButton_AnalogSynthSketch_2->blockSignals(false);
+		
+		ui->pushButton_AnalogSynthSketch_3->blockSignals(true);
+		ui->pushButton_AnalogSynthSketch_3->setChecked(false);
+		ui->pushButton_AnalogSynthSketch_3->setText("Sketch 3");
+		ui->pushButton_AnalogSynthSketch_3->blockSignals(false);
+		
+		mod_synth_set_active_sketch(_SKETCH_PROGRAM_2);
+		update_all();
+		// All notes off
+		mod_synth_panic_action();
+		
+		break;
+		
+	case 2:
+		/* Sketch 3 selected */
+		sketch1_active = false;
+		sketch2_active = false;
+		sketch3_active = true;
+		active_sketch = 2;
+		
+		ui->pushButton_AnalogSynthSketch_1->blockSignals(true);
+		ui->pushButton_AnalogSynthSketch_1->setChecked(false);
+		ui->pushButton_AnalogSynthSketch_1->setText("Sketch 1");
+		ui->pushButton_AnalogSynthSketch_1->blockSignals(false);
+		
+		ui->pushButton_AnalogSynthSketch_2->blockSignals(true);
+		ui->pushButton_AnalogSynthSketch_2->setChecked(false);
+		ui->pushButton_AnalogSynthSketch_2->setText("Sketch 2");
+		ui->pushButton_AnalogSynthSketch_2->blockSignals(false);
+		
+		ui->pushButton_AnalogSynthSketch_3->blockSignals(true);
+		ui->pushButton_AnalogSynthSketch_3->setChecked(true);
+		ui->pushButton_AnalogSynthSketch_3->setText("[Sketch 3]");
+		ui->pushButton_AnalogSynthSketch_3->blockSignals(false);
+		
+		mod_synth_set_active_sketch(_SKETCH_PROGRAM_3);
+		update_all();
+		// All notes off
+		mod_synth_panic_action();
+		
+		break;
+	}
+		
 }
 
 void Dialog_AnalogSynth::control_box_ui_update_callback(int evnt, uint16_t val)
@@ -657,12 +789,28 @@ void Dialog_AnalogSynth::update_gui()
 
 void Dialog_AnalogSynth::on_dialog_close()
 {
+	MainWindow::get_instance()->sketches_menu->setDisabled(true);
 	hide();
 }
 
 void Dialog_AnalogSynth::on_tab_selected(int tab)
 {
 	active_tab = _OSC_1_TAB + tab;
+}
+
+void Dialog_AnalogSynth::on_sketch1_selected(bool val)
+{
+	sketch_selected(0, val);
+}
+
+void Dialog_AnalogSynth::on_sketch2_selected(bool val)
+{
+	sketch_selected(1, val);
+}
+
+void Dialog_AnalogSynth::on_sketch3_selected(bool val)
+{
+	sketch_selected(2, val);
 }
 	
 	

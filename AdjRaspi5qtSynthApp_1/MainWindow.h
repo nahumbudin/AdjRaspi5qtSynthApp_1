@@ -55,9 +55,14 @@ public:
 	void on_patch_file_saved(const QString &s);
 	void on_patch_file_loaded(const QString &s);
 	
+	void copy_sketch(int src, int dest);
+	
 	vector<string> pending_open_modules_list;
 	
 	vector<active_module_data_t> active_modules_list;
+	
+	QMenu *sketches_menu;
+	
 	
 public slots:
 	virtual void timerEvent(); // Called by a Timer
@@ -80,6 +85,13 @@ private slots :
 	
 	void on_save_patch_file();
 	void on_load_patch_file();
+	
+	void on_copy_sketch1_to_sketch2();
+	void on_copy_sketch1_to_sketch3();
+	void on_copy_sketch2_to_sketch1();
+	void on_copy_sketch2_to_sketch3();
+	void on_copy_sketch3_to_sketch1();
+	void on_copy_sketch3_to_sketch2();
 	
 protected:
 //	void timerEvent(QTimerEvent *event);
@@ -110,7 +122,9 @@ private:
 	
 	QMenu *file_menu;
 	QMenu *add_module_menu;
+	
 	QMenu *help_menu;
+
 	
 	QActionGroup *add_modules_group;
 	QAction *add_fluid_synth_act;
@@ -131,6 +145,14 @@ private:
 	QActionGroup *patch_files_group;
 	QAction *save_patch_file_act;
 	QAction *load_patch_file_act;
+	
+	QActionGroup *sketches_group;
+	QAction *copy_sketch1_to_sketch2_act;
+	QAction *copy_sketch1_to_sketch3_act;
+	QAction *copy_sketch2_to_sketch1_act;
+	QAction *copy_sketch2_to_sketch3_act;
+	QAction *copy_sketch3_to_sketch1_act;
+	QAction *copy_sketch3_to_sketch2_act;
 	
 };
 

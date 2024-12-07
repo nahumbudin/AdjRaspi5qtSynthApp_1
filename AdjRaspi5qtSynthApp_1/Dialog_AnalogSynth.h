@@ -37,6 +37,10 @@ public :
 	
 	static Dialog_AnalogSynth *get_instance(QWidget *parent = 0);
 	
+	void update_all();
+	
+	void sketch_selected(int sketch, bool val);
+	
 	void control_box_ui_update_callback(int evnt, uint16_t val);
 	
 	void control_box_events_handler_osc_1(int evnt, uint16_t val);
@@ -63,6 +67,10 @@ protected slots:
 	void on_dialog_close();
 	
 	void on_tab_selected(int tab);
+	
+	void on_sketch1_selected(bool val);
+	void on_sketch2_selected(bool val);
+	void on_sketch3_selected(bool val);
 	
 	
 	void on_osc1_enable_changed(bool en);
@@ -360,6 +368,11 @@ private:
 	Ui::Dialog_AnalogSynth *ui;
 	
 	static Dialog_AnalogSynth *dialog_analog_synth_instance;
+	
+	bool sketch1_active = true;
+	bool sketch2_active = false;
+	bool sketch3_active = false;
+	int active_sketch = 0;
 	
 	int active_tab, prev_active_tab;
 	int active_frames_group_osc1, prev_active_frames_group_osc1;

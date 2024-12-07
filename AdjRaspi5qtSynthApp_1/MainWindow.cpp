@@ -232,6 +232,35 @@ void MainWindow::on_patch_file_loaded(const QString &s)
 	
 }
 
+void MainWindow::copy_sketch(int src, int dest)
+{
+	char mssg[64];
+	
+	if ((src >= 0) && (src < _NUM_OF_SKETCHES) && 
+		(dest >= 0) && (dest < _NUM_OF_SKETCHES) &&
+		(dest != src))
+	{
+		QMessageBox msgBox;
+		msgBox.setIcon(QMessageBox::Critical);
+		msgBox.setWindowTitle("Warning");
+		
+		sprintf(mssg, "Are you sure you want to overide Sketch %i?", dest+1);		
+		msgBox.setText(QString(mssg));
+		msgBox.setStandardButtons(QMessageBox::Yes);
+		msgBox.addButton(QMessageBox::No);
+		msgBox.setDefaultButton(QMessageBox::No);
+		if (msgBox.exec() == QMessageBox::Yes) 
+		{
+			mod_synth_copy_sketch(_SKETCH_PROGRAM_1 + src, _SKETCH_PROGRAM_1 + dest);
+			Dialog_AnalogSynth::get_instance()->update_all();
+		}
+		else 
+		{
+			return;
+		}		
+	}
+}
+
 void MainWindow::register_active_dialog(QDialog *dialog)
 {
 	int i;
@@ -327,6 +356,30 @@ void MainWindow::create_actions()
 	load_patch_file_act->setStatusTip(tr("Loads AdjHeart Patch File"));
 	connect(load_patch_file_act, SIGNAL(triggered()), this, SLOT(on_load_patch_file()));
 	
+	copy_sketch1_to_sketch2_act = new QAction(tr("&Copy Sketch 1 to Sketch 2"), this);
+	copy_sketch1_to_sketch2_act->setStatusTip(tr("Copy Sketch 1 to Sketch 2"));
+	connect(copy_sketch1_to_sketch2_act, SIGNAL(triggered()), this, SLOT(on_copy_sketch1_to_sketch2()));
+	
+	copy_sketch1_to_sketch3_act = new QAction(tr("&Copy Sketch 1 to Sketch 3"), this);
+	copy_sketch1_to_sketch3_act->setStatusTip(tr("Copy Sketch 1 to Sketch 3"));
+	connect(copy_sketch1_to_sketch3_act, SIGNAL(triggered()), this, SLOT(on_copy_sketch1_to_sketch3()));
+	
+	copy_sketch2_to_sketch1_act = new QAction(tr("&Copy Sketch 2 to Sketch 1"), this);
+	copy_sketch2_to_sketch1_act->setStatusTip(tr("Copy Sketch 2 to Sketch 1"));
+	connect(copy_sketch2_to_sketch1_act, SIGNAL(triggered()), this, SLOT(on_copy_sketch2_to_sketch1()));
+	
+	copy_sketch2_to_sketch3_act = new QAction(tr("&Copy Sketch 2 to Sketch 3"), this);
+	copy_sketch2_to_sketch3_act->setStatusTip(tr("Copy Sketch 2 to Sketch 3"));
+	connect(copy_sketch2_to_sketch3_act, SIGNAL(triggered()), this, SLOT(on_copy_sketch2_to_sketch3()));
+	
+	copy_sketch3_to_sketch1_act = new QAction(tr("&Copy Sketch 3 to Sketch 1"), this);
+	copy_sketch3_to_sketch1_act->setStatusTip(tr("Copy Sketch 3 to Sketch 1"));
+	connect(copy_sketch3_to_sketch1_act, SIGNAL(triggered()), this, SLOT(on_copy_sketch3_to_sketch1()));
+	
+	copy_sketch3_to_sketch2_act = new QAction(tr("&Copy Sketch 3 to Sketch 2"), this);
+	copy_sketch3_to_sketch2_act->setStatusTip(tr("Copy Sketch 3 to Sketch 2"));
+	connect(copy_sketch3_to_sketch2_act, SIGNAL(triggered()), this, SLOT(on_copy_sketch3_to_sketch2()));
+	
 	
 	//add_modules_group = new QActionGroup(this);
 	//add_modules_group->addAction(add_fluid_synth_act);
@@ -359,6 +412,16 @@ void MainWindow::create_menus()
 	add_module_menu->addAction(add_adj_midi_mapper_act);
 	add_module_menu->addAction(add_adj_external_midi_interface_control_act);
 	add_module_menu->addAction(add_adj_keyboard_control_act);
+	
+	sketches_menu = menuBar()->addMenu(tr("&Sketches"));
+	sketches_menu->addAction(copy_sketch1_to_sketch2_act);
+	sketches_menu->addAction(copy_sketch1_to_sketch3_act);
+	sketches_menu->addAction(copy_sketch2_to_sketch1_act);
+	sketches_menu->addAction(copy_sketch2_to_sketch3_act);
+	sketches_menu->addAction(copy_sketch3_to_sketch1_act);
+	sketches_menu->addAction(copy_sketch3_to_sketch2_act);	
+	
+	sketches_menu->setDisabled(true);
 	
 	help_menu = menuBar()->addMenu(tr("&Help"));
 	
@@ -799,5 +862,36 @@ void MainWindow::on_load_patch_file()
 	}
 	
 }
+
+void MainWindow::on_copy_sketch1_to_sketch2()
+{
+	copy_sketch(0, 1);
+}
+
+void MainWindow::on_copy_sketch1_to_sketch3()
+{
+	copy_sketch(0, 2);
+}
+
+void MainWindow::on_copy_sketch2_to_sketch1()
+{
+	copy_sketch(1, 0);
+}
+
+void MainWindow::on_copy_sketch2_to_sketch3()
+{
+	copy_sketch(1, 2);
+}
+
+void MainWindow::on_copy_sketch3_to_sketch1()
+{
+	copy_sketch(2, 0);
+}
+
+void MainWindow::on_copy_sketch3_to_sketch2()
+{
+	copy_sketch(2, 1);
+}
+
 
 	

@@ -124,6 +124,7 @@ void ModulePannel::on_module_open_clicked()
 		{
 			dialog_analog_synth = Dialog_AnalogSynth::get_instance(this);
 			dialog_analog_synth->show();
+			MainWindow::get_instance()->sketches_menu->setDisabled(false);
 		}
 		else
 		{
@@ -132,6 +133,7 @@ void ModulePannel::on_module_open_clicked()
 				/* Only one instance */
 				dialog_analog_synth = Dialog_AnalogSynth::get_instance(this);
 				dialog_analog_synth->show();
+				MainWindow::get_instance()->sketches_menu->setDisabled(false);
 			}
 		}
 	}
