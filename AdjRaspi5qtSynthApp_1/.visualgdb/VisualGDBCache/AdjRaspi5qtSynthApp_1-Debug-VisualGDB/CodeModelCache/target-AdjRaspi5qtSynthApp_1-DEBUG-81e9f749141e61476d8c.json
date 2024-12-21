@@ -398,7 +398,7 @@
 				30,
 				33,
 				37,
-				60,
+				59,
 				71
 			]
 		},
@@ -437,7 +437,7 @@
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				59
+				60
 			]
 		},
 		{
@@ -782,13 +782,13 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "images/Raspi5Synth_TopAssemblyv148.jpg",
-			"sourceGroupIndex" : 3
+			"path" : "I:/Workspace/RaspberryPi5/VS_VGDB/AdjRaspi5qtSynth_1/AdjRaspi5qtSynthApp_1/README.md",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "README.md",
-			"sourceGroupIndex" : 1
+			"path" : "I:/Workspace/RaspberryPi5/VS_VGDB/AdjRaspi5qtSynth_1/AdjRaspi5qtSynthApp_1/images/Raspi5Synth_TopAssemblyv148.jpg",
+			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 0,
