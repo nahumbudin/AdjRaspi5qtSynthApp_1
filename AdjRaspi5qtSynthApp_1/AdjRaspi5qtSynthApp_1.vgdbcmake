@@ -110,7 +110,16 @@
             <DoNotDeployVersionedBinaries>false</DoNotDeployVersionedBinaries>
           </Deployment>
           <RootVirtualSourceFolder>
-            <Subfolders />
+            <Subfolders>
+              <VirtualSourceFolder>
+                <Name>images</Name>
+                <Subfolders />
+                <Files>
+                  <string>images/Raspi5Synth_TopAssemblyv148.jpg</string>
+                </Files>
+                <RelatedFilterName>Other Files</RelatedFilterName>
+              </VirtualSourceFolder>
+            </Subfolders>
             <Files />
           </RootVirtualSourceFolder>
           <HeaderDiscoveryMode>Default</HeaderDiscoveryMode>
