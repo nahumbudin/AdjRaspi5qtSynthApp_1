@@ -37,6 +37,12 @@ The AdjSynth supports external MIDI keyboards based on the ALSA MIDI streaming a
 ### MIDI Mapper
 ![MidiMapper](https://github.com/user-attachments/assets/26f5f9a0-9879-4feb-b0d8-6182ccb49c6a)
 
+### MIDI Mixer
+![MidiMixer](https://github.com/user-attachments/assets/f7e7976f-2c85-4187-b026-69ac489415c7)
+
+### MIDI Player
+![MidiPlayer](https://github.com/user-attachments/assets/7abb6ff5-6e41-44f0-87ff-337ae4f24004)
+
 ### FluidSynth Synthesizer
 ![FluidSynth](https://github.com/user-attachments/assets/ac27f565-6bf1-4216-bbcc-666898388a81)
 
