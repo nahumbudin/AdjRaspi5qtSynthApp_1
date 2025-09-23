@@ -1,12 +1,14 @@
 /**
 * @file		Dialog_MidiMapper.cpp
 *	@author		Nahum Budin
-*	@date		19-Oct-2024
-*	@version	1.0
+*	@date		22-Sep-2025
+*	@version	1.1
+*					1. Refactoring rename nodules to instruments
 *
 *	@brief		Used for mapping MIDI channels events to instruments
 *				
 *	History:
+*				Ver1.0	19-Oct-2024		Initial 
 *
 */
 
@@ -22,12 +24,12 @@
 
 UpdateGuiThread *update_gui_thread;
 
-vector<active_module_data_t> active_synth_modules, prev_active_synth_modules;
-vector<active_module_data_t> added_synth_modules, removed_synth_modules;
-vector<active_module_data_t> active_modules_data;
+vector<active_instrument_data_t> active_synth_instruments, prev_active_synth_instruments;
+vector<active_instrument_data_t> added_synth_instruments, removed_synth_instruments;
+vector<active_instrument_data_t> active_instruments_data;
 
 int channels_combo_box_selection_index[17] = { 0 };
-active_module_data_t channels_combo_box_selected_module_data[17];
+active_instrument_data_t channels_combo_box_selected_instrument_data[17];
 
 bool found;
 
@@ -54,8 +56,8 @@ Dialog_MidiMapper::Dialog_MidiMapper(QWidget *parent)
 {
 	ui->setupUi(this);
 	dialog_adj_midi_mapper_instance = this;
-	active_synth_modules.clear();
-	prev_active_synth_modules.clear();
+	active_synth_instruments.clear();
+	prev_active_synth_instruments.clear();
 	
 	move(100, 100);
 	
@@ -178,7 +180,7 @@ Dialog_MidiMapper::Dialog_MidiMapper(QWidget *parent)
 		this,
 		SLOT(on_dialog_close()));
 	
-	active_modules_mutex = new QMutex();
+	active_instruments_mutex = new QMutex();
 	
 	
 	// start a periodic timer after this timeout - 
@@ -234,18 +236,18 @@ bool Dialog_MidiMapper::event(QEvent *event)
 
 int Dialog_MidiMapper::set_channel_instrument(int ch, int inst)
 {
-	en_modules_ids_t module_id;
+	en_instruments_ids_t instrument_id;
 	
 	if (inst == 0)
 	{
-		module_id = en_modules_ids_t::none_module_id;
+		instrument_id = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		module_id = channels_combo_box_selected_module_data[ch].module_id; // 1st is null "-----"
+		instrument_id = channels_combo_box_selected_instrument_data[ch].instrument_id; // 1st is null "-----"
 	}
 	
-	mod_synth_allocate_midi_channel_synth(ch, module_id);
+	mod_synth_allocate_midi_channel_synth(ch, instrument_id);
 	
 	return 0;
 }
@@ -255,11 +257,11 @@ void Dialog_MidiMapper::ch_1_instrument_changed(int inst)
 	channels_combo_box_selection_index[0] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[0] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[0] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[0] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[0] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(0, inst);
@@ -270,11 +272,11 @@ void Dialog_MidiMapper::ch_2_instrument_changed(int inst)
 	channels_combo_box_selection_index[1] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[1] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[1] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[1] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[1] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(1, inst);
@@ -285,11 +287,11 @@ void Dialog_MidiMapper::ch_3_instrument_changed(int inst)
 	channels_combo_box_selection_index[2] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[2] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[2] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[2] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[2] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(2, inst);
@@ -300,11 +302,11 @@ void Dialog_MidiMapper::ch_4_instrument_changed(int inst)
 	channels_combo_box_selection_index[3] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[3] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[3] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[3] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[3] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(3, inst);
@@ -315,11 +317,11 @@ void Dialog_MidiMapper::ch_5_instrument_changed(int inst)
 	channels_combo_box_selection_index[4] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[4] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[4] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[4] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[4] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(4, inst);
@@ -330,11 +332,11 @@ void Dialog_MidiMapper::ch_6_instrument_changed(int inst)
 	channels_combo_box_selection_index[5] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[5] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[5] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[5] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[5] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	set_channel_instrument(5, inst);
 }
@@ -344,11 +346,11 @@ void Dialog_MidiMapper::ch_7_instrument_changed(int inst)
 	channels_combo_box_selection_index[6] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[6] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[6] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[6] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[6] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(6, inst);
@@ -359,11 +361,11 @@ void Dialog_MidiMapper::ch_8_instrument_changed(int inst)
 	channels_combo_box_selection_index[7] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[7] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[7] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[7] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[7] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(7, inst);
@@ -374,11 +376,11 @@ void Dialog_MidiMapper::ch_9_instrument_changed(int inst)
 	channels_combo_box_selection_index[8] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[8] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[8] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[8] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[8] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(8, inst);
@@ -389,11 +391,11 @@ void Dialog_MidiMapper::ch_10_instrument_changed(int inst)
 	channels_combo_box_selection_index[9] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[9] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[9] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[9] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[9] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(9, inst);
@@ -404,11 +406,11 @@ void Dialog_MidiMapper::ch_11_instrument_changed(int inst)
 	channels_combo_box_selection_index[10] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[10] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[10] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[10] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[10] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(10, inst);
@@ -419,11 +421,11 @@ void Dialog_MidiMapper::ch_12_instrument_changed(int inst)
 	channels_combo_box_selection_index[11] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[11] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[11] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[11] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[11] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(11, inst);
@@ -434,11 +436,11 @@ void Dialog_MidiMapper::ch_13_instrument_changed(int inst)
 	channels_combo_box_selection_index[12] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[12] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[12] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[12] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[12] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(12, inst);
@@ -449,11 +451,11 @@ void Dialog_MidiMapper::ch_14_instrument_changed(int inst)
 	channels_combo_box_selection_index[13] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[13] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[13] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[13] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[13] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(13, inst);
@@ -464,11 +466,11 @@ void Dialog_MidiMapper::ch_15_instrument_changed(int inst)
 	channels_combo_box_selection_index[14] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[14] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[14] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[14] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[14] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(14, inst);
@@ -479,11 +481,11 @@ void Dialog_MidiMapper::ch_16_instrument_changed(int inst)
 	channels_combo_box_selection_index[15] = inst;
 	if (inst == 0)
 	{
-		channels_combo_box_selected_module_data[15] = en_modules_ids_t::none_module_id;
+		channels_combo_box_selected_instrument_data[15] = en_instruments_ids_t::none_instrument_id;
 	}
 	else
 	{
-		channels_combo_box_selected_module_data[15] = active_modules_data[inst - 1]; // 1st is null "-----"
+		channels_combo_box_selected_instrument_data[15] = active_instruments_data[inst - 1]; // 1st is null "-----"
 	}
 	
 	set_channel_instrument(15, inst);
@@ -553,12 +555,12 @@ void Dialog_MidiMapper::update_channels_combo_boxes()
 		//if (ch == 0) { fprintf(stderr, "List cleared. Lenth %i\n", active_modules_data.size()); }
 		
 		int i = 1;
-		for (active_module_data_t module : active_modules_data)
+		for (active_instrument_data_t module : active_instruments_data)
 		{
-			channels_combos[ch]->addItem(QString(module.module_name));
+			channels_combos[ch]->addItem(QString(module.instrument_name));
 			//if (ch == 0) { fprintf(stderr, "Add to list: %s ", module.module_name.toStdString().data()); }
 			/* Locate the last selected item */
-			if (module.module_id == channels_combo_box_selected_module_data[ch].module_id)
+			if (module.instrument_id == channels_combo_box_selected_instrument_data[ch].instrument_id)
 			{
 				channels_combo_box_selection_index[ch] = i;
 				last_selected = true;
@@ -576,14 +578,14 @@ void Dialog_MidiMapper::update_channels_combo_boxes()
 		else
 		{
 			/* Last selected is no longer active. */
-			channels_combo_box_selected_module_data[ch].module_id = en_modules_ids_t::none_module_id;
+			channels_combo_box_selected_instrument_data[ch].instrument_id = en_instruments_ids_t::none_instrument_id;
 			channels_combo_box_selection_index[ch] = 0;
 			channels_combos[ch]->setCurrentIndex(0);
 			//fprintf(stderr, "Last selected is no longer active. ch%i\n", ch);
 			if (ch < 16)
 			{
 				/* Skip the all channels selection */
-				mod_synth_allocate_midi_channel_synth(ch, en_modules_ids_t::none_module_id);
+				mod_synth_allocate_midi_channel_synth(ch, en_instruments_ids_t::none_instrument_id);
 			}
 		}
 		
@@ -599,56 +601,56 @@ void Dialog_MidiMapper::timerEvent()
 
 void Dialog_MidiMapper::update_gui()
 {
-	en_modules_ids_t inst_id;
+	en_instruments_ids_t inst_id;
 	static bool first_time = true;
 	
-	active_synth_modules.clear();
-	added_synth_modules.clear();
-	removed_synth_modules.clear();
+	active_synth_instruments.clear();
+	added_synth_instruments.clear();
+	removed_synth_instruments.clear();
 	
-	/* Get all currently active modules */
-	for (active_module_data_t module : MainWindow::get_instance()->active_modules_list)
+	/* Get all currently active instruments */
+	for (active_instrument_data_t instrument : MainWindow::get_instance()->active_instruments_list)
 	{
-		if (mod_synth_get_instrument_type(module.module_id) == en_modules_types_t::synth)
+		if (mod_synth_get_instrument_type(instrument.instrument_id) == en_instruments_types_t::synth)
 		{
-			active_synth_modules.push_back(module);
+			active_synth_instruments.push_back(instrument);
 		}
 	}
 	
-	if (active_synth_modules.size() == 0)
+	if (active_synth_instruments.size() == 0)
 	{
-		/* No active modules. */
-		if (prev_active_synth_modules.size() != 0)
+		/* No active instrument. */
+		if (prev_active_synth_instruments.size() != 0)
 		{
-			/* All active modules were just removed */			
-			for (active_module_data_t prev_active_module : prev_active_synth_modules)
+			/* All active instruments were just removed */			
+			for (active_instrument_data_t prev_active_instrument : prev_active_synth_instruments)
 			{
-				removed_synth_modules.push_back(prev_active_module);
+				removed_synth_instruments.push_back(prev_active_instrument);
 			}
 		}
 	}
 	else
 	{
-		/* There are active modules. */
-		if (prev_active_synth_modules.size() == 0)
+		/* There are active instruments. */
+		if (prev_active_synth_instruments.size() == 0)
 		{
-			/* All active modules were just added. */
-			for (active_module_data_t active_module : active_synth_modules)
+			/* All active instruments were just added. */
+			for (active_instrument_data_t active_module : active_synth_instruments)
 			{
-				added_synth_modules.push_back(active_module);
+				added_synth_instruments.push_back(active_module);
 			}
 		}
 		else
 		{
-			/* Some active modules might be added and some might be removed. */
-			/* Look for added modules */
-			for (active_module_data_t active_module : active_synth_modules)
+			/* Some active instruments might be added and some might be removed. */
+			/* Look for added instruments */
+			for (active_instrument_data_t active_instrument : active_synth_instruments)
 			{
 				found = false;
-				/* Check if active module was already in prev list */
-				for (active_module_data_t prev_active_module : prev_active_synth_modules)
+				/* Check if active instrument was already in prev list */
+				for (active_instrument_data_t prev_active_instrument : prev_active_synth_instruments)
 				{
-					if (active_module.module_id == prev_active_module.module_id)
+					if (active_instrument.instrument_id == prev_active_instrument.instrument_id)
 					{
 						found = true; 
 					}
@@ -657,17 +659,17 @@ void Dialog_MidiMapper::update_gui()
 				if (!found)
 				{
 					/* Was not found in prev list */
-					added_synth_modules.push_back(active_module);
+					added_synth_instruments.push_back(active_instrument);
 				}
 			}
-			/* Look for removed modules */
-			for (active_module_data_t prev_active_module : prev_active_synth_modules)
+			/* Look for removed instruments */
+			for (active_instrument_data_t prev_active_instrument : prev_active_synth_instruments)
 			{
 				found = false;
-				/* Check if prev module is still an active module */
-				for (active_module_data_t active_module : active_synth_modules)
+				/* Check if prev instrument is still an active instrument */
+				for (active_instrument_data_t active_instrument : active_synth_instruments)
 				{
-					if (active_module.module_id == prev_active_module.module_id)
+					if (active_instrument.instrument_id == prev_active_instrument.instrument_id)
 					{
 						found = true;
 					}
@@ -676,45 +678,45 @@ void Dialog_MidiMapper::update_gui()
 				if (!found)
 				{
 					/* No longer active */
-					removed_synth_modules.push_back(prev_active_module);
+					removed_synth_instruments.push_back(prev_active_instrument);
 				}
 			}			
 		}
 	}
 	
 	/* Update prev with current */
-	prev_active_synth_modules.clear();
-	for (active_module_data_t module : active_synth_modules)
+	prev_active_synth_instruments.clear();
+	for (active_instrument_data_t instrument : active_synth_instruments)
 	{
-		prev_active_synth_modules.push_back(module);
+		prev_active_synth_instruments.push_back(instrument);
 	}
 	
 	//active_modules_mutex->lock();
 	
-	if (added_synth_modules.size() > 0)
+	if (added_synth_instruments.size() > 0)
 	{
 		/* New modules added */
-		for (active_module_data_t module : added_synth_modules)
+		for (active_instrument_data_t instrument : added_synth_instruments)
 		{
 			//fprintf(stderr, "Add module %s\n", module.module_name.toStdString().data());
-			active_modules_data.push_back(module);
+			active_instruments_data.push_back(instrument);
 		}
 		
 		update_channels_combo_boxes();
 	}
 	
-	if (removed_synth_modules.size() > 0)
+	if (removed_synth_instruments.size() > 0)
 	{
 		/* Prev module removed */
-		for (active_module_data_t module : removed_synth_modules)
+		for (active_instrument_data_t instrument : removed_synth_instruments)
 		{
 			int i = 0;
-			for (active_module_data_t mod : active_modules_data)
+			for (active_instrument_data_t inst : active_instruments_data)
 			{
-				if (module.module_id == mod.module_id)
+				if (instrument.instrument_id == inst.instrument_id)
 				{
 					//fprintf(stderr, "Remove module %i %s\n", i, module.module_name.toStdString().data());
-					active_modules_data.erase(active_modules_data.begin() + i);
+					active_instruments_data.erase(active_instruments_data.begin() + i);
 					break;
 				}
 				

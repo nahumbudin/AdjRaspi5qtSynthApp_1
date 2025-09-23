@@ -1,12 +1,14 @@
 /**
 * @file		Dialog_MidiMapper.h
 *	@author		Nahum Budin
-*	@date		19-Oct-2024
-*	@version	1.0
+*	@date		22-Sep-2025
+*	@version	1.1
+*					1. Refactoring rename modules to instriuments
 *
 *	@brief		Used for mapping MIDI channels events to instruments
 *				
 *	History:
+*			Ver1.0	19-Oct-2024		Initial
 *
 */
 
@@ -97,7 +99,7 @@ private:
 	
 	QComboBox *channels_combos[17];
 	
-	QMutex *active_modules_mutex;
+	QMutex *active_instruments_mutex;
 	
 };
 

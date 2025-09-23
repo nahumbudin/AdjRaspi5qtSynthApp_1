@@ -1,10 +1,12 @@
 /**
 *	@file		MainWindow.h
 *	@author		Nahum Budin
-*	@date		8-May-2024
-*	@version	1.0 
+*	@date		22-Sep-2025
+*	@version	1.1 
+*					1. Refactoring rename modules to instruments
 *	
-*	Version	1.0		8-May-2024
+*	History:
+*			Version	1.0		8-May-2024
 *
 *	@brief		Application Main Window that hosts the modules pannels.
 */
@@ -19,11 +21,11 @@
 
 #include "libAdjRaspi5SynthAPI.h"
 #include "Defs.h"
-#include "ModulePannel.h"
+#include "InstrumentPannel.h"
 
-class ModulePannel;
+class InstrumentPannel;
 
-void wrapper_closeModulePannel(en_modules_ids_t moId);
+void wrapper_closeModulePannel(en_instruments_ids_t moId);
 
 namespace Ui {
 class MainWindow;
@@ -39,13 +41,13 @@ public:
 	
 	static MainWindow *get_instance();
 	
-	void close_module_pannel_id(en_modules_ids_t mo_id);
-	void close_module_pannel_name(string mod_name);
+	void close_instrument_pannel_id(en_instruments_ids_t mo_id);
+	void close_instrument_pannel_name(string inst_name);
 	
-	void request_close_module_pannel_id(en_modules_ids_t mo_id);
-	void request_close_module_pannel_name(string mod_name);
+	void request_close_instrument_pannel_id(en_instruments_ids_t mo_id);
+	void request_close_instrument_pannel_name(string inst_name);
 	
-	vector<string> get_active_modules_names_list();
+	vector<string> get_active_instruments_names_list();
 	
 	void control_box_ui_update_callback(int evnt, uint16_t val);
 	
@@ -57,9 +59,9 @@ public:
 	
 	void copy_sketch(int src, int dest);
 	
-	vector<string> pending_open_modules_list;
+	vector<string> pending_open_instruments_list;
 	
-	vector<active_module_data_t> active_modules_list;
+	vector<active_instrument_data_t> active_instruments_list;
 	
 	QMenu *sketches_menu;
 	
@@ -68,20 +70,20 @@ public slots:
 	virtual void timerEvent(); // Called by a Timer
 
 private slots :
-	void on_add_fluid_synth_module();
-	void on_add_hammond_organ_module();
-	void on_add_adj_analog_synth_module();
-	void on_add_adj_karplus_strong_strings_synth_module();
-	void on_add_adj_morphed_sin_synth_module();
-	void on_add_adj_pad_synth_module();
-	void on_add_adj_midi_player_module();
-	void on_add_adj_reverb_effect_module();
-	void on_add_adj_distortion_effect_module();
-	void on_add_adj_graphic_equilizer_module();	
-	void on_add_midi_mixer_module();
-	void on_add_adj_midi_mapper_module();
-	void on_add_adj_external_midi_interface_control_module();
-	void on_add_adj_keyboard_control_module();
+	void on_add_fluid_synth_instrument();
+	void on_add_hammond_organ_instrument();
+	void on_add_adj_analog_synth_instrument();
+	void on_add_adj_karplus_strong_strings_synth_instrument();
+	void on_add_adj_morphed_sin_synth_instrument();
+	void on_add_adj_pad_synth_instrument();
+	void on_add_adj_midi_player_instrument();
+	void on_add_adj_reverb_effect_instrument();
+	void on_add_adj_distortion_effect_instrument();
+	void on_add_adj_graphic_equilizer_instrument();	
+	void on_add_midi_mixer_instrument();
+	void on_add_adj_midi_mapper_instrument();
+	void on_add_adj_external_midi_interface_control_instrument();
+	void on_add_adj_keyboard_control_instrument();
 	
 	void on_save_patch_file();
 	void on_load_patch_file();
@@ -99,9 +101,9 @@ protected:
     
 
 private:
-	ModulePannel* add_module_pannel(QString module_name_string="");	
-	int remove_module_pannel(ModulePannel *module);
-	int is_module_openned(en_modules_ids_t moId);
+	InstrumentPannel* add_instrument_pannel(QString instrument_name_string="");	
+	int remove_instrument_pannel(InstrumentPannel *instrument);
+	int is_instrument_openned(en_instruments_ids_t instId);
 	
 	int update_layout_geometry();
 	
@@ -116,7 +118,7 @@ private:
 	
 	QLayout *layout;
 	
-	map<string, en_modules_ids_t> modules_ids_map;
+	map<string, en_instruments_ids_t> instruments_ids_map;
 	
 	list<QDialog*> active_dialogs_list;
 	

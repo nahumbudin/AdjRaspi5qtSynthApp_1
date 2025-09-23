@@ -1,12 +1,13 @@
 /**
 *	@file		MainWindow.cpp
 *	@author		Nahum Budin
-*	@date		8-May-2024
-*	@version	1.0 
-*	
-*	Version	1.0		8-May-2024
+*	@date		22-Sep-2025
+*	@version	1.1 
+*					1. Code refactoring and comments
 *
 *	@brief		Application Main Window that hosts the modules pannels as acolomn.
+*	
+*	History:	version 1.0		8-May-2024  initial
 */
 
 #include <QVBoxLayout>
@@ -24,7 +25,7 @@
 #include "ui_MainWindow.h"
 #include "ui_ModulePannel.h"
 
-#include "ModulePannel.h"
+#include "InstrumentPannel.h"
 
 #include "Dialog_AdjFluidSynth.h"
 
@@ -35,24 +36,24 @@ QString patch_file_name;
 
 /** Callback wrapper */
 
-void wrapper_close_module_pannel_id(en_modules_ids_t mo_id)
+void wrapper_close_instrument_pannel_id(en_instruments_ids_t inst_id)
 {
-	MainWindow::get_instance()->close_module_pannel_id(mo_id);
+	MainWindow::get_instance()->close_instrument_pannel_id(inst_id);
 }
-void wrapper_request_close_module_pannel_id(en_modules_ids_t mo_id)
+void wrapper_request_close_instrument_pannel_id(en_instruments_ids_t inst_id)
 {
-	MainWindow::get_instance()->request_close_module_pannel_id(mo_id);
-}
-
-void wrapper_request_open_module_window_name(string module_name)
-{
-	MainWindow::get_instance()->pending_open_modules_list.push_back(module_name);
+	MainWindow::get_instance()->request_close_instrument_pannel_id(inst_id);
 }
 
-
-void wrapper_request_close_module_pannel_name(string mod_name)
+void wrapper_request_open_instrument_window_name(string instrument_name)
 {
-	MainWindow::get_instance()->request_close_module_pannel_name(mod_name);
+	MainWindow::get_instance()->pending_open_instruments_list.push_back(instrument_name);
+}
+
+
+void wrapper_request_close_instrument_pannel_name(string inst_name)
+{
+	MainWindow::get_instance()->request_close_instrument_pannel_name(inst_name);
 }
 
 void main_window_control_box_event_update_ui_callback_wrapper(int evnt, uint16_t val)
@@ -60,9 +61,9 @@ void main_window_control_box_event_update_ui_callback_wrapper(int evnt, uint16_t
 	MainWindow::get_instance()->control_box_ui_update_callback(evnt, val);
 }
 
-std::vector <std::string> get_active_modules_names_list_wrapper()
+std::vector <std::string> get_active_instruments_names_list_wrapper()
 {
-	return MainWindow::get_instance()->get_active_modules_names_list();
+	return MainWindow::get_instance()->get_active_instruments_names_list();
 }
 
 void SavePatchFileThread::run() 
@@ -101,54 +102,60 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->centralwidget->setLayout(new QVBoxLayout);
 	layout = qobject_cast<QVBoxLayout*>(ui->centralwidget->layout());
 	
+	// Create tools bar menus ections.
 	create_actions();
+	// Create tools bar menus.
 	create_menus();
 	
+	// Register callbacks.
 	mod_synth_register_callback_control_box_event_update_ui(
 		&main_window_control_box_event_update_ui_callback_wrapper);
 	
-	mod_synth_register_callback_get_active_modules_names_list(
-		&get_active_modules_names_list_wrapper);
+	mod_synth_register_callback_get_active_instruments_names_list(
+		&get_active_instruments_names_list_wrapper);
 	
-	mod_synth_register_callback_wrapper_close_module_pannel_id(
-		&wrapper_request_close_module_pannel_id);
+	mod_synth_register_callback_wrapper_close_instrument_pannel_id(
+		&wrapper_request_close_instrument_pannel_id);
 	
-	mod_synth_register_callback_wrapper_close_module_pannel_name(
-		&wrapper_request_close_module_pannel_name);
+	mod_synth_register_callback_wrapper_close_instrument_pannel_name(
+		&wrapper_request_close_instrument_pannel_name);
 	
-	mod_synth_register_callback_wrapper_open_module_pannel_name(
-		&wrapper_request_open_module_window_name);
+	mod_synth_register_callback_wrapper_open_instrument_pannel_name(
+		&wrapper_request_open_instrument_window_name);
 	
-	modules_ids_map[_INSTRUMENT_NAME_FLUID_SYNTH_STR_KEY] = 
-		en_modules_ids_t::fluid_synth;
-	modules_ids_map[_INSTRUMENT_NAME_HAMMON_ORGAN_STR_KEY] = 
-		en_modules_ids_t::adj_hammond_organ;
-	modules_ids_map[_INSTRUMENT_NAME_ANALOG_SYNTH_STR_KEY] = 
-		en_modules_ids_t::adj_analog_synth;
-	modules_ids_map[_INSTRUMENT_NAME_KARPLUS_STRONG_STRING_SYNTH_STR_KEY] = 
-		en_modules_ids_t::adj_karplusstrong_string_synth;
-	modules_ids_map[_INSTRUMENT_NAME_MORPHED_SINUS_SYNTH_STR_KEY] = 
-		en_modules_ids_t::adj_morphed_sin_synth;
-	modules_ids_map[_INSTRUMENT_NAME_PADSYNTH_SYNTH_STR_KEY] = 
-		en_modules_ids_t::adj_pad_synth;
-	modules_ids_map[_INSTRUMENT_NAME_MIDI_PLAYER_STR_KEY] = 
-		en_modules_ids_t::adj_midi_player;
-	modules_ids_map[_INSTRUMENT_NAME_MIDI_MIXER_STR_KEY] = 
-		en_modules_ids_t::midi_mixer;
-	modules_ids_map[_INSTRUMENT_NAME_MIDI_MAPPER_STR_KEY] = 
-		en_modules_ids_t::adj_midi_mapper;
-	modules_ids_map[_INSTRUMENT_NAME_REVERB_STR_KEY] = 
-		en_modules_ids_t::adj_reverb_effect;
-	modules_ids_map[_INSTRUMENT_NAME_DISTORTION_STR_KEY] = 
-		en_modules_ids_t::adj_distortion_effect;
-	modules_ids_map[_INSTRUMENT_NAME_GRAPHIC_EQUALIZER_STR_KEY] = 
-		en_modules_ids_t::adj_graphic_equilizer;
-	modules_ids_map[_INSTRUMENT_NAME_EXT_MIDI_INT_CONTROL_STR_KEY] = 
-		en_modules_ids_t::adj_ext_midi_interface;
-	modules_ids_map[_INSTRUMENT_NAME_KEYBOARD_CONTROL_STR_KEY] = 
-		en_modules_ids_t::adj_keyboard_control;
+	// Build the instruments map - 
+	// Note: currently this list conatains all currentlly knowns instruments.
+	//       Not all of them are implemented yet in this version.
+	instruments_ids_map[_INSTRUMENT_NAME_FLUID_SYNTH_STR_KEY] = 
+		en_instruments_ids_t::fluid_synth;
+	instruments_ids_map[_INSTRUMENT_NAME_HAMMON_ORGAN_STR_KEY] = 
+		en_instruments_ids_t::adj_hammond_organ;
+	instruments_ids_map[_INSTRUMENT_NAME_ANALOG_SYNTH_STR_KEY] = 
+		en_instruments_ids_t::adj_analog_synth;
+	instruments_ids_map[_INSTRUMENT_NAME_KARPLUS_STRONG_STRING_SYNTH_STR_KEY] = 
+		en_instruments_ids_t::adj_karplusstrong_string_synth;
+	instruments_ids_map[_INSTRUMENT_NAME_MORPHED_SINUS_SYNTH_STR_KEY] = 
+		en_instruments_ids_t::adj_morphed_sin_synth;
+	instruments_ids_map[_INSTRUMENT_NAME_PADSYNTH_SYNTH_STR_KEY] = 
+		en_instruments_ids_t::adj_pad_synth;
+	instruments_ids_map[_INSTRUMENT_NAME_MIDI_PLAYER_STR_KEY] = 
+		en_instruments_ids_t::adj_midi_player;
+	instruments_ids_map[_INSTRUMENT_NAME_MIDI_MIXER_STR_KEY] = 
+		en_instruments_ids_t::midi_mixer;
+	instruments_ids_map[_INSTRUMENT_NAME_MIDI_MAPPER_STR_KEY] = 
+		en_instruments_ids_t::adj_midi_mapper;
+	instruments_ids_map[_INSTRUMENT_NAME_REVERB_STR_KEY] = 
+		en_instruments_ids_t::adj_reverb_effect;
+	instruments_ids_map[_INSTRUMENT_NAME_DISTORTION_STR_KEY] = 
+		en_instruments_ids_t::adj_distortion_effect;
+	instruments_ids_map[_INSTRUMENT_NAME_GRAPHIC_EQUALIZER_STR_KEY] = 
+		en_instruments_ids_t::adj_graphic_equilizer;
+	instruments_ids_map[_INSTRUMENT_NAME_EXT_MIDI_INT_CONTROL_STR_KEY] = 
+		en_instruments_ids_t::adj_ext_midi_interface;
+	instruments_ids_map[_INSTRUMENT_NAME_KEYBOARD_CONTROL_STR_KEY] = 
+		en_instruments_ids_t::adj_keyboard_control;
 	
-	// start a periodic timer after this timeout - 
+	// start the periodic gui update timer after this timeout - 
 	start_update_timer(200);
 }
 
@@ -165,43 +172,57 @@ MainWindow *MainWindow::get_instance() {
 	return mwind;
 }
 
+/**
+*	@brief	Handels the control messages received from the Control Box that shall update the GUI
+*	@param	evnt	the event ID
+*	@param	val		the event value
+*	@return none
+*/
 void MainWindow::control_box_ui_update_callback(int evnt, uint16_t val)
 {
-	static int index = 0;
+	/*  Counts over all active dialogs */
+	static int last_opened_dialog_index = 0;
+	/* Holds a dialog position */
 	QPoint position;
 	
 	if (evnt == _CONTROL_FUNCTION_PUSHBUTTON_REDOO)
 	{
 		if (val == 0)
 		{
-			/* Pushed only */
-			/* Used for round-robin selection of open dialogs. */
-			index++;
+			// The button is pushed only 
+			// Used for round-robin selection between all open dialogs.
+			// NOTE - in Raspberry Pi 5 Wayland, Openbox window manger must be set to X11 backend
+			//		  to enable Qt control over dialogs position!!!
 			
-			if (index >= active_dialogs_list.size())
+			
+			// Next dialog - ststic: kepy from last time
+			last_opened_dialog_index++; 
+			
+			if (last_opened_dialog_index >= active_dialogs_list.size())
 			{
-				index = 0;
+				// Wrap around
+				last_opened_dialog_index = 0;
 			}
 			
-			int count = 0;
+			int next_opened_dialog = 0;
 			
 			for (QDialog *dialog : active_dialogs_list) {
 				
 				if (dialog->isHidden())
 				{
-					/* Skip hidden dialogs */
-					index++;
-					count++;
+					// Skip hidden dialogs
+					last_opened_dialog_index++;
+					next_opened_dialog++;
 			
-					if (index >= active_dialogs_list.size())
+					if (last_opened_dialog_index >= active_dialogs_list.size())
 					{
-						index = 0;
+						last_opened_dialog_index = 0;
 					}	
 					
 					continue;
 				}
 				
-				if (count == index)
+				if (next_opened_dialog == last_opened_dialog_index)
 				{
 					position = dialog->pos();
 					//position = mapToGlobal(dialog->rect().center());
@@ -215,7 +236,7 @@ void MainWindow::control_box_ui_update_callback(int evnt, uint16_t val)
 					break;
 				}
 				
-				count++;
+				next_opened_dialog++;
 			}
 		}
 	}
@@ -232,6 +253,12 @@ void MainWindow::on_patch_file_loaded(const QString &s)
 	
 }
 
+/**
+*	@brief	Copy the source Sketch parameters to the desitnation Sketch parametrs
+*	@param	src		source sketch index
+*	@param	dest	destination sketch index
+*	@return none
+*/
 void MainWindow::copy_sketch(int src, int dest)
 {
 	char mssg[64];
@@ -261,18 +288,23 @@ void MainWindow::copy_sketch(int src, int dest)
 	}
 }
 
+/**
+*	@brief	Add a dialog to the active dialogs list
+*	@param	dialog		a pointer to the Dialog object
+*	@return none
+*/
 void MainWindow::register_active_dialog(QDialog *dialog)
 {
 	int i;
 	bool found = false;
 
 	std::list<QDialog*>::iterator it_dialogs = active_dialogs_list.begin();
-	/* Already registered? */
+	// Already registered?
 	for (i = 0; i < active_dialogs_list.size(); i++)
 	{
 		if (*it_dialogs == dialog)
 		{
-			/* Already registered */
+			// Already registered
 			found = true;
 			break;
 		}
@@ -285,68 +317,81 @@ void MainWindow::register_active_dialog(QDialog *dialog)
 		active_dialogs_list.push_back(dialog);
 	}
 }
+
+/**
+*	@brief	Remove a dialog to the active dialogs list
+*	@param	dialog		a pointer to the Dialog object
+*	@return none
+*/
 void MainWindow::unregister_active_dialog(QDialog *dialog)
 {
 	active_dialogs_list.remove(dialog);
 }
 
+/**
+*	@brief	Create the tools bar menus actions
+*	@param	None
+*	@return none
+*/
+
 void MainWindow::create_actions()
 {
 	add_fluid_synth_act = new QAction(tr("&FluidSynth"), this);
 	add_fluid_synth_act->setStatusTip(tr("Open FluidSynth"));
-	connect(add_fluid_synth_act, SIGNAL(triggered()), this, SLOT(on_add_fluid_synth_module()));
+	connect(add_fluid_synth_act, SIGNAL(triggered()), this, SLOT(on_add_fluid_synth_instrument()));
 	
 	add_hammond_organ_act = new QAction(tr("&Hammond Organ"), this);
 	add_hammond_organ_act->setStatusTip(tr("Open Hammond Organ"));
-	connect(add_hammond_organ_act, SIGNAL(triggered()), this, SLOT(on_add_hammond_organ_module()));
+	connect(add_hammond_organ_act, SIGNAL(triggered()), this, SLOT(on_add_hammond_organ_instrument()));
 	
 	add_adj_analog_synth_act = new QAction(tr("&Analog Synth"), this);
 	add_adj_analog_synth_act->setStatusTip(tr("Open AdjHeart Analog Synth"));
-	connect(add_adj_analog_synth_act, SIGNAL(triggered()), this, SLOT(on_add_adj_analog_synth_module()));
+	connect(add_adj_analog_synth_act, SIGNAL(triggered()), this, SLOT(on_add_adj_analog_synth_instrument()));
 	
 	add_adj_karplus_strong_strings_synth_act = new QAction(tr("&Karpuls Strong String Synth"), this);
 	add_adj_karplus_strong_strings_synth_act->setStatusTip(tr("Open AdjHeart Karpuls Strong Strings Synth"));
-	connect(add_adj_karplus_strong_strings_synth_act, SIGNAL(triggered()), this, SLOT(on_add_adj_karplus_strong_strings_synth_module()));
+	connect(add_adj_karplus_strong_strings_synth_act, SIGNAL(triggered()), this, SLOT(on_add_adj_karplus_strong_strings_synth_instrument()));
 	
 	add_adj_morphed_sin_synth_act = new QAction(tr("&Morphed Sinus Synth"), this);
 	add_adj_morphed_sin_synth_act->setStatusTip(tr("Open AdjHeart Morphed Sinus Synth"));
-	connect(add_adj_morphed_sin_synth_act, SIGNAL(triggered()), this, SLOT(on_add_adj_morphed_sin_synth_module()));
+	connect(add_adj_morphed_sin_synth_act, SIGNAL(triggered()), this, SLOT(on_add_adj_morphed_sin_synth_instrument()));
 	
 	add_adj_pad_synth_act = new QAction(tr("&PADsynth"), this);
 	add_adj_pad_synth_act->setStatusTip(tr("Open AdjHeart PADsynth Synth"));
-	connect(add_adj_pad_synth_act, SIGNAL(triggered()), this, SLOT(on_add_adj_pad_synth_module()));
+	connect(add_adj_pad_synth_act, SIGNAL(triggered()), this, SLOT(on_add_adj_pad_synth_instrument()));
 	
 	add_adj_midi_player_act = new QAction(tr("&MIDI Player"), this);
 	add_adj_midi_player_act->setStatusTip(tr("Open AdjHeart MIDI Player"));
-	connect(add_adj_midi_player_act, SIGNAL(triggered()), this, SLOT(on_add_adj_midi_player_module()));
+	connect(add_adj_midi_player_act, SIGNAL(triggered()), this, SLOT(on_add_adj_midi_player_instrument()));
 	
 	add_adj_reverb_effect_act = new QAction(tr("&Reverb Edffect"), this);
 	add_adj_reverb_effect_act->setStatusTip(tr("Open AdjHeart Reveb Effect"));
-	connect(add_adj_reverb_effect_act, SIGNAL(triggered()), this, SLOT(on_add_adj_reverb_effect_module()));
+	connect(add_adj_reverb_effect_act, SIGNAL(triggered()), this, SLOT(on_add_adj_reverb_effect_instrument()));
 	
 	add_adj_distortion_effect_act = new QAction(tr("&Distortion Edffect"), this);
 	add_adj_distortion_effect_act->setStatusTip(tr("Open AdjHeart Distortion Effect"));
-	connect(add_adj_distortion_effect_act, SIGNAL(triggered()), this, SLOT(on_add_adj_distortion_effect_module()));
+	connect(add_adj_distortion_effect_act, SIGNAL(triggered()), this, SLOT(on_add_adj_distortion_effect_instrument()));
 	
 	add_adj_graphic_equilizer_act = new QAction(tr("&Graphic Equilizer"), this);
 	add_adj_graphic_equilizer_act->setStatusTip(tr("Open AdjHeart Graphic Equilizer"));
-	connect(add_adj_graphic_equilizer_act, SIGNAL(triggered()), this, SLOT(on_add_adj_graphic_equilizer_module()));
+	connect(add_adj_graphic_equilizer_act, SIGNAL(triggered()), this, SLOT(on_add_adj_graphic_equilizer_instrument()));
 	
 	add_midi_mixer_act = new QAction(tr("&Midi Mixer"), this);
 	add_midi_mixer_act->setStatusTip(tr("Open Midi Mixer"));
-	connect(add_midi_mixer_act, SIGNAL(triggered()), this, SLOT(on_add_midi_mixer_module()));
+	connect(add_midi_mixer_act, SIGNAL(triggered()), this, SLOT(on_add_midi_mixer_instrument()));
 	
 	add_adj_midi_mapper_act = new QAction(tr("&MIDI Mapper"), this);
 	add_adj_midi_mapper_act->setStatusTip(tr("Open AdjHeart MIDI Mapper"));
-	connect(add_adj_midi_mapper_act, SIGNAL(triggered()), this, SLOT(on_add_adj_midi_mapper_module()));
+	connect(add_adj_midi_mapper_act, SIGNAL(triggered()), this, SLOT(on_add_adj_midi_mapper_instrument()));
 
 	add_adj_external_midi_interface_control_act = new QAction(tr("&External MIDI Interface Control"), this);
 	add_adj_external_midi_interface_control_act->setStatusTip(tr("Open AdjHeart External MIDI Interface Control"));
-	connect(add_adj_external_midi_interface_control_act, SIGNAL(triggered()), this, SLOT(on_add_adj_external_midi_interface_control_module()));
+	connect(add_adj_external_midi_interface_control_act, SIGNAL(triggered()), this, 
+									SLOT(on_add_adj_external_midi_interface_control_instrument()));
 	
 	add_adj_keyboard_control_act = new QAction(tr("&Keyboard Control"), this);
 	add_adj_keyboard_control_act->setStatusTip(tr("Open AdjHeart Keyboard Control"));
-	connect(add_adj_keyboard_control_act, SIGNAL(triggered()), this, SLOT(on_add_adj_keyboard_control_module()));
+	connect(add_adj_keyboard_control_act, SIGNAL(triggered()), this, SLOT(on_add_adj_keyboard_control_instrument()));
 	
 	save_patch_file_act = new QAction(tr("&Save Patch File"), this);
 	save_patch_file_act->setStatusTip(tr("Saves AdjHeart Patch File"));
@@ -386,6 +431,11 @@ void MainWindow::create_actions()
 	
 }
 
+/**
+*	@brief	Create the tools bar menus
+*	@param	None
+*	@return none
+*/
 void MainWindow::create_menus()
 {
 	file_menu = menuBar()->addMenu(tr("&File"));
@@ -393,7 +443,7 @@ void MainWindow::create_menus()
 	file_menu->addAction(load_patch_file_act);
 	file_menu->addSeparator();
 	
-	add_module_menu = menuBar()->addMenu(tr("&Add Module"));
+	add_module_menu = menuBar()->addMenu(tr("&Add Instrument"));
 	add_module_menu->addAction(add_fluid_synth_act);
 	add_module_menu->addAction(add_hammond_organ_act);
 	add_module_menu->addAction(add_adj_analog_synth_act);
@@ -424,38 +474,42 @@ void MainWindow::create_menus()
 	sketches_menu->setDisabled(true);
 	
 	help_menu = menuBar()->addMenu(tr("&Help"));
-	
 }
+/**
+*	@brief	Add an instrument pannel
+*	@param	None
+*	@return none
+*/
 
-ModulePannel* MainWindow::add_module_pannel(QString module_name_string)
+InstrumentPannel* MainWindow::add_instrument_pannel(QString instrument_name_string)
 {	
 	QPoint last_posotion = QPoint(this->x(), this->y());
 	
-	if (modules_ids_map.find(module_name_string.toStdString()) != modules_ids_map.end())
+	if (instruments_ids_map.find(instrument_name_string.toStdString()) != instruments_ids_map.end())
 	{
-		/* No such module name */	
+		/* No such instrument name */	
 	}
 	
-	en_modules_ids_t module_id = modules_ids_map[module_name_string.toStdString()];
+	en_instruments_ids_t instrument_id = instruments_ids_map[instrument_name_string.toStdString()];
 	
 	
-	if (module_id == en_modules_ids_t::none_module_id)
+	if (instrument_id == en_instruments_ids_t::none_instrument_id)
 	{
 		return NULL;
 	}
 	
-	ModulePannel *new_pannel = new ModulePannel(this,
-							module_name_string, 
-							&wrapper_close_module_pannel_id, 
-							module_id);
+	InstrumentPannel *new_pannel = new InstrumentPannel(this,
+							instrument_name_string, 
+							&wrapper_close_instrument_pannel_id, 
+							instrument_id);
 	layout->addWidget(new_pannel);
 	
-	active_module_data_t new_module;
-	new_module.module_id = module_id;
-	new_module.module_name = module_name_string;
-	new_module.module_pannel_object = new_pannel;
-	new_module.pending_close_event = false;
-	active_modules_list.push_back(new_module);
+	active_instrument_data_t new_instrument;
+	new_instrument.instrument_id = instrument_id;
+	new_instrument.instrument_name = instrument_name_string;
+	new_instrument.instrument_pannel_object = new_pannel;
+	new_instrument.pending_close_event = false;
+	active_instruments_list.push_back(new_instrument);
 	
 	update_layout_geometry();
 	
@@ -466,27 +520,27 @@ ModulePannel* MainWindow::add_module_pannel(QString module_name_string)
 	return new_pannel;
 }
 
-int MainWindow::remove_module_pannel(ModulePannel *module)
+int MainWindow::remove_instrument_pannel(InstrumentPannel *instrument)
 {
-	if ((module == Q_NULLPTR) || (layout == Q_NULLPTR))
+	if ((instrument == Q_NULLPTR) || (layout == Q_NULLPTR))
 	{
 		return -1;
 	}
 	else
 	{
-		layout->removeWidget(module);
+		layout->removeWidget(instrument);
 		//delete(module);
-		module->hide();
+		instrument->hide();
 		
 		update_layout_geometry();
 		
 //		mod_synth_remove_active_module(module->module_id); 
 		
-		if (module->module_id == en_modules_ids_t::fluid_synth)
+		if (instrument->instrument_id == en_instruments_ids_t::fluid_synth)
 		{
 			
 		}
-		else if (module->module_id == en_modules_ids_t::adj_midi_player)
+		else if (instrument->instrument_id == en_instruments_ids_t::adj_midi_player)
 		{
 			
 		}
@@ -497,15 +551,15 @@ int MainWindow::remove_module_pannel(ModulePannel *module)
 
 
 /**
-*   @brief Returns the module position in the active modules list if th module is oppened.
-*   @param  en_modulesIds_t					a unique enum identifier of each module type.
-*	@return module position; -1 otherwise 
+*   @brief Returns the instrument position in the active instruments list if th instrument is oppened.
+*   @param  en_instrumentsIds_t					a unique enum identifier of each instrument type.
+*	@return instrument position; -1 otherwise 
 */
-int MainWindow::is_module_openned(en_modules_ids_t moId)
+int MainWindow::is_instrument_openned(en_instruments_ids_t instId)
 {
-	for (int i = 0; i < active_modules_list.size(); ++i)
+	for (int i = 0; i < active_instruments_list.size(); ++i)
 	{
-		if (active_modules_list[i].module_id == moId)
+		if (active_instruments_list[i].instrument_id == instId)
 			return i;
 	}
 	
@@ -521,7 +575,7 @@ int MainWindow::update_layout_geometry()
 	}
 	else
 	{
-		QRect layoutSize = QRect(20, 20, 800 + 20, 120 * active_modules_list.size() + 60);
+		QRect layoutSize = QRect(20, 20, 800 + 20, 120 * active_instruments_list.size() + 60);
 	
 		this->setGeometry(layoutSize);
 	}
@@ -529,61 +583,61 @@ int MainWindow::update_layout_geometry()
 	return 0;
 }
 
-void MainWindow::close_module_pannel_id(en_modules_ids_t mod_id)
+void MainWindow::close_instrument_pannel_id(en_instruments_ids_t inst_id)
 {
-	ModulePannel *module;
+	InstrumentPannel *instrument;
 	
-	int pos = is_module_openned(mod_id);
+	int pos = is_instrument_openned(inst_id);
 	
 	if (pos >= 0)
 	{
-		module = active_modules_list[pos].module_pannel_object;		
-		active_modules_list.erase(active_modules_list.begin() + pos);
+		instrument = active_instruments_list[pos].instrument_pannel_object;		
+		active_instruments_list.erase(active_instruments_list.begin() + pos);
 		
-		remove_module_pannel(module);
+		remove_instrument_pannel(instrument);
 	}
 	
 }
 
-void MainWindow::close_module_pannel_name(string mod_name)
+void MainWindow::close_instrument_pannel_name(string inst_name)
 {
-	if (modules_ids_map.find(mod_name) != modules_ids_map.end()) {
+	if (instruments_ids_map.find(inst_name) != instruments_ids_map.end()) {
 		// found
-		close_module_pannel_id(modules_ids_map[mod_name]);
+		close_instrument_pannel_id(instruments_ids_map[inst_name]);
 	}
 }
 
-std::vector<std::string> MainWindow::get_active_modules_names_list()
+std::vector<std::string> MainWindow::get_active_instruments_names_list()
 {
 	std::vector<std::string> names_list_str;
 	
-	for (active_module_data_t module : active_modules_list)
+	for (active_instrument_data_t module : active_instruments_list)
 	{
-		names_list_str.push_back(module.module_name.toStdString());
+		names_list_str.push_back(module.instrument_name.toStdString());
 	}
 	
 	return names_list_str;
 }
 
-void MainWindow::request_close_module_pannel_id(en_modules_ids_t mo_id)
+void MainWindow::request_close_instrument_pannel_id(en_instruments_ids_t inst_id)
 {
-	for (int m = 0; m < active_modules_list.size(); m++)
+	for (int m = 0; m < active_instruments_list.size(); m++)
 	{
-		if (active_modules_list.at(m).module_id == mo_id)
+		if (active_instruments_list.at(m).instrument_id == inst_id)
 		{
-			active_modules_list.at(m).pending_close_event = true;
+			active_instruments_list.at(m).pending_close_event = true;
 			break;
 		}
 	}
 }
 
-void MainWindow::request_close_module_pannel_name(string mod_name)
+void MainWindow::request_close_instrument_pannel_name(string inst_name)
 {
-	for (int m = 0; m < active_modules_list.size(); m++)
+	for (int m = 0; m < active_instruments_list.size(); m++)
 	{
-		if (active_modules_list.at(m).module_name.toStdString() == mod_name)
+		if (active_instruments_list.at(m).instrument_name.toStdString() == inst_name)
 		{
-			active_modules_list.at(m).pending_close_event = true;
+			active_instruments_list.at(m).pending_close_event = true;
 			break;
 		}
 	}
@@ -605,206 +659,206 @@ void MainWindow::update_gui()
 {
 	int m;
 	
-	for (m = 0; m < active_modules_list.size(); m++)
+	for (m = 0; m < active_instruments_list.size(); m++)
 	{
-		if (active_modules_list.at(m).pending_close_event)
+		if (active_instruments_list.at(m).pending_close_event)
 		{
-			close_module_pannel_id(active_modules_list.at(m).module_id);
+			close_instrument_pannel_id(active_instruments_list.at(m).instrument_id);
 		}
 	}
 	
-	for (m = 0; m < pending_open_modules_list.size(); m++)
+	for (m = 0; m < pending_open_instruments_list.size(); m++)
 	{
-		add_module_pannel(QString::fromStdString(pending_open_modules_list.at(m)));
+		add_instrument_pannel(QString::fromStdString(pending_open_instruments_list.at(m)));
 	}
 	
-	pending_open_modules_list.erase(pending_open_modules_list.begin(),
-									pending_open_modules_list.begin() + m);
+	pending_open_instruments_list.erase(pending_open_instruments_list.begin(),
+		pending_open_instruments_list.begin() + m);
 }
 
-void MainWindow::on_add_fluid_synth_module()
+void MainWindow::on_add_fluid_synth_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 
-	if ((is_module_openned(en_modules_ids_t::fluid_synth) < 0) &&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::fluid_synth) < 0) &&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_FLUID_SYNTH_STR_KEY);
-	}
-}
-
-void MainWindow::on_add_hammond_organ_module()
-{
-	ModulePannel *newPannel;
-
-	if ((is_module_openned(en_modules_ids_t::adj_hammond_organ) < 0) &&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
-	{
-		// Module is not already oppened
-
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_HAMMON_ORGAN_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_FLUID_SYNTH_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_adj_analog_synth_module()
+void MainWindow::on_add_hammond_organ_instrument()
 {
-	ModulePannel *newPannel;
-	
-	if ((is_module_openned(en_modules_ids_t::adj_analog_synth) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
-	{
-		// Module is not already oppened
+	InstrumentPannel *newPannel;
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_ANALOG_SYNTH_STR_KEY);
+	if ((is_instrument_openned(en_instruments_ids_t::adj_hammond_organ) < 0) &&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
+	{
+		// instrument is not already oppened
+
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_HAMMON_ORGAN_STR_KEY);
+	}
+}
+
+void MainWindow::on_add_adj_analog_synth_instrument()
+{
+	InstrumentPannel *newPannel;
+	
+	if ((is_instrument_openned(en_instruments_ids_t::adj_analog_synth) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
+	{
+		// instrument is not already oppened
+
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_ANALOG_SYNTH_STR_KEY);
 	}
 	
 	
 }
 
-void MainWindow::on_add_adj_karplus_strong_strings_synth_module()
+void MainWindow::on_add_adj_karplus_strong_strings_synth_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_karplusstrong_string_synth) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_karplusstrong_string_synth) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_KARPLUS_STRONG_STRING_SYNTH_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_KARPLUS_STRONG_STRING_SYNTH_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_adj_morphed_sin_synth_module()
+void MainWindow::on_add_adj_morphed_sin_synth_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_morphed_sin_synth) < 0) &&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_morphed_sin_synth) < 0) &&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_MORPHED_SINUS_SYNTH_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_MORPHED_SINUS_SYNTH_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_adj_pad_synth_module()
+void MainWindow::on_add_adj_pad_synth_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_pad_synth) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_pad_synth) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_PADSYNTH_SYNTH_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_PADSYNTH_SYNTH_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_adj_midi_player_module()
+void MainWindow::on_add_adj_midi_player_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_midi_player) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_midi_player) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_MIDI_PLAYER_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_MIDI_PLAYER_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_adj_reverb_effect_module()
+void MainWindow::on_add_adj_reverb_effect_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_reverb_effect) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_reverb_effect) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_REVERB_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_REVERB_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_adj_distortion_effect_module()
+void MainWindow::on_add_adj_distortion_effect_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_distortion_effect) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_distortion_effect) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_DISTORTION_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_DISTORTION_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_adj_graphic_equilizer_module()
+void MainWindow::on_add_adj_graphic_equilizer_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_graphic_equilizer) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_graphic_equilizer) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_GRAPHIC_EQUALIZER_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_GRAPHIC_EQUALIZER_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_midi_mixer_module()
+void MainWindow::on_add_midi_mixer_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::midi_mixer) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::midi_mixer) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_MIDI_MIXER_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_MIDI_MIXER_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_adj_midi_mapper_module()
+void MainWindow::on_add_adj_midi_mapper_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_midi_mapper) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_midi_mapper) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_MIDI_MAPPER_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_MIDI_MAPPER_STR_KEY);
 	}
 }
 
-void MainWindow::on_add_adj_external_midi_interface_control_module()
+void MainWindow::on_add_adj_external_midi_interface_control_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_ext_midi_interface) < 0) &&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_ext_midi_interface) < 0) &&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_EXT_MIDI_INT_CONTROL_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_EXT_MIDI_INT_CONTROL_STR_KEY);
 
-		newPannel->get_the_module_pannel()->ui->checkBox_ModuleMIDIin->hide();
+		newPannel->hide_checkBox_InstrumentMIDIin();
 	}
 }
 
-void MainWindow::on_add_adj_keyboard_control_module()
+void MainWindow::on_add_adj_keyboard_control_instrument()
 {
-	ModulePannel *newPannel;
+	InstrumentPannel *newPannel;
 	
-	if ((is_module_openned(en_modules_ids_t::adj_keyboard_control) < 0)&&
-		(active_modules_list.size() < MAX_NUM_OF_MODULES))
+	if ((is_instrument_openned(en_instruments_ids_t::adj_keyboard_control) < 0)&&
+		(active_instruments_list.size() < MAX_NUM_OF_MODULES))
 	{
-		// Module is not already oppened
+		// instrument is not already oppened
 
-		newPannel = add_module_pannel(_INSTRUMENT_NAME_KEYBOARD_CONTROL_STR_KEY);
+		newPannel = add_instrument_pannel(_INSTRUMENT_NAME_KEYBOARD_CONTROL_STR_KEY);
 	}
 }
 

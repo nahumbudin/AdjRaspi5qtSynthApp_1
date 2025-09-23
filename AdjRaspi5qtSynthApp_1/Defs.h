@@ -84,21 +84,21 @@
 #define _ADSR_CURVE_VIEW_WIDGET_SHOW_TIME_SEC	5
 
 
-class ModulePannel;
+class InstrumentPannel;
 
-typedef struct activeModules
+typedef struct activeInstruments
 {
-	en_modules_ids_t module_id;
-	QString module_name;
-	ModulePannel *module_pannel_object;
+	en_instruments_ids_t instrument_id;
+	QString instrument_name;
+	InstrumentPannel *instrument_pannel_object;
 	bool pending_close_event;
 	
-	activeModules(en_modules_ids_t module_id = en_modules_ids_t::none_module_id)
-		: module_id(module_id)
+	activeInstruments(en_instruments_ids_t instrument_id = en_instruments_ids_t::none_instrument_id)
+		: instrument_id(instrument_id)
 	{}
 	
 	
-} active_module_data_t;
+} active_instrument_data_t;
 
 
 

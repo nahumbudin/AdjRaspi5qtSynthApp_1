@@ -1,13 +1,14 @@
 /**
-* @file		Dialog_AnalogSynthOsc1Tab.h
+* @file		Dialog_AnalogSynthOsc1Tab.cpp
 *	@author		Nahum Budin
-*	@date		25-Oct-2024
-*	@version	1.0
+*	@date		21-Sep-2025
+*	@version	1.2
 *
 *	@brief		Analog Synthesizer instrument Osc1 Tab handling
 *				
 *	History:
-*			Based on the AdjModSynth project ver 1.1 16-Jan-2021 
+*		Version 1.1		25-Oct-2024	
+*		Based on the AdjModSynth project ver 1.1 16-Jan-2021 
 *
 */
 
@@ -544,6 +545,7 @@ void Dialog_AnalogSynth::osc1_set_unison_labales(QList<QString> str, uint16_t ma
 {
 	int i = 0;
 
+	// mask is a bit map that indicates which drawbar is active.
 	if (mask & 0x01)
 	{
 		ui->label_Osc1HarmonyLevel_1->setText(str.at(i++));
