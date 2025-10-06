@@ -14,6 +14,8 @@
 
 #include <unistd.h> // for nice()
 
+#include "Log.h"
+
 /**
 *   @brief  Runs on application exit.
 *   @param  none
@@ -59,6 +61,12 @@ int main(int argc, char *argv[])
 
 	setbuf(stderr, NULL);
 	atexit(exit_handler);
+	
+	// Debuger
+//	FILELog::ReportingLevel() = FILELog::FromString("DEBUG4");
+	FILE* pFile = fopen("AdjHeartRaspi5FlSynth1_0.log", "a");
+	Output2FILE::Stream() = pFile;
+	//	FILE_LOG(logINFO) << "...";
 	
 	mod_synth_init();
 	mod_synth_start_audio();
