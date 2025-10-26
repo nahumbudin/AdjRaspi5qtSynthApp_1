@@ -3,6 +3,7 @@
 *	@author		Nahum Budin
 *	@date		25-Oct-2024
 *	@version	1.0
+*					1. Add PANIC pushbutton
 *
 *	@brief		Used for controling the Analog Synthesizer instrument
 *				
@@ -65,6 +66,8 @@ protected:
 	
 protected slots:
 	void on_dialog_close();
+	
+	void on_panic_clicked();
 	
 	void on_tab_selected(int tab);
 	

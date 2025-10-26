@@ -67,7 +67,7 @@ void Dialog_AnalogSynth::set_pad_signals_connections()
 	connect(ui->comboBox_PadFreqModAdsr,
 		SIGNAL(currentIndexChanged(int)),
 		this,
-		SLOT(on_pad_freq_mod_env_combobox_canged(int)));
+		SLOT(on_pad_freq_mod_env_combobox_changed(int)));
 
 	connect(ui->dial_PadFreqModAdsrLevel,
 		SIGNAL(valueChanged(int)),
@@ -173,6 +173,11 @@ void Dialog_AnalogSynth::set_pad_signals_connections()
 		SIGNAL(valueChanged(int)),
 		this,
 		SLOT(on_pad_harmonies_detune_slider_changed(int)));
+	
+	connect(ui->pushButton_Panic,
+		SIGNAL(clicked()),
+		this,
+		SLOT(on_panic_clicked()));
 }
 
 void Dialog_AnalogSynth::init_pad_combboxes_and_labels()

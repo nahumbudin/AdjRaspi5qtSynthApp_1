@@ -133,7 +133,9 @@
       <ConfigurationNameCase>Upper</ConfigurationNameCase>
       <DefaultHeaderDiscoveryMode>None</DefaultHeaderDiscoveryMode>
       <EnableFastUpToDateCheck>true</EnableFastUpToDateCheck>
+      <DetectMissingSolutionConfigurations>false</DetectMissingSolutionConfigurations>
     </ProjectModeSettings>
+    <LoadCMakePresets>false</LoadCMakePresets>
   </Build>
   <CustomBuild>
     <PreSyncActions />
@@ -170,6 +172,90 @@
     </ExtraSettings>
     <CodeAnalyzerSettings>
       <Enabled>false</Enabled>
+      <SelectedAnalyzers>
+        <string>alpha.core.StackAddressAsyncEscape</string>
+        <string>alpha.cplusplus.InvalidatedIterator</string>
+        <string>alpha.cplusplus.IteratorModeling</string>
+        <string>alpha.cplusplus.IteratorRange</string>
+        <string>alpha.security.ReturnPtrRange</string>
+        <string>alpha.unix.cstring.BufferOverlap</string>
+        <string>alpha.unix.cstring.OutOfBounds</string>
+        <string>alpha.unix.PthreadLock</string>
+        <string>alpha.webkit.MemoryUnsafeCastChecker</string>
+        <string>apiModeling.Errno</string>
+        <string>apiModeling.google.GTest</string>
+        <string>apiModeling.llvm.CastValue</string>
+        <string>apiModeling.llvm.ReturnValue</string>
+        <string>apiModeling.TrustNonnull</string>
+        <string>apiModeling.TrustReturnsNonnull</string>
+        <string>core.BitwiseShift</string>
+        <string>core.builtin.AssumeModeling</string>
+        <string>core.builtin.BuiltinFunctions</string>
+        <string>core.builtin.NoReturnFunctions</string>
+        <string>core.CallAndMessage</string>
+        <string>core.CallAndMessageModeling</string>
+        <string>core.DereferenceModeling</string>
+        <string>core.DivideZero</string>
+        <string>core.DynamicTypePropagation</string>
+        <string>core.FixedAddressDereference</string>
+        <string>core.NonnilStringConstants</string>
+        <string>core.NonNullParamChecker</string>
+        <string>core.NullDereference</string>
+        <string>core.StackAddrEscapeBase</string>
+        <string>core.StackAddressEscape</string>
+        <string>core.UndefinedBinaryOperatorResult</string>
+        <string>core.uninitialized.ArraySubscript</string>
+        <string>core.uninitialized.Assign</string>
+        <string>core.uninitialized.Branch</string>
+        <string>core.uninitialized.CapturedBlockVariable</string>
+        <string>core.uninitialized.NewArraySize</string>
+        <string>core.uninitialized.UndefReturn</string>
+        <string>core.VLASize</string>
+        <string>cplusplus.ArrayDelete</string>
+        <string>cplusplus.InnerPointer</string>
+        <string>cplusplus.Move</string>
+        <string>cplusplus.NewDelete</string>
+        <string>cplusplus.NewDeleteLeaks</string>
+        <string>cplusplus.PlacementNew</string>
+        <string>cplusplus.PureVirtualCall</string>
+        <string>cplusplus.SelfAssignment</string>
+        <string>cplusplus.SmartPtrModeling</string>
+        <string>cplusplus.StringChecker</string>
+        <string>deadcode.DeadStores</string>
+        <string>nullability.NullableDereferenced</string>
+        <string>nullability.NullablePassedToNonnull</string>
+        <string>nullability.NullPassedToNonnull</string>
+        <string>nullability.NullReturnedFromNonnull</string>
+        <string>optin.core.EnumCastOutOfRange</string>
+        <string>optin.cplusplus.VirtualCall</string>
+        <string>optin.taint.TaintedAlloc</string>
+        <string>security.ArrayBound</string>
+        <string>security.cert.env.InvalidPtr</string>
+        <string>security.insecureAPI.getpw</string>
+        <string>security.insecureAPI.gets</string>
+        <string>security.insecureAPI.mkstemp</string>
+        <string>security.insecureAPI.mktemp</string>
+        <string>security.insecureAPI.UncheckedReturn</string>
+        <string>security.insecureAPI.vfork</string>
+        <string>unix.API</string>
+        <string>unix.BlockInCriticalSection</string>
+        <string>unix.Chroot</string>
+        <string>unix.cstring.BadSizeArg</string>
+        <string>unix.cstring.CStringModeling</string>
+        <string>unix.cstring.NotNullTerminated</string>
+        <string>unix.cstring.NullArg</string>
+        <string>unix.DynamicMemoryModeling</string>
+        <string>unix.Errno</string>
+        <string>unix.Malloc</string>
+        <string>unix.MallocSizeof</string>
+        <string>unix.MismatchedDeallocator</string>
+        <string>unix.StdCLibraryFunctions</string>
+        <string>unix.Stream</string>
+        <string>unix.Vfork</string>
+      </SelectedAnalyzers>
+      <ExtraArguments>
+        <string />
+      </ExtraArguments>
     </CodeAnalyzerSettings>
   </CodeSense>
   <Configurations />
@@ -205,10 +291,12 @@
       <EnableAsyncExecutionMode>false</EnableAsyncExecutionMode>
       <AsyncModeSupportsBreakpoints>true</AsyncModeSupportsBreakpoints>
       <TemporaryBreakConsolidationTimeout>0</TemporaryBreakConsolidationTimeout>
+      <BacktraceFrameLimit>0</BacktraceFrameLimit>
       <EnableNonStopMode>false</EnableNonStopMode>
       <MaxBreakpointLimit>0</MaxBreakpointLimit>
       <EnableVerboseMode>true</EnableVerboseMode>
       <EnablePrettyPrinters>false</EnablePrettyPrinters>
+      <EnableAbsolutePathReporting>true</EnableAbsolutePathReporting>
     </AdditionalGDBSettings>
     <LaunchGDBSettings xsi:type="GDBLaunchParametersNewInstance">
       <DebuggedProgram>$(TargetPath)</DebuggedProgram>
@@ -220,13 +308,20 @@
     <GenerateCtrlBreakInsteadOfCtrlC>false</GenerateCtrlBreakInsteadOfCtrlC>
     <SuppressArgumentVariablesCheck>false</SuppressArgumentVariablesCheck>
     <DeploymentTargetPath>/tmp/$(TargetFileName)</DeploymentTargetPath>
+    <CustomTerminalProgram>xterm</CustomTerminalProgram>
     <X11WindowMode>Remote</X11WindowMode>
-    <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
+    <KeepConsoleAfterExit>true</KeepConsoleAfterExit>
     <RunGDBUnderSudo>false</RunGDBUnderSudo>
     <DeploymentMode>Auto</DeploymentMode>
     <DeployWhenLaunchedWithoutDebugging>true</DeployWhenLaunchedWithoutDebugging>
     <StripDebugSymbolsDuringDeployment>false</StripDebugSymbolsDuringDeployment>
     <SuppressTTYCreation>false</SuppressTTYCreation>
+    <CodeCoverage>
+      <Enabled>false</Enabled>
+      <CoverageReportDirectory>$(ProjectDir)\CoverageReports</CoverageReportDirectory>
+      <ExtraCoverageFileDirectories />
+    </CodeCoverage>
     <IndexDebugSymbols>false</IndexDebugSymbols>
+    <RunLiveMemoryAgentAsRoot>true</RunLiveMemoryAgentAsRoot>
   </Debug>
 </VisualGDBProjectSettings2>

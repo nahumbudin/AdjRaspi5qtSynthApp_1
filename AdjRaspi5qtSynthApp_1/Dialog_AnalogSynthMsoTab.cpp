@@ -1,13 +1,13 @@
 /**
 * @file		Dialog_AnalogSynthMsoTab.h
 *	@author		Nahum Budin
-*	@date		5-Nov-2024
+*	@date		11-Oct-2025
 *	@version	1.0
 *
 *	@brief		Analog Synthesizer instrument MSO Tab handling
 *				
 *	History:
-*			Based on the AdjModSynth project ver 1.1 16-Jan-2021 
+*			version 1. 0 5-Nove-2024	Based on the AdjModSynth project ver 1.1 16-Jan-2021 
 *
 */
 
@@ -345,7 +345,8 @@ void Dialog_AnalogSynth::setup_mso_plot(QCustomPlot *custom_plot)
 
 void Dialog_AnalogSynth::update_mso_waveform_plot()
 {
-	
+	setup_mso_plot(ui->widget_MsoWaveformPlot);
+	ui->widget_MsoWaveformPlot->replot();
 }
 
 void Dialog_AnalogSynth::mso_handle_preset_change(int newPres)
@@ -628,7 +629,7 @@ void Dialog_AnalogSynth::on_mso_point_a_slider_moved(int val)
 	
 	mod_synth_mso_event_int(_MSO_1_EVENT, _MSO_SEGMENT_A_POSITION, val);
 	
-	//setup_mso_plot(ui->widget_MsoWaveformPlot);
+	//setup_mso_plot(ui->widget_MsoWaveformPlot);  Will be initate  by the GUI update
 	//ui->widget_MsoWaveformPlot->replot();
 	mso_replot_waveform = true;
 	
@@ -853,7 +854,7 @@ void Dialog_AnalogSynth::on_mso_freq_mod_lfo_combobox_changed(int val)
 	ui->comboBox_MsoFreqModLFO->blockSignals(false);
 	
 	mso_freq_mod_lfo_num = val;
-	mod_synth_vco_event_int(_MSO_1_EVENT, _MSO_FREQ_MOD_LFO, val);
+	mod_synth_mso_event_int(_MSO_1_EVENT, _MSO_FREQ_MOD_LFO, val);
 	
 	/* Set focus back on the Dialog */
 	this->setFocus(Qt::ActiveWindowFocusReason);
@@ -866,7 +867,7 @@ void Dialog_AnalogSynth::on_mso_freq_mod_env_combobox_changed(int val)
 	ui->comboBox_MsoFreqModAdsr->blockSignals(false);
 	
 	mso_freq_mod_adsr_num = val;
-	mod_synth_vco_event_int(_MSO_1_EVENT, _MSO_FREQ_MOD_ENV, val);
+	mod_synth_mso_event_int(_MSO_1_EVENT, _MSO_FREQ_MOD_ENV, val);
 	
 	/* Set focus back on the Dialog */
 	this->setFocus(Qt::ActiveWindowFocusReason);
@@ -879,7 +880,7 @@ void Dialog_AnalogSynth::on_mso_pwm_mod_lfo_combobox_changed(int val)
 	ui->comboBox_MsoPwmModLFO->blockSignals(false);
 	
 	mso_pwm_mod_lfo_num = val;
-	mod_synth_vco_event_int(_MSO_1_EVENT, _MSO_PWM_MOD_LFO, val);
+	mod_synth_mso_event_int(_MSO_1_EVENT, _MSO_PWM_MOD_LFO, val);
 	
 	/* Set focus back on the Dialog */
 	this->setFocus(Qt::ActiveWindowFocusReason);
@@ -892,7 +893,7 @@ void Dialog_AnalogSynth::on_mso_pwm_mod_env_combobox_changed(int val)
 	ui->comboBox_MsoPwmModAdsr->blockSignals(false);
 	
 	mso_pwm_mod_adsr_num = val;
-	mod_synth_vco_event_int(_MSO_1_EVENT, _MSO_PWM_MOD_ENV, val);
+	mod_synth_mso_event_int(_MSO_1_EVENT, _MSO_PWM_MOD_ENV, val);
 	
 	/* Set focus back on the Dialog */
 	this->setFocus(Qt::ActiveWindowFocusReason);
@@ -905,7 +906,7 @@ void Dialog_AnalogSynth::on_mso_amp_mod_lfo_combobox_changed(int val)
 	ui->comboBox_MsoAmpModLFO->blockSignals(false);
 	
 	mso_amp_mod_lfo_num = val;
-	mod_synth_vco_event_int(_MSO_1_EVENT, _MSO_AMP_MOD_LFO, val);
+	mod_synth_mso_event_int(_MSO_1_EVENT, _MSO_AMP_MOD_LFO, val);
 	
 	/* Set focus back on the Dialog */
 	this->setFocus(Qt::ActiveWindowFocusReason);
@@ -918,7 +919,7 @@ void Dialog_AnalogSynth::on_mso_amp_mod_env_combobox_changed(int val)
 	ui->comboBox_MsoAmpModAdsr->blockSignals(false);
 	
 	mso_amp_mod_adsr_num = val;
-	mod_synth_vco_event_int(_MSO_1_EVENT, _MSO_AMP_MOD_ENV, val);
+	mod_synth_mso_event_int(_MSO_1_EVENT, _MSO_AMP_MOD_ENV, val);
 	
 	/* Set focus back on the Dialog */
 	this->setFocus(Qt::ActiveWindowFocusReason);
@@ -935,7 +936,7 @@ void Dialog_AnalogSynth::on_mso_send_filter_1_dial_changed(int val)
 	ui->spinBox_MsoSendFilter1->blockSignals(false);
 	
 	mso_send_filter_1_level = val;
-	mod_synth_vco_event_int(_MSO_1_EVENT, _MSO_FILTER_SEND_1, val);
+	mod_synth_mso_event_int(_MSO_1_EVENT, _MSO_FILTER_SEND_1, val);
 	
 	/* Set focus back on the Dialog */
 	this->setFocus(Qt::ActiveWindowFocusReason);
@@ -952,7 +953,7 @@ void Dialog_AnalogSynth::on_mso_send_filter_2_dial_changed(int val)
 	ui->spinBox_MsoSendFilter2->blockSignals(false);
 	
 	mso_send_filter_2_level = val;
-	mod_synth_vco_event_int(_MSO_1_EVENT, _MSO_FILTER_SEND_2, val);
+	mod_synth_mso_event_int(_MSO_1_EVENT, _MSO_FILTER_SEND_2, val);
 	
 	/* Set focus back on the Dialog */
 	this->setFocus(Qt::ActiveWindowFocusReason);

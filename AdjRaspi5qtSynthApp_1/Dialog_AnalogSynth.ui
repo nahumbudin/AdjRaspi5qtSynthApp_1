@@ -2682,39 +2682,6 @@ background-color: rgb(255, 0, 0);
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_Osc1AmpModLFO">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>111</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-border-color: rgb(0, 0, 0);
-background-color: rgb(170, 85, 255);
-</string>
-      </property>
-      <property name="currentText">
-       <string/>
-      </property>
-      <property name="currentIndex">
-       <number>-1</number>
-      </property>
-      <property name="maxVisibleItems">
-       <number>10</number>
-      </property>
-     </widget>
      <widget class="QComboBox" name="comboBox_Osc1AmpModAdsr">
       <property name="geometry">
        <rect>
@@ -2901,7 +2868,7 @@ background-color: rgb(255, 0, 0);
        <enum>QFrame::Raised</enum>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_Osc1PwmModLFO_2">
+     <widget class="QComboBox" name="comboBox_Osc1AmpModLFO">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2958,13 +2925,12 @@ background-color: rgb(170, 85, 255);
      <zorder>label_19</zorder>
      <zorder>label_20</zorder>
      <zorder>label_21</zorder>
-     <zorder>comboBox_Osc1AmpModLFO</zorder>
      <zorder>comboBox_Osc1AmpModAdsr</zorder>
      <zorder>dial_Osc1AmpModLFOLevel</zorder>
      <zorder>dial_Osc1AmpModAdsrLevel</zorder>
      <zorder>spinBox_Osc1AmpModAdsrLevel</zorder>
      <zorder>spinBox_Osc1AmpModLfoLevel</zorder>
-     <zorder>comboBox_Osc1PwmModLFO_2</zorder>
+     <zorder>comboBox_Osc1AmpModLFO</zorder>
     </widget>
     <widget class="QFrame" name="frame_Osc1Active">
      <property name="geometry">
@@ -18978,7 +18944,7 @@ color: rgb(255, 255, 255);</string>
     <rect>
      <x>10</x>
      <y>640</y>
-     <width>491</width>
+     <width>361</width>
      <height>61</height>
     </rect>
    </property>
@@ -19033,11 +18999,35 @@ color: rgb(255, 255, 255);</string>
     </property>
    </widget>
   </widget>
+  <widget class="QPushButton" name="pushButton_Panic">
+   <property name="geometry">
+    <rect>
+     <x>384</x>
+     <y>642</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>PANIC!!!</string>
+   </property>
+  </widget>
   <zorder>frame_ADSRplot</zorder>
   <zorder>frame_2</zorder>
   <zorder>tabWidget</zorder>
   <zorder>pushButton_AnalogSynthClose</zorder>
   <zorder>frame_59</zorder>
+  <zorder>pushButton_Panic</zorder>
  </widget>
  <customwidgets>
   <customwidget>

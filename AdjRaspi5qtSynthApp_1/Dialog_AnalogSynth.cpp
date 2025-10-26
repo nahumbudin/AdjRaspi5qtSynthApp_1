@@ -3,6 +3,7 @@
 *	@author		Nahum Budin
 *	@date		25-Oct-2024
 *	@version	1.0
+*					1. Add Panic pushbutton
 *
 *	@brief		Used for controling the Analog Synthesizer instrument
 *				
@@ -811,6 +812,11 @@ void Dialog_AnalogSynth::on_sketch2_selected(bool val)
 void Dialog_AnalogSynth::on_sketch3_selected(bool val)
 {
 	sketch_selected(2, val);
+}
+
+void Dialog_AnalogSynth::on_panic_clicked()
+{
+	mod_synth_adj_synt_panic_action();
 }
 	
 	

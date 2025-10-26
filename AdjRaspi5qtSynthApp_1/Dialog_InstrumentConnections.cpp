@@ -1083,15 +1083,25 @@ void Dialog_InstrumentConnections::update()
 	}
 	
 	/* Connected to? */
+	std::string client_out_name = "";
+	
+	if ((instrument_name.toStdString() == _INSTRUMENT_NAME_ANALOG_SYNTH_STR_KEY) ||
+		(instrument_name.toStdString() == _INSTRUMENT_NAME_HAMMON_ORGAN_STR_KEY) ||
+		(instrument_name.toStdString() == _INSTRUMENT_NAME_KARPLUS_STRONG_STRING_SYNTH_STR_KEY) ||
+		(instrument_name.toStdString() == _INSTRUMENT_NAME_MORPHED_SINUS_SYNTH_STR_KEY) ||
+		(instrument_name.toStdString() == _INSTRUMENT_NAME_PADSYNTH_SYNTH_STR_KEY))
+	{
+		client_out_name = "AdjHeartSynth_out";
+	}
 
 	num_of_connected_jack_input_clients_left = mod_synth_get_jack_input_connections(
-						instrument_name.toStdString(),
-		"left",
+		client_out_name,
+		"AdjHeartSynthL_out", // TODO:
 		&connected_to_jack_clients_names_list_left);
 	
 	num_of_connected_jack_input_clients_right = mod_synth_get_jack_input_connections(
-						instrument_name.toStdString(),
-		"right",
+		client_out_name,
+		"AdjHeartSynthR_out", // TODO
 		&connected_to_jack_clients_names_list_right);
 	
 	if (num_of_connected_jack_input_clients_left > 0)

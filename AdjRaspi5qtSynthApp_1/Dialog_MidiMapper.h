@@ -56,24 +56,24 @@ public slots :
 	void moveEvent(QMoveEvent *event);
 	bool event(QEvent *event);
 	
-	int set_channel_instrument(int ch, int inst);
+	static int set_channel_instrument(int ch, int inst);
 	
-	void ch_1_instrument_changed(int inst);
-	void ch_2_instrument_changed(int inst);
-	void ch_3_instrument_changed(int inst);
-	void ch_4_instrument_changed(int inst);
-	void ch_5_instrument_changed(int inst);
-	void ch_6_instrument_changed(int inst);
-	void ch_7_instrument_changed(int inst);
-	void ch_8_instrument_changed(int inst);
-	void ch_9_instrument_changed(int inst);
-	void ch_10_instrument_changed(int inst);
-	void ch_11_instrument_changed(int inst);
-	void ch_12_instrument_changed(int inst);
-	void ch_13_instrument_changed(int inst);
-	void ch_14_instrument_changed(int inst);
-	void ch_15_instrument_changed(int inst);
-	void ch_16_instrument_changed(int inst);
+	static void ch_1_instrument_changed(int inst);
+	static void ch_2_instrument_changed(int inst);
+	static void ch_3_instrument_changed(int inst);
+	static void ch_4_instrument_changed(int inst);
+	static void ch_5_instrument_changed(int inst);
+	static void ch_6_instrument_changed(int inst);
+	static void ch_7_instrument_changed(int inst);
+	static void ch_8_instrument_changed(int inst);
+	static void ch_9_instrument_changed(int inst);
+	static void ch_10_instrument_changed(int inst);
+	static void ch_11_instrument_changed(int inst);
+	static void ch_12_instrument_changed(int inst);
+	static void ch_13_instrument_changed(int inst);
+	static void ch_14_instrument_changed(int inst);
+	static void ch_15_instrument_changed(int inst);
+	static void ch_16_instrument_changed(int inst);
 	
 	void set_all_channels_instrument_changed(int inst);
 	
@@ -100,6 +100,8 @@ private:
 	QComboBox *channels_combos[17];
 	
 	QMutex *active_instruments_mutex;
+	
+	func_ptr_void_int_t on_channel_combo_change_slots[16];
 	
 };
 

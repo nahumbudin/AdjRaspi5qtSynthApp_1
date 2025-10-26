@@ -83,6 +83,8 @@
 
 #define _ADSR_CURVE_VIEW_WIDGET_SHOW_TIME_SEC	5
 
+#define _MAX_NUM_OF_INSTRUMENTS					128
+
 
 class InstrumentPannel;
 
